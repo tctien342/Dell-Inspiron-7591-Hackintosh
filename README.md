@@ -2,7 +2,7 @@
 
 This build running on MacOs X
 
-![Alt text](background.jpg)
+![Alt text](Background.jpg)
 
 # I. Detail
 
