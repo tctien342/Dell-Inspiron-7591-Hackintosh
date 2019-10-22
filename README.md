@@ -85,7 +85,7 @@ This build running on MacOs X
     1. Replace your card wifi with DW1560/DW1820a (Or other if you can find better one)
     2. Copy all kext on Wifi/Bluetooth to EFI -> Clover -> Kext -> Other
     4. Reboot and enjoy
-## Using usb wiki
+## Using usb wifi
     + Suggest Comfast cf-811ac 
     + Using https://github.com/chris1111/USB-Wireless-Utility to make it run in mojave and catalina
 
