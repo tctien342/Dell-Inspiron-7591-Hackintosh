@@ -18,6 +18,7 @@
         - Update SSDT-TB3 to V3.1
         - Add more pci properties
         - Kexts to lastest version
+        - VoodooI2C now running in GPIO mode instead of Polling
         - Support MacOS Catalina 10.15.1
     Status: Stable
 
@@ -26,7 +27,7 @@
     1.Name:           Dell Inspiron 7591
     2.CPU:            Intel Core i5-9300H
     3.Graphic:        Intel UHD630
-    4.Wifi/B:           Intel Dual Band Wireless-AC 9560 ( Replaced with DW1820a - See below )
+    4.Wifi/B:         Intel Dual Band Wireless-AC 9560 ( Replaced with DW1820a - See below )
     5.Card Reader:    Realtek Memory Card Reader 
     6.Camera:         DELL UVC HD
     7.Audio:          ALC295!
