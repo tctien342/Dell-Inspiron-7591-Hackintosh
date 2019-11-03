@@ -1,17 +1,24 @@
 # Dell Inspiron 7591
 
-This build running on MacOs X
++ This build running on MacOs X
++ Tested in 10.14.6 and 10.15/10.15.1
 
 ![Alt text](Background.jpg)
 
 # I. Detail
 
-    Version:    1
-    Date:       22/10/2019
+    Version:    2
+    Date:       03/11/2019
     Support:    All BIOS
     Changelogs:
-        - Init first stable build
-        - Currently tested in MacOs Mojave 10.14.6
+        - Change audio layout to 13, update AppleALC to 1.4.3
+        - Few more tweaks to improve stability of this hack
+        - Retweaks Combojack
+        - Add SSDT-ALS0 for save brightness value
+        - Update SSDT-TB3 to V3.1
+        - Add more pci properties
+        - Kexts to lastest version
+        - Support MacOS Catalina 10.15.1
     Status: Stable
 
 # II. System specification
@@ -19,10 +26,10 @@ This build running on MacOs X
     1.Name:           Dell Inspiron 7591
     2.CPU:            Intel Core i5-9300H
     3.Graphic:        Intel UHD630
-    4.Wifi:           Intel Dual Band Wireless-AC 9560 - with bluetooth ( Will be replaced soon )
+    4.Wifi/B:           Intel Dual Band Wireless-AC 9560 ( Replaced with DW1820a - See below )
     5.Card Reader:    Realtek Memory Card Reader 
     6.Camera:         DELL UVC HD
-    7.Audio:          ALC295
+    7.Audio:          ALC295!
     8.Touchpad:       ELAN I2C ( Dell Precision Trackpad )
     9.Bios Version:   1.4.0
 
@@ -36,8 +43,8 @@ This build running on MacOs X
     + Speaker/Headphone work
     + Linein through headset work
     + Type C USB work (Thunderbolt not tested yet)
-    + Type C HDMI work
-    + HDMI Work
+    + Type C Graphic output work
+    + ! HDMI work
     + All usb port work
     + SD card reader work
     + Camera work
@@ -53,15 +60,20 @@ This build running on MacOs X
 
 # VI. Know problems
 
-    1. Internal mic (Pls help me if you master of AppleHDA)
+    1. Internal mic (Pls help me if you master of AppleHDA, other linux it dead too)
+    2. HDMI audio ( Need research more)
     2. Need more testing...
 
 # VII. Important thing
-    All kext below should not be updated, because it have been modified by me to run in this machine:
-        + AppleALC.kext ( Verb changed to support ALC295 in 7591, layout 77 modified )
-        + CPUFriendDataProvider.kext
+    > All kext below should be updated from my git for this laptop:
+        + AppleALC.kext ( Verb changed to support ALC295 in 7591, layout 13 modified to work with combojack )
+            > Find it here: https://github.com/tctien342/AppleALC
+            > Find Combojack here: https://github.com/tctien342/ComboJack
         + CustomPeripheral.kext ( Fake apple device, change it if you have different devices )
         + VoodooPS2Controller.kext ( Fixed panic when work with voodooi2c )
+        + CPUFriendDataProvider.kext is for my 9300H, maybe it different for you, using https://github.com/stevezhengshiqi/one-key-cpufriend to regenerate it if your cpu is different. 
+
+    > After update or install MacOS: Please run rebuilt your kext ( Using Kext Utility or something can handle it ) for stablity and your stoping trackpad.
 
 # VIII. Step to install
 
@@ -74,24 +86,56 @@ This build running on MacOs X
     7. This time trackpad and audio will working normally, then you need to use Clover EFI bootloader to install clover to EFI partition
     8. After install success, using Clover Configurator to mount your USB EFI partition then copy it to your System EFI.
     9. After System EFI replaced by your EFI, Using Clover Configurator to change SMBIOS, generate your serial and MBL
-    10. Optional to fix iMessenger
+    10. Optional to fix iMessenger if you dont have compatible wifi card
         + Go to https://www.browserling.com/tools/random-mac an click GenerateIP and pick an Mac address
-        + Put it into SSDT-RMNE.dsl like below and save as aml file then copy to ACPI/Patched in clover
-    11. Login iCloud and iMessenger, enjoy MacOS
+        + Put it into SSDT-RMNE.dsl in fake ethernet like below and save as aml file then copy to ACPI/Patched in clover
+        + Copy NullEthernet.kext into your clover->kexts->other
+        > Login iCloud and iMessenger, enjoy MacOS
 ![Alt text](UpdateMac.png)
 
 # IX. WIFI Replacement
-## Using new card ( Not tested yet, because im currently using USB wifi )
-    1. Replace your card wifi with DW1560/DW1820a (Or other if you can find better one)
-    2. Copy all kext on Wifi/Bluetooth to EFI -> Clover -> Kext -> Other
-    4. Reboot and enjoy
+## Using new card ( DW1820A tested)
+### Using DW1820a
+    + Mine is CN-0VW3T3 0x106B:0x0021, not tested in other verizon yet
+    + You need masked your pin like this: https://osxlatitude.com/forums/topic/11540-dw1820a-the-general-troubleshooting-thread/?do=findComment&comment=91179
+    + Add flag below into boot flag
+    + Add Devices below into Clover -> Devices -> Properties
+```
+    + PciRoot(0x0)/Pci(0x1d,0x6)/Pci(0x0,0x0)
+        > AAPL,slot-name: WLAN
+        > compatible: pci14e4,4353
+        > device_type: Airport Extreme
+        > model: DW1820A (BCM4350) 802.11ac Wireless
+        > name: Airport
+```
+
+<p align="center">
+    <img src="./dw1820a_inject.png">
+</p>
+
+    + Add kext to clover:
+        + AirportBrcmFixup.kext
+        + BrcmBluetoothInjector.kext
+        + BrcmFirmwareData.kext
+        + BrcmPatchRAM3.kext
+        + BT4LEContinuityFixup.kext (Handoff fix? maybe)
+```rb
+    brcmfx-driver=1 brcmfx-country=#a #(wifi fix)
+    bpr_probedelay=100 bpr_initialdelay=300 bpr_postresetdelay=300 #(blue fix after sleep)
+``` 
+<p align="center">
+    <img src="./dw1820a.png">
+</p>
+
+    <> Other support card like DW1560 and DW1830 you can google and test it, much easy than DW1820A
+
 ## Using usb wifi
     + Suggest Comfast cf-811ac 
     + Using https://github.com/chris1111/USB-Wireless-Utility to make it run in mojave and catalina
 
 # X. Undervolt script
-    + Goto here: https://github.com/sicreative/VoltageShift and download his binary and read his instruction
-    + Currently value have tested with my 7591 9300H: -120 -90 -120 (cpu gpu cache)
+    +Too f**king hot?
+    > Go here: https://github.com/tctien342/smart-cpu
 
 # Thanks
     + @bavariancake [https://github.com/bavariancake/XPS9570-macOS]
