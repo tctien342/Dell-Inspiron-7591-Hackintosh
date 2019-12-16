@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>BuildMachineOSBuild</key>
-	<string>17G6030</string>
+	<string>18G87</string>
 	<key>CFBundleIdentifier</key>
-	<string>as.acidanthera.injector.BrcmBluetoothInjector</string>
+	<string>org.rehabman.injector.BrcmBluetoothInjector</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
@@ -13,7 +13,7 @@
 	<key>CFBundlePackageType</key>
 	<string>KEXT</string>
 	<key>CFBundleShortVersionString</key>
-	<string>2.5.0</string>
+	<string>2.3.0d2</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleSupportedPlatforms</key>
@@ -21,11 +21,11 @@
 		<string>MacOSX</string>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>2.5.0</string>
+	<string>2.3.0d2</string>
 	<key>DTCompiler</key>
 	<string>com.apple.compilers.llvm.clang.1_0</string>
 	<key>DTPlatformBuild</key>
-	<string>10B61</string>
+	<string>10G8</string>
 	<key>DTPlatformVersion</key>
 	<string>GM</string>
 	<key>DTSDKBuild</key>
@@ -33,9 +33,9 @@
 	<key>DTSDKName</key>
 	<string>macosx10.11</string>
 	<key>DTXcode</key>
-	<string>1010</string>
+	<string>1030</string>
 	<key>DTXcodeBuild</key>
-	<string>10B61</string>
+	<string>10G8</string>
 	<key>IOKitPersonalities</key>
 	<dict>
 		<key>03f0_231d no firmware</key>
@@ -1406,5 +1406,7 @@
 	</dict>
 	<key>OSBundleRequired</key>
 	<string>Root</string>
+	<key>Source Code</key>
+	<string>https://github.com/RehabMan/BrcmPatchRAM.git</string>
 </dict>
 </plist>
