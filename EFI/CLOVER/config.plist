@@ -169,7 +169,7 @@
 					<key>Comment</key>
 					<string>I2C1:_STA to XSTA ,pair with SSDT-I2C.aml</string>
 					<key>Disabled</key>
-					<false/>
+					<true/>
 					<key>Find</key>
 					<data>M19DUlMAoA6VT1NZUwvcB6RTQkZJoBKT</data>
 					<key>Replace</key>
