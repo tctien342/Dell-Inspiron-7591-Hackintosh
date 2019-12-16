@@ -18,7 +18,8 @@
         - Fix LPC SSDT
         - Update ApplaALC to newest
         - Optimize some patch
-        - Update all kext for better stability
+        - Update all kext for better stability\
+        - Change SMBIOS to 15,2 for better iGPU
     Status: Stable
 
 ### <strong>Important</strong>: 
