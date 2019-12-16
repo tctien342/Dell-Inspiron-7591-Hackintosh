@@ -21,10 +21,11 @@
         - Update all kext for better stability
     Status: Stable
 
-### <strong>Important</strong>: Disable auto power up on lid in BIOS, if not you will get wake screen on wake up by lid.
+### <strong>Important</strong>: 
++   Disable auto power up on lid in BIOS, if not you will get black screen on wake up by lid.
 ### <strong>For 4k screen</strong>:
-    + Goto Config.plist -> Devices -> Properties -> PciRoot(0x0)/Pci(0x2,0x0)
-    + Change dpcd-max-link-rate = <14000000>
++   Goto Config.plist -> Devices -> Properties -> PciRoot(0x0)/Pci(0x2,0x0)
++   Change dpcd-max-link-rate = <14000000>
 
 # II. System specification
 
