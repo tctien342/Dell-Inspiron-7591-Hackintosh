@@ -29,6 +29,8 @@
 				<key>FixIPIC</key>
 				<false/>
 				<key>FixMutex</key>
+				<true/>
+				<key>FixRTC</key>
 				<false/>
 				<key>FixRegions</key>
 				<false/>
@@ -37,7 +39,7 @@
 				<key>FixShutdown</key>
 				<false/>
 				<key>FixWAK</key>
-				<true/>
+				<false/>
 			</dict>
 			<key>Patches</key>
 			<array>
@@ -47,13 +49,9 @@
 					<key>Disabled</key>
 					<false/>
 					<key>Find</key>
-					<data>
-					RUhDMQ==
-					</data>
+					<data>RUhDMQ==</data>
 					<key>Replace</key>
-					<data>
-					RUgwMQ==
-					</data>
+					<data>RUgwMQ==</data>
 				</dict>
 				<dict>
 					<key>Comment</key>
@@ -61,13 +59,9 @@
 					<key>Disabled</key>
 					<false/>
 					<key>Find</key>
-					<data>
-					RUhDMg==
-					</data>
+					<data>RUhDMg==</data>
 					<key>Replace</key>
-					<data>
-					RUgwMg==
-					</data>
+					<data>RUgwMg==</data>
 				</dict>
 				<dict>
 					<key>Comment</key>
@@ -75,13 +69,9 @@
 					<key>Disabled</key>
 					<false/>
 					<key>Find</key>
-					<data>
-					WEhDSQ==
-					</data>
+					<data>WEhDSQ==</data>
 					<key>Replace</key>
-					<data>
-					WEhDXw==
-					</data>
+					<data>WEhDXw==</data>
 				</dict>
 				<dict>
 					<key>Comment</key>
@@ -89,13 +79,9 @@
 					<key>Disabled</key>
 					<false/>
 					<key>Find</key>
-					<data>
-					T1NJRA==
-					</data>
+					<data>T1NJRA==</data>
 					<key>Replace</key>
-					<data>
-					WFNJRA==
-					</data>
+					<data>WFNJRA==</data>
 				</dict>
 				<dict>
 					<key>Comment</key>
@@ -103,13 +89,9 @@
 					<key>Disabled</key>
 					<false/>
 					<key>Find</key>
-					<data>
-					X09TSQ==
-					</data>
+					<data>X09TSQ==</data>
 					<key>Replace</key>
-					<data>
-					WE9TSQ==
-					</data>
+					<data>WE9TSQ==</data>
 				</dict>
 				<dict>
 					<key>Comment</key>
@@ -117,13 +99,9 @@
 					<key>Disabled</key>
 					<false/>
 					<key>Find</key>
-					<data>
-					X0RTTQ==
-					</data>
+					<data>X0RTTQ==</data>
 					<key>Replace</key>
-					<data>
-					WERTTQ==
-					</data>
+					<data>WERTTQ==</data>
 				</dict>
 				<dict>
 					<key>Comment</key>
@@ -131,27 +109,9 @@
 					<key>Disabled</key>
 					<false/>
 					<key>Find</key>
-					<data>
-					RUNEVg==
-					</data>
+					<data>RUNEVg==</data>
 					<key>Replace</key>
-					<data>
-					RUNfXw==
-					</data>
-				</dict>
-				<dict>
-					<key>Comment</key>
-					<string>Change HDAS to HDEF (needed for audio)</string>
-					<key>Disabled</key>
-					<false/>
-					<key>Find</key>
-					<data>
-					SERBUw==
-					</data>
-					<key>Replace</key>
-					<data>
-					SERFRg==
-					</data>
+					<data>RUNfXw==</data>
 				</dict>
 				<dict>
 					<key>Comment</key>
@@ -159,13 +119,9 @@
 					<key>Disabled</key>
 					<false/>
 					<key>Find</key>
-					<data>
-					SEVDSQ==
-					</data>
+					<data>SEVDSQ==</data>
 					<key>Replace</key>
-					<data>
-					SU1FSQ==
-					</data>
+					<data>SU1FSQ==</data>
 				</dict>
 				<dict>
 					<key>Comment</key>
@@ -173,13 +129,9 @@
 					<key>Disabled</key>
 					<false/>
 					<key>Find</key>
-					<data>
-					R0ZYMA==
-					</data>
+					<data>R0ZYMA==</data>
 					<key>Replace</key>
-					<data>
-					SUdQVQ==
-					</data>
+					<data>SUdQVQ==</data>
 				</dict>
 				<dict>
 					<key>Comment</key>
@@ -187,13 +139,9 @@
 					<key>Disabled</key>
 					<false/>
 					<key>Find</key>
-					<data>
-					FCBCUlQ2Ag==
-					</data>
+					<data>FCBCUlQ2Ag==</data>
 					<key>Replace</key>
-					<data>
-					FCBCUlRYAg==
-					</data>
+					<data>FCBCUlRYAg==</data>
 				</dict>
 				<dict>
 					<key>Comment</key>
@@ -201,17 +149,11 @@
 					<key>Disabled</key>
 					<false/>
 					<key>Find</key>
-					<data>
-					X1NUQQ==
-					</data>
+					<data>X1NUQQ==</data>
 					<key>Replace</key>
-					<data>
-					WFNUQQ==
-					</data>
+					<data>WFNUQQ==</data>
 					<key>TgtBridge</key>
-					<data>
-					R1BJMA==
-					</data>
+					<data>R1BJMA==</data>
 				</dict>
 				<dict>
 					<key>Comment</key>
@@ -219,13 +161,9 @@
 					<key>Disabled</key>
 					<false/>
 					<key>Find</key>
-					<data>
-					SFBFVA==
-					</data>
+					<data>SFBFVA==</data>
 					<key>Replace</key>
-					<data>
-					WFBFVA==
-					</data>
+					<data>WFBFVA==</data>
 				</dict>
 				<dict>
 					<key>Comment</key>
@@ -233,13 +171,9 @@
 					<key>Disabled</key>
 					<false/>
 					<key>Find</key>
-					<data>
-					M19DUlMAoA6VT1NZUwvcB6RTQkZJoBKT
-					</data>
+					<data>M19DUlMAoA6VT1NZUwvcB6RTQkZJoBKT</data>
 					<key>Replace</key>
-					<data>
-					M1hDUlMAoA6VT1NZUwvcB6RTQkZJoBKT
-					</data>
+					<data>M1hDUlMAoA6VT1NZUwvcB6RTQkZJoBKT</data>
 				</dict>
 				<dict>
 					<key>Comment</key>
@@ -247,13 +181,9 @@
 					<key>Disabled</key>
 					<false/>
 					<key>Find</key>
-					<data>
-					FEkEX1BUUwE=
-					</data>
+					<data>FEkEX1BUUwE=</data>
 					<key>Replace</key>
-					<data>
-					FEkEWlBUUwE=
-					</data>
+					<data>FEkEWlBUUwE=</data>
 				</dict>
 				<dict>
 					<key>Comment</key>
@@ -261,13 +191,9 @@
 					<key>Disabled</key>
 					<false/>
 					<key>Find</key>
-					<data>
-					FDlfV0FLAQ==
-					</data>
+					<data>FDlfV0FLAQ==</data>
 					<key>Replace</key>
-					<data>
-					FDlaV0FLAQ==
-					</data>
+					<data>FDlaV0FLAQ==</data>
 				</dict>
 				<dict>
 					<key>Comment</key>
@@ -275,13 +201,9 @@
 					<key>Disabled</key>
 					<false/>
 					<key>Find</key>
-					<data>
-					FEAGR1BSVwI=
-					</data>
+					<data>FEAGR1BSVwI=</data>
 					<key>Replace</key>
-					<data>
-					FEAGWVBSVwI=
-					</data>
+					<data>FEAGWVBSVwI=</data>
 				</dict>
 				<dict>
 					<key>Comment</key>
@@ -289,13 +211,9 @@
 					<key>Disabled</key>
 					<false/>
 					<key>Find</key>
-					<data>
-					FBJVUFJXAHA=
-					</data>
+					<data>FBJVUFJXAHA=</data>
 					<key>Replace</key>
-					<data>
-					FBJYUFJXAHA=
-					</data>
+					<data>FBJYUFJXAHA=</data>
 				</dict>
 				<dict>
 					<key>Comment</key>
@@ -303,17 +221,35 @@
 					<key>Disabled</key>
 					<false/>
 					<key>Find</key>
-					<data>
-					QUNfXw==
-					</data>
+					<data>QUNfXw==</data>
 					<key>Replace</key>
-					<data>
-					QURQMQ==
-					</data>
+					<data>QURQMQ==</data>
+				</dict>
+				<dict>
+					<key>Comment</key>
+					<string>Rename PNOT to XNOT</string>
+					<key>Disabled</key>
+					<true/>
+					<key>Find</key>
+					<data>UE5PVA==</data>
+					<key>Replace</key>
+					<data>WE5PVA==</data>
+				</dict>
+				<dict>
+					<key>Comment</key>
+					<string>I2C0:_STA to XSTA</string>
+					<key>Disabled</key>
+					<false/>
+					<key>Find</key>
+					<data>X1NUQQ==</data>
+					<key>Replace</key>
+					<data>WFNUQQ==</data>
+					<key>TgtBridge</key>
+					<data>STJDMA==</data>
 				</dict>
 			</array>
 			<key>SlpSmiAtWake</key>
-			<true/>
+			<false/>
 		</dict>
 		<key>DisabledAML</key>
 		<array>
@@ -358,9 +294,9 @@
 	<key>Boot</key>
 	<dict>
 		<key>Arguments</key>
-		<string>npci=0x2000 agdpmod=vit9696 -wegnoegpu darkwake=1</string>
+		<string>npci=0x2000 darkwake=1 agdpmod=vit9696</string>
 		<key>CustomLogo</key>
-		<string>Apple</string>
+		<false/>
 		<key>Debug</key>
 		<false/>
 		<key>DefaultVolume</key>
@@ -374,20 +310,18 @@
 		<key>Secure</key>
 		<false/>
 		<key>StrictHibernate</key>
-		<true/>
+		<false/>
 		<key>Timeout</key>
 		<integer>1</integer>
 		<key>XMPDetection</key>
-		<string>Yes</string>
+		<false/>
 	</dict>
 	<key>CPU</key>
 	<dict>
 		<key>HWPEnable</key>
-		<true/>
-		<key>HWPValue</key>
-		<string>0x40002901</string>
+		<false/>
 		<key>UseARTFrequency</key>
-		<true/>
+		<false/>
 	</dict>
 	<key>Devices</key>
 	<dict>
@@ -396,119 +330,29 @@
 			<key>AFGLowPowerState</key>
 			<false/>
 			<key>ResetHDA</key>
-			<false/>
+			<true/>
 		</dict>
 		<key>LpcTune</key>
 		<false/>
 		<key>Properties</key>
 		<dict>
-			<key>PciRoot(0x0)/Pci(0x12,0x0)</key>
-			<dict>
-				<key>AAPL,slot-name</key>
-				<string>Internal@0,18,0</string>
-				<key>device_type</key>
-				<string>Signal processing controller</string>
-				<key>model</key>
-				<string>Cannon Lake PCH Thermal Controller</string>
-			</dict>
-			<key>PciRoot(0x0)/Pci(0x14,0x0)</key>
-			<dict>
-				<key>AAPL,slot-name</key>
-				<string>Internal@0,20,0</string>
-				<key>device_type</key>
-				<string>USB controller</string>
-				<key>model</key>
-				<string>Cannon Lake PCH USB 3.1 xHCI Host Controller</string>
-			</dict>
-			<key>PciRoot(0x0)/Pci(0x14,0x2)</key>
-			<dict>
-				<key>AAPL,slot-name</key>
-				<string>Internal@0,20,2</string>
-				<key>device_type</key>
-				<string>RAM memory</string>
-				<key>model</key>
-				<string>Cannon Lake PCH Shared SRAM</string>
-			</dict>
-			<key>PciRoot(0x0)/Pci(0x14,0x3)</key>
-			<dict>
-				<key>AAPL,slot-name</key>
-				<string>Internal@0,20,3</string>
-				<key>device_type</key>
-				<string>Network controller</string>
-				<key>model</key>
-				<string>Wireless-AC 9560 [Jefferson Peak]</string>
-			</dict>
-			<key>PciRoot(0x0)/Pci(0x15,0x0)</key>
-			<dict>
-				<key>AAPL,slot-name</key>
-				<string>Internal@0,21,0</string>
-				<key>device_type</key>
-				<string>Serial bus controller</string>
-				<key>model</key>
-				<string>Cannon Lake PCH Serial IO I2C Controller #0</string>
-			</dict>
-			<key>PciRoot(0x0)/Pci(0x15,0x1)</key>
-			<dict>
-				<key>AAPL,slot-name</key>
-				<string>Internal@0,21,1</string>
-				<key>device_type</key>
-				<string>Serial bus controller</string>
-				<key>model</key>
-				<string>Cannon Lake PCH Serial IO I2C Controller #1</string>
-			</dict>
-			<key>PciRoot(0x0)/Pci(0x16,0x0)</key>
-			<dict>
-				<key>AAPL,slot-name</key>
-				<string>Internal@0,22,0</string>
-				<key>device_type</key>
-				<string>Communication controller</string>
-				<key>model</key>
-				<string>Cannon Lake PCH HECI Controller</string>
-			</dict>
-			<key>PciRoot(0x0)/Pci(0x17,0x0)</key>
-			<dict>
-				<key>AAPL,slot-name</key>
-				<string>Internal@0,23,0</string>
-				<key>device_type</key>
-				<string>SATA controller</string>
-				<key>model</key>
-				<string>Cannon Lake Mobile PCH SATA AHCI Controller</string>
-			</dict>
 			<key>PciRoot(0x0)/Pci(0x1f,0x3)</key>
 			<dict>
 				<key>AAPL,slot-name</key>
-				<string>Built-in</string>
+				<string>Internal@0,31,3</string>
 				<key>device_type</key>
-				<string>Audio Controller</string>
+				<string>Multimedia audio controller</string>
+				<key>hda-gfx</key>
+				<string>onboard-1</string>
 				<key>layout-id</key>
-				<integer>13</integer>
+				<data>DQAAAA==</data>
 				<key>model</key>
-				<string>Realtek ALC295</string>
-			</dict>
-			<key>PciRoot(0x0)/Pci(0x1f,0x4)</key>
-			<dict>
-				<key>AAPL,slot-name</key>
-				<string>Internal@0,31,4</string>
-				<key>device_type</key>
-				<string>SMBus</string>
-				<key>model</key>
-				<string>Cannon Lake PCH SMBus Controller</string>
-			</dict>
-			<key>PciRoot(0x0)/Pci(0x1f,0x5)</key>
-			<dict>
-				<key>AAPL,slot-name</key>
-				<string>Internal@0,31,5</string>
-				<key>device_type</key>
-				<string>Serial bus controller</string>
-				<key>model</key>
-				<string>Cannon Lake PCH SPI Controller</string>
+				<string>Realtek ALC295 Dell OEM</string>
 			</dict>
 			<key>PciRoot(0x0)/Pci(0x2,0x0)</key>
 			<dict>
 				<key>AAPL,ig-platform-id</key>
-				<data>
-				AACbPg==
-				</data>
+				<data>AACbPg==</data>
 				<key>Comment-con1-con2</key>
 				<string>Type C port; can have 2 DisplayPort connectors</string>
 				<key>Comment-con3</key>
@@ -518,69 +362,43 @@
 				<key>Comment-fb-portcount</key>
 				<string>There are 4 ports: internal LCD, Type C DP 1 and 2, and HDMI</string>
 				<key>device-id</key>
-				<data>
-				mz4AAA==
-				</data>
+				<data>mz4AAA==</data>
 				<key>dpcd-max-link-rate</key>
-				<data>
-				AAo=
-				</data>
+				<data>CgAAAA==</data>
 				<key>enable-cfl-backlight-fix</key>
-				<data>
-				AQAAAA==
-				</data>
+				<data>AQAAAA==</data>
 				<key>enable-dpcd-max-link-rate-fix</key>
-				<data>
-				AQAAAA==
-				</data>
+				<data>AQAAAA==</data>
+				<key>enable-hdmi-dividers-fix</key>
+				<data>AQAAAA==</data>
 				<key>enable-hdmi20</key>
-				<data>
-				AQAAAA==
-				</data>
+				<data>AQAAAA==</data>
 				<key>enable-lspcon-support</key>
-				<data>
-				AQAAAA==
-				</data>
+				<data>AQAAAA==</data>
 				<key>framebuffer-con1-alldata</key>
-				<data>
-				AQUJAAAEAACHAQAA
-				</data>
+				<data>AQUJAAAEAACHAQAA</data>
 				<key>framebuffer-con1-enable</key>
-				<data>
-				AQAAAA==
-				</data>
+				<data>AQAAAA==</data>
 				<key>framebuffer-con2-alldata</key>
-				<data>
-				AgYJAAAEAACHAQAA
-				</data>
+				<data>AgYJAAAEAACHAQAA</data>
 				<key>framebuffer-con2-enable</key>
-				<data>
-				AQAAAA==
-				</data>
+				<data>AQAAAA==</data>
 				<key>framebuffer-con3-alldata</key>
-				<data>
-				AwQKAAAIAACHAQAA
-				</data>
+				<data>AwQKAAAIAACHAQAA</data>
 				<key>framebuffer-con3-enable</key>
-				<data>
-				AQAAAA==
-				</data>
+				<data>AQAAAA==</data>
 				<key>framebuffer-con3-has-lspcon</key>
-				<data>
-				AQAAAA==
-				</data>
+				<data>AQAAAA==</data>
 				<key>framebuffer-con3-preferred-lspcon-mode</key>
-				<data>
-				AQAAAA==
-				</data>
+				<data>AQAAAA==</data>
 				<key>framebuffer-patch-enable</key>
-				<data>
-				AQAAAA==
-				</data>
+				<data>AQAAAA==</data>
 				<key>framebuffer-portcount</key>
-				<data>
-				BAAAAA==
-				</data>
+				<data>BAAAAA==</data>
+				<key>framebuffer-unifiedmem</key>
+				<data>AAAAgA==</data>
+				<key>hda-gfx</key>
+				<string>onboard-1</string>
 				<key>model</key>
 				<string>Intel UHD Graphics 630 (Mobile) </string>
 			</dict>
@@ -588,11 +406,11 @@
 		<key>USB</key>
 		<dict>
 			<key>AddClockID</key>
-			<true/>
-			<key>FixOwnership</key>
 			<false/>
-			<key>HighCurrent</key>
+			<key>FixOwnership</key>
 			<true/>
+			<key>HighCurrent</key>
+			<false/>
 			<key>Inject</key>
 			<false/>
 		</dict>
@@ -662,14 +480,12 @@
 			<key>AMD</key>
 			<false/>
 			<key>Intel</key>
-			<true/>
+			<false/>
 			<key>Nvidia</key>
 			<false/>
 		</dict>
 		<key>PatchVBios</key>
 		<false/>
-		<key>ig-platform-id</key>
-		<string>0x3E9B0000</string>
 	</dict>
 	<key>KernelAndKextPatches</key>
 	<dict>
@@ -681,6 +497,10 @@
 		<false/>
 		<key>DellSMBIOSPatch</key>
 		<true/>
+		<key>ForceKextsToLoad</key>
+		<array>
+			<string>com.apple.driver.AppleHDA</string>
+		</array>
 		<key>KernelCpu</key>
 		<false/>
 		<key>KernelLapic</key>
@@ -695,13 +515,9 @@
 				<key>Disabled</key>
 				<false/>
 				<key>Find</key>
-				<data>
-				ILniAAAADzA=
-				</data>
+				<data>ILniAAAADzA=</data>
 				<key>Replace</key>
-				<data>
-				ILniAAAAkJA=
-				</data>
+				<data>ILniAAAAkJA=</data>
 			</dict>
 			<dict>
 				<key>Comment</key>
@@ -709,15 +525,11 @@
 				<key>Disabled</key>
 				<false/>
 				<key>Find</key>
-				<data>
-				igKEwHRE
-				</data>
+				<data>igKEwHRE</data>
 				<key>MatchOS</key>
 				<string>10.13.x</string>
 				<key>Replace</key>
-				<data>
-				igKEwOtE
-				</data>
+				<data>igKEwOtE</data>
 			</dict>
 			<dict>
 				<key>Comment</key>
@@ -725,15 +537,11 @@
 				<key>Disabled</key>
 				<false/>
 				<key>Find</key>
-				<data>
-				igKEwHRC
-				</data>
+				<data>igKEwHRC</data>
 				<key>MatchOS</key>
 				<string>10.14.x</string>
 				<key>Replace</key>
-				<data>
-				igKEwOtC
-				</data>
+				<data>igKEwOtC</data>
 			</dict>
 			<dict>
 				<key>Comment</key>
@@ -741,58 +549,15 @@
 				<key>Disabled</key>
 				<false/>
 				<key>Find</key>
-				<data>
-				AIoChMB0
-				</data>
+				<data>AIoChMB0</data>
 				<key>MatchOS</key>
 				<string>10.14.4</string>
 				<key>Replace</key>
-				<data>
-				AIoChMDr
-				</data>
+				<data>AIoChMDr</data>
 			</dict>
 		</array>
 		<key>KernelXCPM</key>
 		<false/>
-		<key>KextsToPatch</key>
-		<array>
-			<dict>
-				<key>Comment</key>
-				<string>Prevent Apple I2C kexts from attaching to I2C controllers, credit CoolStar</string>
-				<key>Disabled</key>
-				<false/>
-				<key>Find</key>
-				<data>
-				SU9LaXQ=
-				</data>
-				<key>InfoPlistPatch</key>
-				<true/>
-				<key>Name</key>
-				<string>com.apple.driver.AppleIntelLpssI2C</string>
-				<key>Replace</key>
-				<data>
-				SU9LaXM=
-				</data>
-			</dict>
-			<dict>
-				<key>Comment</key>
-				<string>Prevent Apple I2C kexts from attaching to I2C controllers, credit CoolStar</string>
-				<key>Disabled</key>
-				<false/>
-				<key>Find</key>
-				<data>
-				SU9LaXQ=
-				</data>
-				<key>InfoPlistPatch</key>
-				<true/>
-				<key>Name</key>
-				<string>com.apple.driver.AppleIntelLpssI2CController</string>
-				<key>Replace</key>
-				<data>
-				SU9LaXM=
-				</data>
-			</dict>
-		</array>
 	</dict>
 	<key>RtVariables</key>
 	<dict>
@@ -804,13 +569,13 @@
 	<key>SMBIOS</key>
 	<dict>
 		<key>BiosReleaseDate</key>
-		<string>09/28/2018</string>
+		<string>09/17/2018</string>
 		<key>BiosVendor</key>
 		<string>Apple Inc.</string>
 		<key>BiosVersion</key>
-		<string>MBP151.88Z.F000.B00.1809280842</string>
+		<string>MBP152.88Z.F000.B00.1809171524</string>
 		<key>Board-ID</key>
-		<string>Mac-937A206F2EE63C01</string>
+		<string>Mac-827FB448E656EC26</string>
 		<key>BoardManufacturer</key>
 		<string>Apple Inc.</string>
 		<key>BoardType</key>
@@ -840,7 +605,7 @@
 		<key>PlatformFeature</key>
 		<string>0x1A</string>
 		<key>ProductName</key>
-		<string>MacBookPro15,1</string>
+		<string>MacBookPro15,2</string>
 		<key>Version</key>
 		<string>1.0</string>
 	</dict>
