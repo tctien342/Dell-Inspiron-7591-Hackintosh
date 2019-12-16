@@ -23,9 +23,12 @@ DefinitionBlock ("", "SSDT", 2, "hack", "I2C", 0x00000000)
         Return (0x0F)
     }
 
+
     Scope (_SB.PCI0.I2C1.TPD1)
-    {
-        Name (SBFG, ResourceTemplate ()
+    {            
+        Method (_CRS, 0, NotSerialized)  // _CRS: Current Resource Settings
+        {
+            Name (SBFG, ResourceTemplate ()
             {
                 GpioInt (Level, ActiveLow, ExclusiveAndWake, PullDefault, 0x0000,
                     "\\_SB.PCI0.GPI0", 0x00, ResourceConsumer, ,
@@ -34,9 +37,6 @@ DefinitionBlock ("", "SSDT", 2, "hack", "I2C", 0x00000000)
                         0x0023
                     }
             })
-            
-        Method (_CRS, 0, NotSerialized)  // _CRS: Current Resource Settings
-        {
             Return (ConcatenateResTemplate (SBFB, SBFG))
         }
     }

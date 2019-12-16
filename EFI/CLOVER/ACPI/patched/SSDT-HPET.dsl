@@ -30,15 +30,13 @@ DefinitionBlock ("", "SSDT", 2, "hack", "HPET", 0x00000000)
             Name (_UID, Zero)  // _UID: Unique ID
             Name (BUF0, ResourceTemplate ()
             {
-                IRQNoFlags ()
-                    {0,8,11,15}
                 Memory32Fixed (ReadWrite,
                     0xFED00000,         // Address Base
                     0x00000400,         // Address Length
-                    )
-            })
-            Name (_STA, 0x0F)  // _STA: Status
-            Method (_CRS, 0, NotSerialized)  // _CRS: Current Resource Settings
+                    _Y26)
+            })   
+            Name (_STA, 0x0F)
+            Method (_CRS, 0, NotSerialized)
             {
                 Return (BUF0)
             }

@@ -66,7 +66,7 @@ DefinitionBlock("", "SSDT", 2, "hack", "_RMCF", 0)
         //
         // 0: does not affect _PTS behavior during shutdown
         // 1: sets XHC.PMEE in _PTS code during shutdown
-        Name(XPEE, 0)
+        Name(XPEE, 1)
 
         // SSTF: _SI._SST fix.  To fix LED on wake.  Useful for some Thinkpad laptops.
         //

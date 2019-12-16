@@ -1,56 +1,102 @@
 // Overriding _PTS and _WAK
-DefinitionBlock ("", "SSDT", 2, "hack", "PTSWAK", 0x00000000)
+
+#ifndef NO_DEFINITIONBLOCK
+DefinitionBlock("", "SSDT", 2, "hack", "_PTSWAK", 0)
 {
-    External (_SB_.PCI0.PEG0.PEGP._OFF, MethodObj)    // 0 Arguments (from opcode)
-    External (_SB_.PCI0.PGOF, MethodObj)
-    External (_SB_.PCI0.PEG0.PEGP._ON_, MethodObj)    // 0 Arguments (from opcode)
-    External (RMCF.DPTS, IntObj)    // (from opcode)
-    External (RMCF.SHUT, IntObj)    // (from opcode)
-    External (ZPTS, MethodObj)    // 1 Arguments (from opcode)
-    External (ZWAK, MethodObj)    // 1 Arguments (from opcode)
+#endif
+    External(ZPTS, MethodObj)
+    External(ZWAK, MethodObj)
 
-    Method (_PTS, 1, NotSerialized)  // _PTS: Prepare To Sleep
+    External(_SB.PCI0.PEG0.PEGP._ON, MethodObj)
+    External(_SB.PCI0.PEG0.PEGP._OFF, MethodObj)
+    External(_SB.PCI0.PEGP.DGFX._ON, MethodObj)
+    External(_SB.PCI0.PEGP.DGFX._OFF, MethodObj)
+
+    External(RMCF.DPTS, IntObj)
+    External(RMCF.SHUT, IntObj)
+    External(RMCF.XPEE, IntObj)
+    External(RMCF.SSTF, IntObj)
+    External(_SB.PCI0.XHC.PMEE, FieldUnitObj)
+    External(_SI._SST, MethodObj)
+
+    // In DSDT, native _PTS and _WAK are renamed ZPTS/ZWAK
+    // As a result, calls to these methods land here.
+    Method(_PTS, 1)
     {
-        If (CondRefOf (\RMCF.SHUT))
+        if (5 == Arg0)
         {
-            If (LAnd (\RMCF.SHUT, LEqual (0x05, Arg0)))
+            // Shutdown fix, if enabled
+            If (CondRefOf(\RMCF.SHUT))
             {
-                Return (Zero)
+                If (\RMCF.SHUT & 1) { Return }
+                If (\RMCF.SHUT & 2)
+                {
+                    OperationRegion(PMRS, SystemIO, 0x1830, 1)
+                    Field(PMRS, ByteAcc, NoLock, Preserve)
+                    {
+                        ,4,
+                        SLPE, 1,
+                    }
+                    // alternate shutdown fix using SLPE (mostly provided as an example)
+                    // likely very specific to certain motherboards
+                    Store(0, SLPE)
+                    Sleep(16)
+                }
             }
         }
 
-        If (CondRefOf (\RMCF.DPTS))
+        If (CondRefOf(\RMCF.DPTS))
         {
             If (\RMCF.DPTS)
             {
-                \_SB.PCI0.PEG0.PEGP._ON ()
-                
+                // enable discrete graphics
+                If (CondRefOf(\_SB.PCI0.PEG0.PEGP._ON)) { \_SB.PCI0.PEG0.PEGP._ON() }
+                If (CondRefOf(\_SB.PCI0.PEGP.DGFX._ON)) { \_SB.PCI0.PEGP.DGFX._ON() }
             }
         }
 
-        ZPTS (Arg0)
+        // call into original _PTS method
+        ZPTS(Arg0)
+
+        If (5 == Arg0)
+        {
+            // XHC.PMEE fix, if enabled
+            If (CondRefOf(\RMCF.XPEE)) { If (\RMCF.XPEE && CondRefOf(\_SB.PCI0.XHC.PMEE)) { \_SB.PCI0.XHC.PMEE = 0 } }
+        }
     }
-
-    Method (_WAK, 1, NotSerialized)  // _WAK: Wake
+    Method(_WAK, 1)
     {
-        If (LOr (LLess (Arg0, One), LGreater (Arg0, 0x05)))
-        {
-            Store (0x03, Arg0)
-        }
+        // Take care of bug regarding Arg0 in certain versions of OS X...
+        // (starting at 10.8.5, confirmed fixed 10.10.2)
+        If (Arg0 < 1 || Arg0 > 5) { Arg0 = 3 }
 
-        Store (ZWAK (Arg0), Local0)
-        If (CondRefOf (\RMCF.DPTS))
+        // call into original _WAK method
+        Local0 = ZWAK(Arg0)
+
+        If (CondRefOf(\RMCF.DPTS))
         {
             If (\RMCF.DPTS)
             {
-                \_SB.PCI0.PEG0.PEGP._OFF ()
-                \_SB_.PCI0.PGOF(Zero)
+                // disable discrete graphics
+                If (CondRefOf(\_SB.PCI0.PEG0.PEGP._OFF)) { \_SB.PCI0.PEG0.PEGP._OFF() }
+                If (CondRefOf(\_SB.PCI0.PEGP.DGFX._OFF)) { \_SB.PCI0.PEGP.DGFX._OFF() }
             }
         }
 
+        If (CondRefOf(\RMCF.SSTF))
+        {
+            If (\RMCF.SSTF)
+            {
+                // call _SI._SST to indicate system "working"
+                // for more info, read ACPI specification
+                If (3 == Arg0 && CondRefOf(\_SI._SST)) { \_SI._SST(1) }
+            }
+        }
+
+        // return value from original _WAK
         Return (Local0)
     }
+#ifndef NO_DEFINITIONBLOCK
 }
-
-
-
+#endif
+//EOF
