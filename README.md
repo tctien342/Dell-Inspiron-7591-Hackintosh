@@ -137,7 +137,7 @@
         + BT4LEContinuityFixup.kext (Handoff fix? maybe)
 
 ```rb
-    brcmfx-driver=a brcmfx-country=#a #(wifi fix)
+    brcmfx-driver=2 brcmfx-country=#a #(wifi fix)
 ```
 
 <p>
