@@ -1,7 +1,7 @@
 # Dell Inspiron 7591
 
 - This build running on MacOs X
-- Tested in 10.14.6 and 10.15/10.15.1
+- Currently opencore tested in 10.14.6
 
 <p>
     <img style="border-radius: 8px" src="Background.jpg">
@@ -9,24 +9,25 @@
 
 # I. Detail
 
-    Version:    3
-    Date:       16/12/2019
+    Version:    4
+    Date:       25/01/2020
     Support:    All BIOS
     Changelogs:
-        - Update voodooI2C to newest, fix conflict with voodoops2
-        - Update Combojack to with init patch
-        - Fix LPC SSDT
+        - Moved into Opencore
+        - Fixed all SSDT compatible, only change when booting to macOS
+        - Removed all useless SSDT
+        - Update all Kext to lastest
         - Update ApplaALC to newest
-        - Optimize some patch
-        - Update all kext for better stability\
-        - Change SMBIOS to 15,2 for better iGPU
     Status: Stable
 
-### <strong>Important</strong>: 
-+   Disable auto power up on lid in BIOS, if not you will get black screen on wake up by lid. Thanks @magonzalez112
+### <strong>Important</strong>:
+
+- Disable auto power up on lid in BIOS, if not you will get black screen on wake up by lid. Thanks @magonzalez112
+
 ### <strong>For 4k screen</strong>:
-+   Goto Config.plist -> Devices -> Properties -> PciRoot(0x0)/Pci(0x2,0x0)
-+   Change dpcd-max-link-rate = <14000000>
+
+- Goto Config.plist -> DeviceProperties -> Add -> PciRoot(0x0)/Pci(0x2,0x0)
+- Change dpcd-max-link-rate = <14000000>
 
 # II. System specification
 
@@ -52,7 +53,7 @@
     + Linein through headset work
     + Type C USB work (Thunderbolt not tested yet)
     + Type C Graphic output work
-    + ! HDMI work
+    + HDMI work (With audio if boot with pluged HDMI)
     + All usb port work
     + SD card reader work
     + Camera work
@@ -70,8 +71,8 @@
 # VI. Know problems
 
     1. Internal mic (Pls help me if you master of AppleHDA, other linux it dead too)
-    2. HDMI audio ( Need research more)
-    2. Audio sometime not working if mac installed in fast NVME drive, due to AppleALC bug (Need research more...)
+    2. HDMI audio ( Worked if boot with HDMI pluged )
+    2. Audio sometime not working if mac installed in fast NVME drive, due to AppleALC bug (Testing with some fix...)
 
 # VII. Important thing
 
@@ -86,19 +87,18 @@
 
 # VIII. Step to install
 
-    1. Prepair an Mac installer in USB with Clover added ( Use unibeast to create it )
+    1. Prepair an Mac installer in USB with Opencore added ( Use unibeast to create it )
     2. Replace EFI folder in USB EFI partition with this shipped EFI folder
     3. Boot into USB and select MacOs installer
-    4. First boot Trackpad may not work, need and mouse connect through USB, Follow mac install instruction you can find it on tonymacx86 or other hackintosh forum
-    5. After install success, boot into MacOS, run ComboJack Alc295/ComboJack_Installer/install.sh in terminal
-    6. Use Kext Utility to rebuild kext then reboot
-    7. This time trackpad and audio will working normally, then you need to use Clover EFI bootloader to install clover to EFI partition
-    8. After install success, using Clover Configurator to mount your USB EFI partition then copy it to your System EFI.
-    9. After System EFI replaced by your EFI, Using Clover Configurator to change SMBIOS, generate your serial and MBL
-    10. Optional to fix iMessenger if you dont have compatible wifi card
+    4. After install success, boot into MacOS, run ComboJack Alc295/ComboJack_Installer/install.sh in terminal
+    5. Use Kext Utility to rebuild kext then reboot
+    6. Then you need to mount EFI partition and replace it with shipped EFI
+    8. After System EFI replaced by your EFI, Using Opencore Configurator to change SMBIOS, generate your serial and MBL
+    9. Optional to fix iMessenger if you dont have compatible wifi card
         + Go to https://www.browserling.com/tools/random-mac an click GenerateIP and pick an Mac address
-        + Put it into SSDT-RMNE.dsl in fake ethernet like below and save as aml file then copy to ACPI/Patched in clover
-        + Copy NullEthernet.kext into your clover->kexts->other
+        + Put it into SSDT-RMNE.dsl in fake ethernet like below and save as aml file then copy to ACPI folder in OC
+        + Copy NullEthernet.kext into your OC->Kexts
+        + Add it into Configs.plist->Kernel->Add
         > Login iCloud and iMessenger, enjoy MacOS
 
 <p>
@@ -113,8 +113,8 @@
 
     + Mine is CN-0VW3T3 0x106B:0x0021, not tested in other verizon yet
     + You need masked your pin like this: https://osxlatitude.com/forums/topic/11540-dw1820a-the-general-troubleshooting-thread/?do=findComment&comment=91179
-    + Add flag below into boot flag
-    + Add Devices below into Clover -> Devices -> Properties
+    + Add flag below into boot flag (config.plist->NVRAM->7C436110-AB2A-4BBB-A880-FE41995C9F82->boot-args)
+    + Add Devices below into config.plist -> DeviceProperties -> Devices
 
 ```
     + PciRoot(0x0)/Pci(0x1d,0x6)/Pci(0x0,0x0)
@@ -129,7 +129,7 @@
     <img src="./dw1820a_inject.png">
 </p>
 
-    + Add kext to clover:
+    + Add kext to opencore and enabled it in config.plist->kernel:
         + AirportBrcmFixup.kext
         + BrcmBluetoothInjector.kext
         + BrcmFirmwareData.kext
@@ -137,8 +137,7 @@
         + BT4LEContinuityFixup.kext (Handoff fix? maybe)
 
 ```rb
-    brcmfx-driver=1 brcmfx-country=#a #(wifi fix)
-    bpr_probedelay=100 bpr_initialdelay=300 bpr_postresetdelay=300 #(blue fix after sleep)
+    brcmfx-driver=a brcmfx-country=#a #(wifi fix)
 ```
 
 <p>
