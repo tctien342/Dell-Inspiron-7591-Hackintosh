@@ -1,7 +1,7 @@
 # Dell Inspiron 7591
 
 - This build running on MacOs X
-- Currently opencore tested in 10.14.6
+- Currently opencore tested in 10.14.6, 10.15.2
 
 <p>
     <img style="border-radius: 8px" src="Background.jpg">
@@ -9,15 +9,12 @@
 
 # I. Detail
 
-    Version:    4
-    Date:       25/01/2020
+    Version:    4.5
+    Date:       28/01/2020
     Support:    All BIOS
     Changelogs:
-        - Moved into Opencore
-        - Fixed all SSDT compatible, only change when booting to macOS
-        - Removed all useless SSDT
-        - Update all Kext to lastest
-        - Update ApplaALC to newest
+        - Fix boot to catalina due to ECDV devices in DSDT
+        - Update VoodooPS2 to lastest
     Status: Stable
 
 ### <strong>Important</strong>:

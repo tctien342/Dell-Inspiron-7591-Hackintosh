@@ -50,14 +50,6 @@
 			</dict>
 			<dict>
 				<key>Comment</key>
-				<string>USB EC Power</string>
-				<key>Enabled</key>
-				<true/>
-				<key>Path</key>
-				<string>SSDT-EC-USBX.aml</string>
-			</dict>
-			<dict>
-				<key>Comment</key>
 				<string>Fake brightness sensor</string>
 				<key>Enabled</key>
 				<true/>
@@ -111,6 +103,14 @@
 				<true/>
 				<key>Path</key>
 				<string>SSDT-BKeyBRT6-Dell.aml</string>
+			</dict>
+			<dict>
+				<key>Comment</key>
+				<string>USB power</string>
+				<key>Enabled</key>
+				<true/>
+				<key>Path</key>
+				<string>SSDT-USBX.aml</string>
 			</dict>
 		</array>
 		<key>Block</key>
@@ -293,6 +293,32 @@
 				<data></data>
 				<key>Replace</key>
 				<data>WFJUNgKgC5M=</data>
+				<key>ReplaceMask</key>
+				<data></data>
+				<key>Skip</key>
+				<integer>0</integer>
+				<key>TableLength</key>
+				<integer>0</integer>
+				<key>TableSignature</key>
+				<data></data>
+			</dict>
+			<dict>
+				<key>Comment</key>
+				<string>ECDV: Changes ECDV to EC, fix boot in Catalina</string>
+				<key>Count</key>
+				<integer>0</integer>
+				<key>Enabled</key>
+				<true/>
+				<key>Find</key>
+				<data>RUNEVg==</data>
+				<key>Limit</key>
+				<integer>0</integer>
+				<key>Mask</key>
+				<data></data>
+				<key>OemTableId</key>
+				<data></data>
+				<key>Replace</key>
+				<data>RUNfXw==</data>
 				<key>ReplaceMask</key>
 				<data></data>
 				<key>Skip</key>
