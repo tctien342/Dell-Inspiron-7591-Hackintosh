@@ -9,12 +9,13 @@
 
 # I. Detail
 
-    Version:    4.5
-    Date:       28/01/2020
+    Version:    5
+    Date:       29/01/2020
     Support:    All BIOS
     Changelogs:
-        - Fix boot to catalina due to ECDV devices in DSDT
-        - Update VoodooPS2 to lastest
+        - Add NVMEFixup for power managerment -> better battery
+        - Clearly patch and kext comment
+        - Spoof as Linux OS in OCWork SSDT
     Status: Stable
 
 ### <strong>Important</strong>:

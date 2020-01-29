@@ -18,7 +18,7 @@
 		<array>
 			<dict>
 				<key>Comment</key>
-				<string>CPU Power</string>
+				<string>CPU power managerment</string>
 				<key>Enabled</key>
 				<true/>
 				<key>Path</key>
@@ -34,7 +34,7 @@
 			</dict>
 			<dict>
 				<key>Comment</key>
-				<string>Fix for BRT6</string>
+				<string>Spoof as running linux</string>
 				<key>Enabled</key>
 				<true/>
 				<key>Path</key>
@@ -42,7 +42,7 @@
 			</dict>
 			<dict>
 				<key>Comment</key>
-				<string>SMBus and MCHC</string>
+				<string>Fake SMBus and MCHC devices</string>
 				<key>Enabled</key>
 				<true/>
 				<key>Path</key>
@@ -50,7 +50,7 @@
 			</dict>
 			<dict>
 				<key>Comment</key>
-				<string>Fake brightness sensor</string>
+				<string>Fake ambient sensor</string>
 				<key>Enabled</key>
 				<true/>
 				<key>Path</key>
@@ -58,7 +58,7 @@
 			</dict>
 			<dict>
 				<key>Comment</key>
-				<string>Trackpad I2C</string>
+				<string>Trackpad I2C Config</string>
 				<key>Enabled</key>
 				<true/>
 				<key>Path</key>
@@ -66,7 +66,7 @@
 			</dict>
 			<dict>
 				<key>Comment</key>
-				<string>Fix WAK</string>
+				<string>Fix wake with DGPU</string>
 				<key>Enabled</key>
 				<true/>
 				<key>Path</key>
@@ -82,7 +82,7 @@
 			</dict>
 			<dict>
 				<key>Comment</key>
-				<string>TypeC Fix</string>
+				<string>Thunderbolt Support</string>
 				<key>Enabled</key>
 				<true/>
 				<key>Path</key>
@@ -90,7 +90,7 @@
 			</dict>
 			<dict>
 				<key>Comment</key>
-				<string>Battery fix</string>
+				<string>Fix slow update battery percent</string>
 				<key>Enabled</key>
 				<true/>
 				<key>Path</key>
@@ -106,7 +106,7 @@
 			</dict>
 			<dict>
 				<key>Comment</key>
-				<string>USB power</string>
+				<string>Implement USB power</string>
 				<key>Enabled</key>
 				<true/>
 				<key>Path</key>
@@ -148,7 +148,7 @@
 		<array>
 			<dict>
 				<key>Comment</key>
-				<string>Rename PNLF to XNLF to Fix Conflict with SSDT PNLF</string>
+				<string>PNLF: Rename PNLF to XNLF to Fix Conflict with SSDT PNLF -&gt; Fix boot win failed due to PNLF</string>
 				<key>Count</key>
 				<integer>0</integer>
 				<key>Enabled</key>
@@ -174,7 +174,7 @@
 			</dict>
 			<dict>
 				<key>Comment</key>
-				<string>change _STA to XSTA in device GPI0 (TouchPad I2C)</string>
+				<string>GPIO: change _STA to XSTA in device GPI0 (TouchPad I2C)</string>
 				<key>Count</key>
 				<integer>0</integer>
 				<key>Enabled</key>
@@ -200,7 +200,7 @@
 			</dict>
 			<dict>
 				<key>Comment</key>
-				<string>I2C1:_STA to XSTA ,pair with SSDT-I2C.aml</string>
+				<string>I2C1: _STA to XSTA ,pair with SSDT-I2C.aml -&gt; Touchpad fix</string>
 				<key>Count</key>
 				<integer>0</integer>
 				<key>Enabled</key>
@@ -226,7 +226,7 @@
 			</dict>
 			<dict>
 				<key>Comment</key>
-				<string>Rename method _PTS to ZPTS and use with SSDT-PTSWAK.aml to fix dGPU power sapping</string>
+				<string>PTSWAK: Rename method _PTS to ZPTS and use with SSDT-PTSWAK.aml to fix dGPU power sapping</string>
 				<key>Count</key>
 				<integer>0</integer>
 				<key>Enabled</key>
@@ -252,7 +252,7 @@
 			</dict>
 			<dict>
 				<key>Comment</key>
-				<string>Rename method _WAK to ZWAK and use with SSDT-PTSWAK.aml to fix dGPU power sapping</string>
+				<string>PTSWAK: Rename method _WAK to ZWAK and use with SSDT-PTSWAK.aml to fix dGPU power sapping</string>
 				<key>Count</key>
 				<integer>0</integer>
 				<key>Enabled</key>
@@ -278,7 +278,7 @@
 			</dict>
 			<dict>
 				<key>Comment</key>
-				<string>BRT6 to XRT6(dell)</string>
+				<string>BRT6: Rename BRT6 to XRT6(dell) -&gt; fix brightness key</string>
 				<key>Count</key>
 				<integer>0</integer>
 				<key>Enabled</key>
@@ -473,7 +473,7 @@
 				<key>BundlePath</key>
 				<string>Lilu.kext</string>
 				<key>Comment</key>
-				<string></string>
+				<string>Core for all other kext</string>
 				<key>Enabled</key>
 				<true/>
 				<key>ExecutablePath</key>
@@ -489,7 +489,7 @@
 				<key>BundlePath</key>
 				<string>VirtualSMC.kext</string>
 				<key>Comment</key>
-				<string></string>
+				<string>Fix SMC in Hackintosh</string>
 				<key>Enabled</key>
 				<true/>
 				<key>ExecutablePath</key>
@@ -505,7 +505,7 @@
 				<key>BundlePath</key>
 				<string>WhateverGreen.kext</string>
 				<key>Comment</key>
-				<string>Video card</string>
+				<string>Video card fix</string>
 				<key>Enabled</key>
 				<true/>
 				<key>ExecutablePath</key>
@@ -521,7 +521,7 @@
 				<key>BundlePath</key>
 				<string>AppleALC.kext</string>
 				<key>Comment</key>
-				<string>Sound</string>
+				<string>Sound card fix</string>
 				<key>Enabled</key>
 				<true/>
 				<key>ExecutablePath</key>
@@ -537,7 +537,7 @@
 				<key>BundlePath</key>
 				<string>AirportBrcmFixup.kext</string>
 				<key>Comment</key>
-				<string></string>
+				<string>Wifi card fix</string>
 				<key>Enabled</key>
 				<false/>
 				<key>ExecutablePath</key>
@@ -553,7 +553,7 @@
 				<key>BundlePath</key>
 				<string>BrcmBluetoothInjector.kext</string>
 				<key>Comment</key>
-				<string></string>
+				<string>Bluetooth card fix</string>
 				<key>Enabled</key>
 				<false/>
 				<key>ExecutablePath</key>
@@ -569,7 +569,7 @@
 				<key>BundlePath</key>
 				<string>BrcmFirmwareData.kext</string>
 				<key>Comment</key>
-				<string></string>
+				<string>Bluetooth card fix</string>
 				<key>Enabled</key>
 				<false/>
 				<key>ExecutablePath</key>
@@ -585,7 +585,7 @@
 				<key>BundlePath</key>
 				<string>BrcmPatchRAM3.kext</string>
 				<key>Comment</key>
-				<string></string>
+				<string>Bluetooth card fix</string>
 				<key>Enabled</key>
 				<false/>
 				<key>ExecutablePath</key>
@@ -601,7 +601,7 @@
 				<key>BundlePath</key>
 				<string>BT4LEContinuityFixup.kext</string>
 				<key>Comment</key>
-				<string></string>
+				<string>Bluetooth card fix</string>
 				<key>Enabled</key>
 				<false/>
 				<key>ExecutablePath</key>
@@ -617,7 +617,7 @@
 				<key>BundlePath</key>
 				<string>CPUFriend.kext</string>
 				<key>Comment</key>
-				<string></string>
+				<string>Cpu Freq Optimizer</string>
 				<key>Enabled</key>
 				<true/>
 				<key>ExecutablePath</key>
@@ -633,7 +633,7 @@
 				<key>BundlePath</key>
 				<string>CPUFriendDataProvider.kext</string>
 				<key>Comment</key>
-				<string></string>
+				<string>Cpu Freq Optimizer</string>
 				<key>Enabled</key>
 				<true/>
 				<key>ExecutablePath</key>
@@ -649,7 +649,7 @@
 				<key>BundlePath</key>
 				<string>CustomPeripheral.kext</string>
 				<key>Comment</key>
-				<string></string>
+				<string>Devices Spoof to Apple devices</string>
 				<key>Enabled</key>
 				<true/>
 				<key>ExecutablePath</key>
@@ -665,7 +665,7 @@
 				<key>BundlePath</key>
 				<string>HibernationFixup.kext</string>
 				<key>Comment</key>
-				<string></string>
+				<string>Fix Hibernation ?</string>
 				<key>Enabled</key>
 				<true/>
 				<key>ExecutablePath</key>
@@ -681,7 +681,7 @@
 				<key>BundlePath</key>
 				<string>NoTouchID.kext</string>
 				<key>Comment</key>
-				<string></string>
+				<string>Fix require touch ID by SMBIOS</string>
 				<key>Enabled</key>
 				<true/>
 				<key>ExecutablePath</key>
@@ -697,7 +697,7 @@
 				<key>BundlePath</key>
 				<string>SMCBatteryManager.kext</string>
 				<key>Comment</key>
-				<string></string>
+				<string>Battery reader</string>
 				<key>Enabled</key>
 				<true/>
 				<key>ExecutablePath</key>
@@ -713,7 +713,7 @@
 				<key>BundlePath</key>
 				<string>SMCProcessor.kext</string>
 				<key>Comment</key>
-				<string></string>
+				<string>Cpu reader ?</string>
 				<key>Enabled</key>
 				<true/>
 				<key>ExecutablePath</key>
@@ -729,7 +729,7 @@
 				<key>BundlePath</key>
 				<string>SystemProfilerMemoryFixup.kext</string>
 				<key>Comment</key>
-				<string></string>
+				<string>Fixed ram info in about</string>
 				<key>Enabled</key>
 				<true/>
 				<key>ExecutablePath</key>
@@ -745,7 +745,7 @@
 				<key>BundlePath</key>
 				<string>USBPorts.kext</string>
 				<key>Comment</key>
-				<string></string>
+				<string>Pair With 7591 Usb ports</string>
 				<key>Enabled</key>
 				<true/>
 				<key>ExecutablePath</key>
@@ -761,7 +761,7 @@
 				<key>BundlePath</key>
 				<string>VerbStub.kext</string>
 				<key>Comment</key>
-				<string></string>
+				<string>Fix audio verb</string>
 				<key>Enabled</key>
 				<true/>
 				<key>ExecutablePath</key>
@@ -777,7 +777,7 @@
 				<key>BundlePath</key>
 				<string>VoodooI2C.kext/Contents/PlugIns/VoodooGPIO.kext</string>
 				<key>Comment</key>
-				<string></string>
+				<string>Fix Track Pad</string>
 				<key>Enabled</key>
 				<true/>
 				<key>ExecutablePath</key>
@@ -793,7 +793,7 @@
 				<key>BundlePath</key>
 				<string>VoodooI2C.kext/Contents/PlugIns/VoodooI2CServices.kext</string>
 				<key>Comment</key>
-				<string></string>
+				<string>Fix Track Pad</string>
 				<key>Enabled</key>
 				<true/>
 				<key>ExecutablePath</key>
@@ -809,7 +809,7 @@
 				<key>BundlePath</key>
 				<string>VoodooI2C.kext</string>
 				<key>Comment</key>
-				<string></string>
+				<string>Fix Track Pad</string>
 				<key>Enabled</key>
 				<true/>
 				<key>ExecutablePath</key>
@@ -825,7 +825,7 @@
 				<key>BundlePath</key>
 				<string>VoodooI2CHID.kext</string>
 				<key>Comment</key>
-				<string></string>
+				<string>Fix Track Pad</string>
 				<key>Enabled</key>
 				<true/>
 				<key>ExecutablePath</key>
@@ -841,7 +841,7 @@
 				<key>BundlePath</key>
 				<string>VoodooPS2Controller.kext</string>
 				<key>Comment</key>
-				<string></string>
+				<string>Fix Keyboard</string>
 				<key>Enabled</key>
 				<true/>
 				<key>ExecutablePath</key>
@@ -857,7 +857,7 @@
 				<key>BundlePath</key>
 				<string>VoodooPS2Controller.kext/Contents/PlugIns/VoodooPS2Keyboard.kext.dSYM</string>
 				<key>Comment</key>
-				<string></string>
+				<string>Fix Keyboard</string>
 				<key>Enabled</key>
 				<true/>
 				<key>ExecutablePath</key>
@@ -873,7 +873,7 @@
 				<key>BundlePath</key>
 				<string>VoodooPS2Controller.kext/Contents/PlugIns/VoodooPS2Keyboard.kext</string>
 				<key>Comment</key>
-				<string></string>
+				<string>Fix Keyboard</string>
 				<key>Enabled</key>
 				<true/>
 				<key>ExecutablePath</key>
@@ -889,11 +889,27 @@
 				<key>BundlePath</key>
 				<string>VoodooTSCSync.kext</string>
 				<key>Comment</key>
-				<string></string>
+				<string>Cpu Sync</string>
 				<key>Enabled</key>
 				<true/>
 				<key>ExecutablePath</key>
 				<string>Contents/MacOS/VoodooTSCSync</string>
+				<key>MaxKernel</key>
+				<string></string>
+				<key>MinKernel</key>
+				<string></string>
+				<key>PlistPath</key>
+				<string>Contents/Info.plist</string>
+			</dict>
+			<dict>
+				<key>BundlePath</key>
+				<string>NVMeFix.kext</string>
+				<key>Comment</key>
+				<string>NVMe Power managerment</string>
+				<key>Enabled</key>
+				<true/>
+				<key>ExecutablePath</key>
+				<string>Contents/MacOS/NVMeFix</string>
 				<key>MaxKernel</key>
 				<string></string>
 				<key>MinKernel</key>
@@ -1072,7 +1088,7 @@
 			<key>LapicKernelPanic</key>
 			<false/>
 			<key>PanicNoKextDump</key>
-			<false/>
+			<true/>
 			<key>PowerTimeoutKernelPanic</key>
 			<true/>
 			<key>ThirdPartyDrives</key>
@@ -1195,7 +1211,7 @@
 			<key>7C436110-AB2A-4BBB-A880-FE41995C9F82</key>
 			<dict>
 				<key>boot-args</key>
-				<string>keepsyms=1 brcmfx-driver=2 brcmfx-country=#a agdpmod=vit9696 alcid=13</string>
+				<string>brcmfx-driver=2 brcmfx-country=#a agdpmod=vit9696 alcid=13</string>
 				<key>csr-active-config</key>
 				<data>AAAAAA==</data>
 				<key>nvda_drv</key>

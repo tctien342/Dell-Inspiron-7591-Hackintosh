@@ -8,8 +8,8 @@ DefinitionBlock("", "SSDT", 2, "ACDT", "OCWork", 0)
     {
         If (_OSI ("Darwin"))
         {
-            \_SB.ACOS = 0x80
-            \_SB.ACSE = 1 //ACSE=0:win7;;ACSE=1:win8
+            \_SB.ACOS = 0x40 // Linux
+            \_SB.ACSE = 0 //ACSE=0:win7;ACSE=1:win8;ACSE=3:window10
         }
     }
 }
