@@ -12,13 +12,40 @@ DefinitionBlock("", "SSDT", 2, "hack", "_PTSWAK", 0)
     External(_SB.PCI0.PEGP.DGFX._ON, MethodObj)
     External(_SB.PCI0.PEGP.DGFX._OFF, MethodObj)
 
-    External(RMCF.DPTS, IntObj)
-    External(RMCF.SHUT, IntObj)
-    External(RMCF.XPEE, IntObj)
-    External(RMCF.SSTF, IntObj)
     External(_SB.PCI0.XHC.PMEE, FieldUnitObj)
     External(_SI._SST, MethodObj)
+    
+    If (_OSI ("Darwin"))
+    {
+        // DPTS: For laptops only: set to 1 if you want to enable and
+        //  disable the DGPU _PTS and _WAK.
+        //
+        //  0: does not manipulate the DGPU in _WAK and _PTS
+        //  1: disables the DGPU in _WAK and enables it in _PTS
+        Name(DPTS, 1)
 
+        // SHUT: Shutdown fix, disable _PTS code when Arg0==5 (shutdown)
+        //
+        //  0: does not affect _PTS behavior during shutdown
+        //  bit 0 set: disables _PTS code during shutdown
+        //  bit 1 set: sets SLPE to zero in _PTS during shutdown
+        Name(SHUT, 1)
+
+        // XPEE: XHC.PMEE fix, set XHC.PMEE=0 in _PTS when Arg0==5 (shutdown)
+        // This fixes "auto restart" after shutdown when USB devices are plugged into XHC on
+        // certain computers.
+        //
+        // 0: does not affect _PTS behavior during shutdown
+        // 1: sets XHC.PMEE in _PTS code during shutdown
+        Name(XPEE, 1)
+
+        // SSTF: _SI._SST fix.  To fix LED on wake.  Useful for some Thinkpad laptops.
+        //
+        // 0: no effect during _WAK
+        // 1: calls _SI._SST(1) during _WAK when Arg0 == 3 (waking from S3 sleep)
+        Name(SSTF, 0)
+    }
+    
     // In DSDT, native _PTS and _WAK are renamed ZPTS/ZWAK
     // As a result, calls to these methods land here.
     Method(_PTS, 1)
@@ -28,10 +55,10 @@ DefinitionBlock("", "SSDT", 2, "hack", "_PTSWAK", 0)
         if (5 == Arg0)
         {
             // Shutdown fix, if enabled
-            If (CondRefOf(\RMCF.SHUT))
+            If (CondRefOf(SHUT))
             {
-                If (\RMCF.SHUT & 1) { Return }
-                If (\RMCF.SHUT & 2)
+                If (SHUT & 1) { Return }
+                If (SHUT & 2)
                 {
                     OperationRegion(PMRS, SystemIO, 0x1830, 1)
                     Field(PMRS, ByteAcc, NoLock, Preserve)
@@ -47,9 +74,9 @@ DefinitionBlock("", "SSDT", 2, "hack", "_PTSWAK", 0)
             }
         }
 
-        If (CondRefOf(\RMCF.DPTS))
+        If (CondRefOf(DPTS))
         {
-            If (\RMCF.DPTS)
+            If (DPTS)
             {
                 // enable discrete graphics
                 If (CondRefOf(\_SB.PCI0.PEG0.PEGP._ON)) { \_SB.PCI0.PEG0.PEGP._ON() }
@@ -63,7 +90,7 @@ DefinitionBlock("", "SSDT", 2, "hack", "_PTSWAK", 0)
         If (5 == Arg0)
         {
             // XHC.PMEE fix, if enabled
-            If (CondRefOf(\RMCF.XPEE)) { If (\RMCF.XPEE && CondRefOf(\_SB.PCI0.XHC.PMEE)) { \_SB.PCI0.XHC.PMEE = 0 } }
+            If (CondRefOf(XPEE)) { If (XPEE && CondRefOf(\_SB.PCI0.XHC.PMEE)) { \_SB.PCI0.XHC.PMEE = 0 } }
         }
         }
         Else
@@ -84,7 +111,7 @@ DefinitionBlock("", "SSDT", 2, "hack", "_PTSWAK", 0)
 
         If (CondRefOf(\RMCF.DPTS))
         {
-            If (\RMCF.DPTS)
+            If (DPTS)
             {
                 // disable discrete graphics
                 If (CondRefOf(\_SB.PCI0.PEG0.PEGP._OFF)) { \_SB.PCI0.PEG0.PEGP._OFF() }
@@ -92,9 +119,9 @@ DefinitionBlock("", "SSDT", 2, "hack", "_PTSWAK", 0)
             }
         }
 
-        If (CondRefOf(\RMCF.SSTF))
+        If (CondRefOf(SSTF))
         {
-            If (\RMCF.SSTF)
+            If (SSTF)
             {
                 // call _SI._SST to indicate system "working"
                 // for more info, read ACPI specification
