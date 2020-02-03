@@ -2,6 +2,16 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>#WARNING - 1</key>
+	<string>This is just a sample. Do NOT try loading it.</string>
+	<key>#WARNING - 2</key>
+	<string>Ensure you understand EVERY field before booting.</string>
+	<key>#WARNING - 3</key>
+	<string>In most cases recommended to use Sample.plist</string>
+	<key>#WARNING - 4</key>
+	<string>Use SampleFull.plist for end of life models: 2011 and older.</string>
+	<key>#WARNING - 5</key>
+	<string>https://docs.google.com/spreadsheets/d/1kGFz3_kp5xCDRRQpfnIUOvbiHXTmxEgyx97u73ImXXE/edit#gid=0</string>
 	<key>ACPI</key>
 	<dict>
 		<key>Add</key>
@@ -476,7 +486,7 @@
 				<key>device-id</key>
 				<data>mz4AAA==</data>
 				<key>dpcd-max-link-rate</key>
-				<data>FAAAAA==</data>
+				<data>CgAAAA==</data>
 				<key>enable-cfl-backlight-fix</key>
 				<data>AQAAAA==</data>
 				<key>enable-dpcd-max-link-rate-fix</key>
@@ -513,19 +523,6 @@
 				<string>onboard-1</string>
 				<key>model</key>
 				<string>Intel UHD Graphics 630 (Mobile)</string>
-			</dict>
-			<key>PciRoot(0x0)/Pci(0x1f,0x3)</key>
-			<dict>
-				<key>AAPL,slot-name</key>
-				<string>Internal@0,31,3</string>
-				<key>device_type</key>
-				<string>Audio device</string>
-				<key>hda-gfx</key>
-				<string>onboard-1</string>
-				<key>layout-id</key>
-				<data>DwAAAA==</data>
-				<key>model</key>
-				<string>100 Series/C230 Series Chipset Family HD Audio Controller</string>
 			</dict>
 		</dict>
 		<key>Block</key>
@@ -1185,15 +1182,15 @@
 			<key>HibernateMode</key>
 			<string>Auto</string>
 			<key>HideSelf</key>
-			<true/>
+			<false/>
 			<key>PollAppleHotKeys</key>
 			<false/>
 			<key>Resolution</key>
 			<string>1920x1080</string>
 			<key>ShowPicker</key>
-			<false/>
+			<true/>
 			<key>Timeout</key>
-			<integer>0</integer>
+			<integer>5</integer>
 			<key>UsePicker</key>
 			<true/>
 		</dict>
@@ -1232,7 +1229,7 @@
 			<key>AuthRestart</key>
 			<false/>
 			<key>ExposeSensitiveData</key>
-			<integer>3</integer>
+			<integer>6</integer>
 			<key>HaltLevel</key>
 			<integer>2147483648</integer>
 			<key>RequireSignature</key>
@@ -1277,7 +1274,7 @@
 			<key>4D1EDE05-38C7-4A6A-9CC6-4BCCA8B38C14</key>
 			<dict>
 				<key>UIScale</key>
-				<data>Ag==</data>
+				<data>AQ==</data>
 			</dict>
 			<key>7C436110-AB2A-4BBB-A880-FE41995C9F82</key>
 			<dict>
