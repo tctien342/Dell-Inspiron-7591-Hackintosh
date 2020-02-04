@@ -58,6 +58,14 @@
 			</dict>
 			<dict>
 				<key>Comment</key>
+				<string>Fake ethernet card, work with NullEthernet, please disabled it if you have compatible wifi card</string>
+				<key>Enabled</key>
+				<true/>
+				<key>Path</key>
+				<string>SSDT-RMNE.aml</string>
+			</dict>
+			<dict>
+				<key>Comment</key>
 				<string>Trackpad I2C Config</string>
 				<key>Enabled</key>
 				<true/>
@@ -127,6 +135,54 @@
 				<true/>
 				<key>Path</key>
 				<string>SSDT-UPRW.aml</string>
+			</dict>
+			<dict>
+				<key>Comment</key>
+				<string>Spoof Mac devices</string>
+				<key>Enabled</key>
+				<true/>
+				<key>Path</key>
+				<string>SSDT-DMAC.aml</string>
+			</dict>
+			<dict>
+				<key>Comment</key>
+				<string>Spoof Mac devices</string>
+				<key>Enabled</key>
+				<true/>
+				<key>Path</key>
+				<string>SSDT-MCHC.aml</string>
+			</dict>
+			<dict>
+				<key>Comment</key>
+				<string>Spoof Mac devices</string>
+				<key>Enabled</key>
+				<true/>
+				<key>Path</key>
+				<string>SSDT-MEM2.aml</string>
+			</dict>
+			<dict>
+				<key>Comment</key>
+				<string>Spoof Mac devices</string>
+				<key>Enabled</key>
+				<true/>
+				<key>Path</key>
+				<string>SSDT-PMCR.aml</string>
+			</dict>
+			<dict>
+				<key>Comment</key>
+				<string>Spoof Mac devices</string>
+				<key>Enabled</key>
+				<true/>
+				<key>Path</key>
+				<string>SSDT-SLPB.aml</string>
+			</dict>
+			<dict>
+				<key>Comment</key>
+				<string>Spoof Mac devices</string>
+				<key>Enabled</key>
+				<true/>
+				<key>Path</key>
+				<string>SSDT-XSPI.aml</string>
 			</dict>
 		</array>
 		<key>Block</key>
@@ -483,6 +539,14 @@
 			<dict>
 				<key>AAPL,ig-platform-id</key>
 				<data>AACbPg==</data>
+				<key>Comment-con1-con2</key>
+				<string>Type C port; can have 2 DisplayPort connectors</string>
+				<key>Comment-con3</key>
+				<string>HDMI port</string>
+				<key>Comment-dpcd-max-link-rate</key>
+				<string>0x14 for 4k displays, or 0x0a for 1080p</string>
+				<key>Comment-fb-portcount</key>
+				<string>There are 4 ports: internal LCD, Type C DP 1 and 2, and HDMI</string>
 				<key>device-id</key>
 				<data>mz4AAA==</data>
 				<key>dpcd-max-link-rate</key>
@@ -522,7 +586,7 @@
 				<key>hda-gfx</key>
 				<string>onboard-1</string>
 				<key>model</key>
-				<string>Intel UHD Graphics 630 (Mobile)</string>
+				<string>Intel UHD Graphics 630 (Mobile) </string>
 			</dict>
 		</dict>
 		<key>Block</key>
@@ -603,6 +667,22 @@
 			</dict>
 			<dict>
 				<key>BundlePath</key>
+				<string>NullEthernet.kext</string>
+				<key>Comment</key>
+				<string>Fix En0 For imess and Facetime, please disabled it if you have compatible wifi card</string>
+				<key>Enabled</key>
+				<true/>
+				<key>ExecutablePath</key>
+				<string>Contents/MacOS/NullEthernet</string>
+				<key>MaxKernel</key>
+				<string></string>
+				<key>MinKernel</key>
+				<string></string>
+				<key>PlistPath</key>
+				<string>Contents/Info.plist</string>
+			</dict>
+			<dict>
+				<key>BundlePath</key>
 				<string>AirportBrcmFixup.kext</string>
 				<key>Comment</key>
 				<string>Wifi card fix</string>
@@ -621,7 +701,7 @@
 				<key>BundlePath</key>
 				<string>BrcmBluetoothInjector.kext</string>
 				<key>Comment</key>
-				<string>Bluetooth card fix</string>
+				<string>Brcm bluetooth card fix</string>
 				<key>Enabled</key>
 				<false/>
 				<key>ExecutablePath</key>
@@ -637,7 +717,7 @@
 				<key>BundlePath</key>
 				<string>BrcmFirmwareData.kext</string>
 				<key>Comment</key>
-				<string>Bluetooth card fix</string>
+				<string>Brcm bluetooth card fix</string>
 				<key>Enabled</key>
 				<false/>
 				<key>ExecutablePath</key>
@@ -653,7 +733,7 @@
 				<key>BundlePath</key>
 				<string>BrcmPatchRAM3.kext</string>
 				<key>Comment</key>
-				<string>Bluetooth card fix</string>
+				<string>Brcm bluetooth card fix</string>
 				<key>Enabled</key>
 				<false/>
 				<key>ExecutablePath</key>
@@ -667,11 +747,43 @@
 			</dict>
 			<dict>
 				<key>BundlePath</key>
+				<string>IntelBluetoothFirmware.kext</string>
+				<key>Comment</key>
+				<string>Intel bluetooth card fix, please disabled it if you have compatible wifi card</string>
+				<key>Enabled</key>
+				<true/>
+				<key>ExecutablePath</key>
+				<string>Contents/MacOS/IntelBluetoothFirmware</string>
+				<key>MaxKernel</key>
+				<string></string>
+				<key>MinKernel</key>
+				<string></string>
+				<key>PlistPath</key>
+				<string>Contents/Info.plist</string>
+			</dict>
+			<dict>
+				<key>BundlePath</key>
+				<string>IntelBluetoothInjector.kext</string>
+				<key>Comment</key>
+				<string>Intel bluetooth card fix, please disabled it if you have compatible wifi card</string>
+				<key>Enabled</key>
+				<true/>
+				<key>ExecutablePath</key>
+				<string></string>
+				<key>MaxKernel</key>
+				<string></string>
+				<key>MinKernel</key>
+				<string></string>
+				<key>PlistPath</key>
+				<string>Contents/Info.plist</string>
+			</dict>
+			<dict>
+				<key>BundlePath</key>
 				<string>BT4LEContinuityFixup.kext</string>
 				<key>Comment</key>
 				<string>Bluetooth card fix</string>
 				<key>Enabled</key>
-				<false/>
+				<true/>
 				<key>ExecutablePath</key>
 				<string>Contents/MacOS/BT4LEContinuityFixup</string>
 				<key>MaxKernel</key>
@@ -1156,7 +1268,7 @@
 			<key>LapicKernelPanic</key>
 			<false/>
 			<key>PanicNoKextDump</key>
-			<true/>
+			<false/>
 			<key>PowerTimeoutKernelPanic</key>
 			<true/>
 			<key>ThirdPartyDrives</key>
@@ -1279,7 +1391,7 @@
 			<key>7C436110-AB2A-4BBB-A880-FE41995C9F82</key>
 			<dict>
 				<key>boot-args</key>
-				<string>brcmfx-driver=2 brcmfx-country=#a agdpmod=vit9696 alcid=13</string>
+				<string>darkwake=1 #brcmfx-driver=2 #brcmfx-country=#a agdpmod=vit9696 alcid=13</string>
 				<key>csr-active-config</key>
 				<data>AAAAAA==</data>
 				<key>nvda_drv</key>
@@ -1338,7 +1450,7 @@
 		<key>Generic</key>
 		<dict>
 			<key>MLB</key>
-			<string>C02835200GUJH4RUE</string>
+			<string>C02810306QXJH4RCB</string>
 			<key>ROM</key>
 			<data>ESIzAAAA</data>
 			<key>SpoofVendor</key>
@@ -1346,66 +1458,9 @@
 			<key>SystemProductName</key>
 			<string>MacBookPro15,2</string>
 			<key>SystemSerialNumber</key>
-			<string>C02X90U0JHCD</string>
+			<string>C02WDTZCJHCC</string>
 			<key>SystemUUID</key>
-			<string>26D49615-14F6-48B2-8A24-87023CC8870D</string>
-		</dict>
-		<key>SMBIOS</key>
-		<dict>
-			<key>BIOSReleaseDate</key>
-			<string>12/09/2019</string>
-			<key>BIOSVendor</key>
-			<string></string>
-			<key>BIOSVersion</key>
-			<string>1037.80.21.0.0</string>
-			<key>BoardAssetTag</key>
-			<string></string>
-			<key>BoardLocationInChassis</key>
-			<string>Part Component</string>
-			<key>BoardManufacturer</key>
-			<string></string>
-			<key>BoardProduct</key>
-			<string>Mac-827FB448E656EC26</string>
-			<key>BoardSerialNumber</key>
-			<string>C02835200GUJH4RUE</string>
-			<key>BoardType</key>
-			<integer>10</integer>
-			<key>BoardVersion</key>
-			<string>1.0</string>
-			<key>ChassisAssetTag</key>
-			<string>MacBook-Aluminum</string>
-			<key>ChassisManufacturer</key>
-			<string></string>
-			<key>ChassisSerialNumber</key>
-			<string>C02X90U0JHCD</string>
-			<key>ChassisType</key>
-			<integer>9</integer>
-			<key>ChassisVersion</key>
-			<string>Mac-827FB448E656EC26</string>
-			<key>FirmwareFeatures</key>
-			<string>37E10FFC 00000000</string>
-			<key>FirmwareFeaturesMask</key>
-			<string>3FFF1FFF 00000000</string>
-			<key>MemoryFormFactor</key>
-			<string></string>
-			<key>PlatformFeature</key>
-			<integer>2</integer>
-			<key>ProcessorType</key>
-			<integer>0</integer>
-			<key>SystemFamily</key>
-			<string>MacBook Pro</string>
-			<key>SystemManufacturer</key>
-			<string></string>
-			<key>SystemProductName</key>
-			<string>MacBookPro15,2</string>
-			<key>SystemSKUNumber</key>
-			<string>Mac-827FB448E656EC26</string>
-			<key>SystemSerialNumber</key>
-			<string>C02X90U0JHCD</string>
-			<key>SystemUUID</key>
-			<string>26D49615-14F6-48B2-8A24-87023CC8870D</string>
-			<key>SystemVersion</key>
-			<string>1.0</string>
+			<string>463A2A93-A731-42A0-8CDE-60CEFDED6089</string>
 		</dict>
 		<key>UpdateDataHub</key>
 		<true/>

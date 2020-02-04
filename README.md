@@ -4,18 +4,20 @@
 - Currently opencore tested in 10.14.6, 10.15.2
 
 <p>
-    <img style="border-radius: 8px" src="Background.jpg">
+    <img style="border-radius: 8px" src="Images/Background.jpg">
 </p>
 
 # I. Detail
 
-    Version:    5
-    Date:       29/01/2020
+    Version:    6
+    Date:       04/02/2020
     Support:    All BIOS
     Changelogs:
-        - Add NVMEFixup for power managerment -> better battery
-        - Clearly patch and kext comment
-        - Spoof as Linux OS in OCWork SSDT
+        - Update VoodooI2C from @uditkarode with some fixed and optimized
+        - Buildin NullEthernet to kext and ACPI
+        - Add Intel Bluetooth kext (now Intel Wifi card's bluetooth can be usable), thanks @DØP | Blyatman and @zxystd
+        - Add Mac Spoof devices in ACPI
+        - Some fix..
     Status: Stable
 
 ### <strong>Important</strong>:
@@ -43,7 +45,7 @@
 
     1. DGPU Nvidia 1050 (Disabled through ssdt)
     2. Fingerprint (Disabled through usb inject)
-    3. Intel wifi card
+    3. Intel wifi card (Only bluetooth for now)
 
 # IV. Tested hardware
 
@@ -69,7 +71,7 @@
 # VI. Know problems
 
     1. Internal mic (Pls help me if you master of AppleHDA, other linux it dead too)
-    2. HDMI audio ( Worked if boot with HDMI pluged )
+    2. HDMI audio ( Worked if boot with HDMI pluged and closed LID <Turn off internal screen>)
     2. Audio sometime not working if mac installed in fast NVME drive, due to AppleALC bug (Testing with some fix...)
 
 # VII. Important thing
@@ -92,54 +94,66 @@
     5. Use Kext Utility to rebuild kext then reboot
     6. Then you need to mount EFI partition and replace it with shipped EFI
     8. After System EFI replaced by your EFI, Using Opencore Configurator to change SMBIOS, generate your serial and MBL
-    9. Optional to fix iMessenger if you dont have compatible wifi card
-        + Go to https://www.browserling.com/tools/random-mac an click GenerateIP and pick an Mac address
-        + Put it into SSDT-RMNE.dsl in fake ethernet like below and save as aml file then copy to ACPI folder in OC
-        + Copy NullEthernet.kext into your OC->Kexts
-        + Add it into Configs.plist->Kernel->Add
-        > Login iCloud and iMessenger, enjoy MacOS
+    9. Change MAC in nullEthernet with your new created one, see below
+
+> Generate your SMBIOS using <a href="https://mackie100projects.altervista.org/opencore-configurator/">OpencoreConfigurator</a>
+
+> Select MacBookPro15,2
 
 <p>
-    <img style="border-radius: 8px" src="UpdateMac.png">
+    <img style="border-radius: 8px" src="Images/SMBIOS-select.png">
+</p>
+
+> Generate your MAC address in SSDT-RMNE if using NullEthernet
+
+> You can make an MacAddress in <a href="https://www.browserling.com/tools/random-mac">Mac generator online</a>
+
+> Goto EFI -> OC -> ACPI -> Edit SSDT-RMNE.dsl with MaciASL and replace MAC with your generated one
+
+> Save as -> ACPI machine language (replace exited one)
+
+<p>
+    <img style="border-radius: 8px" src="Images/UpdateMac.png">
 </p>
 
 # IX. WIFI Replacement
+
+> Please disable NullEthernet kext and Intel bluetooth kext if you replace compatiple card
+
+    + Goto Config.plist -> Kernel and set NullEthernet, two Intel kext to NO (Uncheck) in Enabled field
+    + Goto Config.plist -> ACPI -> SSDT-RMNE to NO (Uncheck) in Enabled field
 
 ## Using new card ( DW1820A tested)
 
 ### Using DW1820a
 
-    + Mine is CN-0VW3T3 0x106B:0x0021, not tested in other verizon yet
+    + Mine is CN-0VW3T3 0x106B:0x0021, not tested in other version yet
     + You need masked your pin like this: https://osxlatitude.com/forums/topic/11540-dw1820a-the-general-troubleshooting-thread/?do=findComment&comment=91179
-    + Add flag below into boot flag (config.plist->NVRAM->7C436110-AB2A-4BBB-A880-FE41995C9F82->boot-args)
-    + Add Devices below into config.plist -> DeviceProperties -> Devices
 
-```
-    + PciRoot(0x0)/Pci(0x1d,0x6)/Pci(0x0,0x0)
-        > AAPL,slot-name: WLAN
-        > compatible: pci14e4,4353
-        > device_type: Airport Extreme
-        > model: DW1820A (BCM4350) 802.11ac Wireless
-        > name: Airport
-```
+    + Delete # in bootflag:
+        + From: darkwake=1 #brcmfx-driver=2 #brcmfx-country=#a agdpmod=vit9696 alcid=13
+        + Change to: darkwake=1 brcmfx-driver=2 brcmfx-country=#a agdpmod=vit9696 alcid=13
 
 <p align="center">
-    <img src="./dw1820a_inject.png">
+    <img src="Images/DW1820a-bootflag.png">
 </p>
 
-    + Add kext to opencore and enabled it in config.plist->kernel:
-        + AirportBrcmFixup.kext
-        + BrcmBluetoothInjector.kext
-        + BrcmFirmwareData.kext
-        + BrcmPatchRAM3.kext
-        + BT4LEContinuityFixup.kext (Handoff fix? maybe)
+    + Delete # in DeviceProperties:
+        + From: #PciRoot(0x0)/Pci(0x1d,0x6)/Pci(0x0,0x0)
+        + Change to: PciRoot(0x0)/Pci(0x1d,0x6)/Pci(0x0,0x0)
 
-```rb
-    brcmfx-driver=2 brcmfx-country=#a #(wifi fix)
-```
+<p align="center">
+    <img src="Images/DW1820a-prop.png">
+</p>
+
+    + Go to Kernel -> Add and check 4 Brcm kext (Change Enabled to YES)
 
 <p>
-    <img style="border-radius: 8px" src="./dw1820a.png">
+    <img style="border-radius: 8px" src="Images/DW1820a-kext.png">
+</p>
+
+<p>
+    <img style="border-radius: 8px" src="Images/DW1820a-test.png">
 </p>
 
     <> Other support card like DW1560 and DW1830 you can google and test it, much easy than DW1820A
@@ -148,11 +162,6 @@
 
     + Suggest Comfast cf-811ac
     + Using https://github.com/chris1111/USB-Wireless-Utility to make it run in mojave and catalina
-
-# X. Undervolt script
-
-    +Too f**king hot?
-    > Go here: https://github.com/tctien342/smart-cpu
 
 # Thanks
 
