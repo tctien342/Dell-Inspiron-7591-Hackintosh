@@ -26,8 +26,12 @@
 
 ### <strong>For 4k screen</strong>:
 
-- Goto Config.plist -> DeviceProperties -> Add -> PciRoot(0x0)/Pci(0x2,0x0)
-- Change dpcd-max-link-rate = <14000000>
+> Reported as boot failed for now !!
+
+> Need work on this
+
+- <del>Goto Config.plist -> DeviceProperties -> Add -> PciRoot(0x0)/Pci(0x2,0x0)</del>
+- <del>Change dpcd-max-link-rate = <14000000></del>
 
 # II. System specification
 
