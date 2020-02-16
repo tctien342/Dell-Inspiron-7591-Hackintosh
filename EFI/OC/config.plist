@@ -537,8 +537,6 @@
 			</dict>
 			<key>PciRoot(0x0)/Pci(0x2,0x0)</key>
 			<dict>
-				<key>AAPL,ig-platform-id</key>
-				<data>AACbPg==</data>
 				<key>Comment-con1-con2</key>
 				<string>Type C port; can have 2 DisplayPort connectors</string>
 				<key>Comment-con3</key>
@@ -547,10 +545,8 @@
 				<string>0x14 for 4k displays, or 0x0a for 1080p</string>
 				<key>Comment-fb-portcount</key>
 				<string>There are 4 ports: internal LCD, Type C DP 1 and 2, and HDMI</string>
-				<key>device-id</key>
-				<data>mz4AAA==</data>
 				<key>dpcd-max-link-rate</key>
-				<data>CgAAAA==</data>
+				<data>FAAAAA==</data>
 				<key>enable-cfl-backlight-fix</key>
 				<data>AQAAAA==</data>
 				<key>enable-dpcd-max-link-rate-fix</key>
@@ -1261,6 +1257,8 @@
 			<true/>
 			<key>DisableIoMapper</key>
 			<true/>
+			<key>DummyPowerManagement</key>
+			<false/>
 			<key>ExternalDiskIcons</key>
 			<false/>
 			<key>IncreasePciBarSize</key>
@@ -1285,6 +1283,8 @@
 		</array>
 		<key>Boot</key>
 		<dict>
+			<key>BuiltinTextRenderer</key>
+			<false/>
 			<key>ConsoleBehaviourOs</key>
 			<string>Graphics</string>
 			<key>ConsoleBehaviourUi</key>
@@ -1301,6 +1301,8 @@
 			<string>1920x1080</string>
 			<key>ShowPicker</key>
 			<true/>
+			<key>TakeoffDelay</key>
+			<integer>0</integer>
 			<key>Timeout</key>
 			<integer>5</integer>
 			<key>UsePicker</key>
@@ -1535,8 +1537,6 @@
 		</dict>
 		<key>Quirks</key>
 		<dict>
-			<key>AvoidHighAlloc</key>
-			<false/>
 			<key>ClearScreenOnModeSwitch</key>
 			<false/>
 			<key>ExitBootServicesDelay</key>
