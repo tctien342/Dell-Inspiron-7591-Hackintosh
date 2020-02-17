@@ -28,7 +28,8 @@
 
 ### <strong>For 4k screen</strong>:
 
-> Testing, dont have to change any value for now
+> <del>Testing, dont have to change any value for now</del>
+> <br> <strong>WORKED on V7</strong>, thanks @kihsu for test this
 
 # II. System specification
 
