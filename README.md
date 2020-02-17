@@ -9,15 +9,17 @@
 
 # I. Detail
 
-    Version:    6
-    Date:       04/02/2020
+    Version:    7
+    Date:       17/02/2020
     Support:    All BIOS
     Changelogs:
-        - Update VoodooI2C from @uditkarode with some fixed and optimized
-        - Buildin NullEthernet to kext and ACPI
-        - Add Intel Bluetooth kext (now Intel Wifi card's bluetooth can be usable), thanks @DØP | Blyatman and @zxystd
-        - Add Mac Spoof devices in ACPI
-        - Some fix..
+        - Combojack now auto select headset without show dialog
+        - Clean spoof files in ACPI, optimize power after wake
+        - Using WEG 1.3.7 beta for 4k vendor fix
+        - Using SMBIOS 15,3 for 15" screen and H series
+        - New framebuffer test (Old framebuffer has some bug in blur) - 10.15.X tested
+        - Faster boot, better power usage
+        - Update all kext to date
     Status: Stable
 
 ### <strong>Important</strong>:
@@ -26,12 +28,7 @@
 
 ### <strong>For 4k screen</strong>:
 
-> Reported as boot failed for now !!
-
-> Need work on this
-
-- <del>Goto Config.plist -> DeviceProperties -> Add -> PciRoot(0x0)/Pci(0x2,0x0)</del>
-- <del>Change dpcd-max-link-rate = <14000000></del>
+> Testing, dont have to change any value for now
 
 # II. System specification
 
@@ -76,6 +73,7 @@
 
     1. Internal mic (Pls help me if you master of AppleHDA, other linux it dead too)
     2. HDMI audio ( Worked if boot with HDMI pluged and closed LID <Turn off internal screen>)
+        > Internal screen will be black when HDMI audio work if you try to use it
     2. Audio sometime not working if mac installed in fast NVME drive, due to AppleALC bug (Testing with some fix...)
 
 # VII. Important thing
