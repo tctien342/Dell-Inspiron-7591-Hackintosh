@@ -20,6 +20,8 @@
         - New framebuffer test (Old framebuffer has some bug in blur) - 10.15.X tested
         - Faster boot, better power usage
         - Update all kext to date
+        - Update AppleALC with verb dumped from windows
+        - No more panic in sleep
     Status: Stable
 
 ### <strong>Important</strong>:
@@ -28,8 +30,7 @@
 
 ### <strong>For 4k screen</strong>:
 
-> <del>Testing, dont have to change any value for now</del>
-> <br> <strong>WORKED on V7</strong>, thanks @kihsu for test this
+> <del>Testing, dont have to change any value for now</del> > <br> <strong>WORKED on V7</strong>, thanks @kihsu for test this
 
 # II. System specification
 
