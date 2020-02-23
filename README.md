@@ -10,7 +10,7 @@
 # I. Detail
 
     Version:    7
-    Date:       17/02/2020
+    Date:       24/02/2020
     Support:    All BIOS
     Changelogs:
         - Combojack now auto select headset without show dialog
@@ -22,6 +22,12 @@
         - Update all kext to date
         - Update AppleALC with verb dumped from windows
         - No more panic in sleep
+        - Update to @n-d-k Opencore 0.5.6:
+            - Nice PickerUI for opencore
+            - Only inject SSDT and SMBIOS for macos => windows free
+        - Add PostInstall Script for bettery sleep
+        - Add HPET fix
+
     Status: Stable
 
 ### <strong>Important</strong>:
@@ -94,11 +100,10 @@
     1. Prepair an Mac installer in USB with Opencore added ( Use unibeast to create it )
     2. Replace EFI folder in USB EFI partition with this shipped EFI folder
     3. Boot into USB and select MacOs installer
-    4. After install success, boot into MacOS, run ComboJack Alc295/ComboJack_Installer/install.sh in terminal
-    5. Use Kext Utility to rebuild kext then reboot
-    6. Then you need to mount EFI partition and replace it with shipped EFI
-    8. After System EFI replaced by your EFI, Using Opencore Configurator to change SMBIOS, generate your serial and MBL
-    9. Change MAC in nullEthernet with your new created one, see below
+    4. After install success, run PostInstall/install.sh in terminal
+    5. Then you need to mount EFI partition and replace it with shipped EFI
+    6. After System EFI replaced by your EFI, Using Opencore Configurator to change SMBIOS, generate your serial and MBL
+    7. Change MAC in nullEthernet with your new created one, see below
 
 > Generate your SMBIOS using <a href="https://mackie100projects.altervista.org/opencore-configurator/">OpencoreConfigurator</a>
 
@@ -132,11 +137,6 @@
 ### Using DW1820a
 
     + Mine is CN-0VW3T3 0x106B:0x0021, not tested in other version yet
-    + You need masked your pin like this: https://osxlatitude.com/forums/topic/11540-dw1820a-the-general-troubleshooting-thread/?do=findComment&comment=91179
-
-    + Delete # in bootflag:
-        + From: darkwake=1 #brcmfx-driver=2 #brcmfx-country=#a agdpmod=vit9696 alcid=13
-        + Change to: darkwake=1 brcmfx-driver=2 brcmfx-country=#a agdpmod=vit9696 alcid=13
 
 <p align="center">
     <img src="Images/DW1820a-bootflag.png">
