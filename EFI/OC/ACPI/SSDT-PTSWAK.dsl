@@ -7,6 +7,8 @@ DefinitionBlock("", "SSDT", 2, "ACDT", "PTSWAK", 0)
     External(EXT3, MethodObj)
     External(EXT4, MethodObj)
     External (_SB_.PCI0.PEG0.PEGP._OFF, MethodObj)    // 0 Arguments (from opcode)  
+    External (_SB_.PCI0.PGOF, MethodObj)
+    External (_SB_.PCI0.PEG0.PEGP._ON_, MethodObj)    // 0 Arguments (from opcode)
     
     Scope (_SB)
     {
@@ -34,6 +36,7 @@ DefinitionBlock("", "SSDT", 2, "ACDT", "PTSWAK", 0)
             {
                 EXT2(Arg0)
             }
+            \_SB.PCI0.PEG0.PEGP._ON ()
         }
 
         ZPTS(Arg0)
@@ -58,6 +61,7 @@ DefinitionBlock("", "SSDT", 2, "ACDT", "PTSWAK", 0)
             }
             // Disabled dGPU after wake up
             \_SB.PCI0.PEG0.PEGP._OFF ()
+            \_SB_.PCI0.PGOF(Zero)
         }
 
         Local0 = ZWAK(Arg0)
