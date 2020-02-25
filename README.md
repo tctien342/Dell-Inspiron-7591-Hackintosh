@@ -9,24 +9,13 @@
 
 # I. Detail
 
-    Version:    7
-    Date:       24/02/2020
+    Version:    7*
+    Date:       25/02/2020
     Support:    All BIOS
     Changelogs:
-        - Combojack now auto select headset without show dialog
-        - Clean spoof files in ACPI, optimize power after wake
-        - Using WEG 1.3.7 beta for 4k vendor fix
-        - Using SMBIOS 15,3 for 15" screen and H series
-        - New framebuffer test (Old framebuffer has some bug in blur) - 10.15.X tested
-        - Faster boot, better power usage
-        - Update all kext to date
-        - Update AppleALC with verb dumped from windows
-        - No more panic in sleep
-        - Update to @n-d-k Opencore 0.5.6:
-            - Nice PickerUI for opencore
-            - Only inject SSDT and SMBIOS for macos => windows free
-        - Add PostInstall Script for bettery sleep
-        - Add HPET fix
+        - Fix sleep and battery drain in sleep (9hrs only take 3% battery on sleep with mine 57wh bat)
+        - OCWork fallback to windows 10 instead of linux
+        - Add SMCLightSensor for ALS0 fake ssdt
 
     Status: Stable
 
