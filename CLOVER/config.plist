@@ -18,9 +18,13 @@
 					<key>Disabled</key>
 					<false/>
 					<key>Find</key>
-					<data>QlJUNgI=</data>
+					<data>
+					QlJUNgI=
+					</data>
 					<key>Replace</key>
-					<data>QlJUWAI=</data>
+					<data>
+					QlJUWAI=
+					</data>
 				</dict>
 				<dict>
 					<key>Comment</key>
@@ -28,9 +32,13 @@
 					<key>Disabled</key>
 					<false/>
 					<key>Find</key>
-					<data>FDlfV0FLAQ==</data>
+					<data>
+					FDlfV0FLAQ==
+					</data>
 					<key>Replace</key>
-					<data>FDlaV0FLAQ==</data>
+					<data>
+					FDlaV0FLAQ==
+					</data>
 				</dict>
 				<dict>
 					<key>Comment</key>
@@ -38,9 +46,13 @@
 					<key>Disabled</key>
 					<false/>
 					<key>Find</key>
-					<data>UlAxN1BYU1gUM19STVY=</data>
+					<data>
+					UlAxN1BYU1gUM19STVY=
+					</data>
 					<key>Replace</key>
-					<data>UlAxN1BYU1gUM1hSTVY=</data>
+					<data>
+					UlAxN1BYU1gUM1hSTVY=
+					</data>
 				</dict>
 			</array>
 		</dict>
@@ -126,39 +138,73 @@
 			<key>PciRoot(0x0)/Pci(0x2,0x0)</key>
 			<dict>
 				<key>AAPL,ig-platform-id</key>
-				<data>CQClPg==</data>
+				<data>
+				CQClPg==
+				</data>
 				<key>disable-external-gpu</key>
-				<data>AQAAAA==</data>
+				<data>
+				AQAAAA==
+				</data>
 				<key>dpcd-max-link-rate</key>
-				<data>FAAAAA==</data>
+				<data>
+				FAAAAA==
+				</data>
 				<key>enable-dpcd-max-link-rate-fix</key>
-				<data>AQAAAA==</data>
+				<data>
+				AQAAAA==
+				</data>
 				<key>enable-hdmi-dividers-fix</key>
-				<data>AQAAAA==</data>
+				<data>
+				AQAAAA==
+				</data>
 				<key>enable-hdmi20</key>
-				<data>AQAAAA==</data>
+				<data>
+				AQAAAA==
+				</data>
 				<key>enable-lspcon-support</key>
-				<data>AQAAAA==</data>
+				<data>
+				AQAAAA==
+				</data>
 				<key>framebuffer-con1-alldata</key>
-				<data>AQUJAAAEAACHAQAA</data>
+				<data>
+				AQUJAAAEAACHAQAA
+				</data>
 				<key>framebuffer-con1-enable</key>
-				<data>AQAAAA==</data>
+				<data>
+				AQAAAA==
+				</data>
 				<key>framebuffer-con2-alldata</key>
-				<data>AgYJAAAEAACHAQAA</data>
+				<data>
+				AgYJAAAEAACHAQAA
+				</data>
 				<key>framebuffer-con2-enable</key>
-				<data>AQAAAA==</data>
+				<data>
+				AQAAAA==
+				</data>
 				<key>framebuffer-con3-alldata</key>
-				<data>AwQKAAAIAACHAQAA</data>
+				<data>
+				AwQKAAAIAACHAQAA
+				</data>
 				<key>framebuffer-con3-enable</key>
-				<data>AQAAAA==</data>
+				<data>
+				AQAAAA==
+				</data>
 				<key>framebuffer-con3-has-lspcon</key>
-				<data>AQAAAA==</data>
+				<data>
+				AQAAAA==
+				</data>
 				<key>framebuffer-patch-enable</key>
-				<data>AQAAAA==</data>
+				<data>
+				AQAAAA==
+				</data>
 				<key>framebuffer-portcount</key>
-				<data>BAAAAA==</data>
+				<data>
+				BAAAAA==
+				</data>
 				<key>framebuffer-unifiedmem</key>
-				<data>AAAAgA==</data>
+				<data>
+				AAAAgA==
+				</data>
 			</dict>
 		</dict>
 		<key>USB</key>
@@ -205,13 +251,17 @@
 				<key>Disabled</key>
 				<false/>
 				<key>Find</key>
-				<data>cJ0AAA==</data>
+				<data>
+				cJ0AAA==
+				</data>
 				<key>InfoPlistPatch</key>
 				<false/>
 				<key>Name</key>
 				<string>com.apple.driver.AppleHDAController</string>
 				<key>Replace</key>
-				<data>SKMAAA==</data>
+				<data>
+				SKMAAA==
+				</data>
 			</dict>
 		</array>
 	</dict>

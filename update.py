@@ -17,7 +17,7 @@ root = Path(__file__).absolute().parent
 GITHUB_URL = 'https://github.com/tctien342/Dell-Inspiron-7591-Hackintosh'
 GITHUB_DESCRIPTION = 'Configuration for Dell Inspiron 759x'
 # Access token (only read permission) of your github account
-GITHUB_ACCESS_TOKEN = '43bdffa31d4a77dc01593099f3c2f3d922b85b9b'
+GITHUB_ACCESS_TOKEN = '3b57a8f62f7ff1faea3ba908345fb6609b1873e8'
 
 
 # BUILD CONF
@@ -585,7 +585,7 @@ def zip_folder(folders):
     for folder in folders:
         set_config(folder / 'config.plist',
                    'sn={} mlb={} smuuid={} bootarg+-v'.format(DEFAULT_SN, DEFAULT_MLB, DEFAULT_SMUUID).split(' '))
-        sh('cd {} && zip -r {}-{}-$(date +%y%m).zip {} README.md update.py packages.csv'.format(
+        sh('cd {} && zip -r {}-{}-$(date +%y%m).zip {} README.md update.py packages.csv PostInstall'.format(
             root, BUILD_PREFIX, folder.name, folder.name))
 
 
