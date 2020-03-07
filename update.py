@@ -12,6 +12,29 @@ import re
 
 root = Path(__file__).absolute().parent
 
+# GITHUB CONF
+GITHUB_URL = 'https://github.com/xxxzc/xps15-9570-macos'
+GITHUB_DESCRIPTION = 'Configuration for XPS15-9570'
+GITHUB_ACCESS_TOKEN = 'NWFhNjIyNzc0ZDM2NzU5NjM3NTE2ZDg3MzdhOTUyOThkNThmOTQ2Mw=='
+
+
+# BUILD CONF
+SMBIOS_PRODUCT = 'MacBookPro15,1'
+DEFAULT_SN = 'C02WVDY3KGYG',
+DEFAULT_MLB = 'C028248024NJP4FA8'
+DEFAULT_SMUUID = 'C167D3A2-CC13-4041-8CED-553D772C0749'
+DELAY_AFTER_TYPE = 50
+KEXT_PIORITY = {
+    'Lilu.kext': 0, 'VirtualSMC.kext': 10, 'AppleALC.kext': 20,
+    'VoodooGPIO.kext': 30, 'VoodooI2CServices.kext': 35,
+    'VoodooI2C.kext': 40, 'VoodooI2CHID.kext': 50,
+    'CPUFriend.kext': 21, 'CPUFriendDataProvider.kext': 22,
+}
+BUILD_PREFIX = 'XPS15-9570'
+
+# SUB CONF
+PREFIX = c('::', 75)
+ARROW = c('==>', 40)
 
 def R(*args):
     return Path(root, *args)
@@ -71,10 +94,6 @@ mappers = dict(CLOVER={
 def c(text, color):
     # colored output https://stackoverflow.com/a/56774969
     return "\33[38;5;{}m{}\33[0m".format(color, text)
-
-
-PREFIX = c('::', 75)
-ARROW = c('==>', 40)
 
 
 def Title(*args):
@@ -191,7 +210,7 @@ remote_infos = dict()
 
 class Package:
     # access only, 5000/hr
-    GITHUB_TOKEN = 'NWFhNjIyNzc0ZDM2NzU5NjM3NTE2ZDg3MzdhOTUyOThkNThmOTQ2Mw=='
+    GITHUB_TOKEN = GITHUB_ACCESS_TOKEN
 
     def __init__(self, **kargs):
         self.__dict__.update(kargs)
@@ -230,9 +249,11 @@ class Package:
                 req = Request('https://api.github.com/repos/{}/{}/releases/{}'.format(
                     user, repo, 'tags/' + rver if rver != 'latest' else rver),
                     headers={'Authorization': 'token {}'.format(b64decode(self.GITHUB_TOKEN).decode('utf8'))})
+                print(req.get_full_url())
             else:
                 req = 'https://api.bitbucket.org/2.0/repositories/{}/{}/downloads'.format(
                     user, repo)
+                print(req)
             info = json.loads(urlopen(req).read())
             for asset in info['assets' if isgithub else 'values']:
                 if re.match(self.pattern, asset['name'], re.I):
@@ -326,7 +347,7 @@ def set_config(configfile: Path, kvs: list):
 
             if k == 'uiscale':
                 if config.type == 'oc':
-                    v = 'Ag==' if v == '2' else 'AQ==' 
+                    v = 'Ag==' if v == '2' else 'AQ=='
 
             config.set(k, v)
             print('Set', config.keyword(k), 'to', v)
@@ -399,7 +420,7 @@ def update_packages(packages):
 def patching(kexts: Path):
     Title('Set delay after typing to 50ms')
     info = Plist(kexts / 'VoodooI2CHID.kext' / 'Contents' / 'Info.plist')
-    info.set('IOKitPersonalities>VoodooI2CHIDDevice Precision Touchpad HID Event Driver>QuietTimeAfterTyping', 50)
+    info.set('IOKitPersonalities>VoodooI2CHIDDevice Precision Touchpad HID Event Driver>QuietTimeAfterTyping', DELAY_AFTER_TYPE)
     info.save()
     Title('Delete VoodooPS2Mouse.kext and VoodooPS2Trackpad.kext')
     for kext in ('VoodooPS2Mouse.kext', 'VoodooPS2Trackpad.kext'):
@@ -423,8 +444,8 @@ def replace_with_release(folder: Path, version='latest'):
     sh('rm -rf {}'.format(folder))
     if update_packages([Package(
             name=folder.name, folder=root,
-            url='https://github.com/xxxzc/xps15-9570-macos',
-            description=folder.name + ' Configuration for XPS15-9570',
+            url=GITHUB_URL,
+            description=folder.name + ' ' + GITHUB_DESCRIPTION,
             version=version, pattern='.*-' + folder.name)]):
         if backupconfig.exists():
             originconfig = Plist(originconfig)
@@ -519,12 +540,7 @@ def update_oc_info(folder: Path):
 
     kexts = []
     kextpath = folder / 'Kexts'
-    prioritys = {
-        'Lilu.kext': 0, 'VirtualSMC.kext': 10, 'AppleALC.kext': 20,
-        'VoodooGPIO.kext': 30, 'VoodooI2CServices.kext': 35,
-        'VoodooI2C.kext': 40, 'VoodooI2CHID.kext': 50,
-        'CPUFriend.kext': 21, 'CPUFriendDataProvider.kext': 22,
-    }
+    prioritys = KEXT_PIORITY
     for kext in sorted(kextpath.rglob('*.kext')):
         if kext.name[0] == '.':
             continue
@@ -567,9 +583,9 @@ if __name__ == '__main__':
         sh('rm -rf {}/*.aml'.format(R('ACPI')))
         for folder in folders:
             set_config(folder / 'config.plist',
-                       'sn=C02WVDY3KGYG mlb=C028248024NJP4FA8 smuuid=C167D3A2-CC13-4041-8CED-553D772C0749 bootarg+-v'.split(' '))
-            sh('cd {} && zip -r XPS15-9570-{}-$(date +%y%m).zip {} README.md update.py packages.csv'.format(
-                root, folder.name, folder.name))
+                       'sn={} mlb={} smuuid={} bootarg+-v'.format(DEFAULT_SN, DEFAULT_MLB, DEFAULT_SMUUID).split(' '))
+            sh('cd {} && zip -r {}-{}-$(date +%y%m).zip {} README.md update.py packages.csv'.format(
+                root, BUILD_PREFIX, folder.name, folder.name))
         Done()
 
     if args.gen:
@@ -583,7 +599,7 @@ if __name__ == '__main__':
                 )
             ])
         sn, s, mlb = shout(
-            '{} -m MacBookPro15,1 -g -n 1'.format(macserial)).split(' ')
+            '{} -m {} -g -n 1'.format(macserial, SMBIOS_PRODUCT)).split(' ')
         uuid = shout('uuidgen')
         for folder in folders:
             set_config(folder / 'config.plist',
@@ -594,9 +610,9 @@ if __name__ == '__main__':
     update ACPI, packages.csv and update.py from repo
     '''
     if args.self:
-        sh('curl -# -LOk https://github.com/xxxzc/xps15-9570-macos/archive/master.zip')
+        sh('curl -# -LOk {}/archive/master.zip'.format(GITHUB_URL))
         sh('unzip {} -d {}'.format('master.zip', root))
-        master = R('xps15-9570-macos-master')
+        master = R('{}-macos-master'.format(BUILD_PREFIX.lower()))
         for folder in folders:
             config = folder / 'config.plist'
             if config.exists():
