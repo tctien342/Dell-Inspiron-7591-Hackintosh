@@ -32,9 +32,16 @@ KEXT_PIORITY = {
 }
 BUILD_PREFIX = 'XPS15-9570'
 
+
+def c(text, color):
+    # colored output https://stackoverflow.com/a/56774969
+    return "\33[38;5;{}m{}\33[0m".format(color, text)
+
+
 # SUB CONF
 PREFIX = c('::', 75)
 ARROW = c('==>', 40)
+
 
 def R(*args):
     return Path(root, *args)
@@ -89,11 +96,6 @@ mappers = dict(CLOVER={
     'Kexts': 'kexts/Other',
     'Drivers': 'drivers/UEFI'
 }, OC={})
-
-
-def c(text, color):
-    # colored output https://stackoverflow.com/a/56774969
-    return "\33[38;5;{}m{}\33[0m".format(color, text)
 
 
 def Title(*args):

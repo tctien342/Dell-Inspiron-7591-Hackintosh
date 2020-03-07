@@ -22,7 +22,9 @@ Kexts,VoodooPS2Controller.kext,PS/2 controller,latest,.*RELEASE,https://github.c
 Kexts,WhateverGreen.kext,Patches for GPUs,latest,.*RELEASE,https://github.com/acidanthera/WhateverGreen
 Drivers,ApfsDriverLoader.efi,Open source apfs.efi loader,latest,.*RELEASE,https://github.com/acidanthera/AppleSupportPkg
 Drivers,VBoxHfs.efi,HFS+ support with bless extensions,latest,.*RELEASE,https://github.com/acidanthera/AppleSupportPkg
-OC/Drivers,FwRuntimeServices.efi,Normal functioning of UEFI Runtime Services,latest,.*RELEASE,https://github.com/acidanthera/OpenCorePkg
+OC/Drivers,FwRuntimeServices.efi,Normal functioning of UEFI Runtime Services,latest,.*RELEASE,https://github.com/n-d-k/OpenCorePkg
 CLOVER/drivers/UEFI,AptioMemoryFix.efi,Correct memory map,latest,.*RELEASE,https://github.com/acidanthera/AptioFixPkg
 CLOVER,CLOVERX64.efi,Bootloader for macOS and other systems,latest,CLOVERX64.efi,https://github.com/CloverHackyColor/CloverBootloader
-OC,OpenCore.efi,Bootloader for macOS and other systems,latest,.*RELEASE,https://github.com/acidanthera/OpenCorePkg
+OC,OpenCore.efi,Bootloader for macOS and other systems,latest,.*RELEASE,https://github.com/n-d-k/OpenCorePkg
+OC,Icons,Theme for Opencore,latest,.*RELEASE,https://github.com/n-d-k/OpenCorePkg
+OC,Tools,Tools for Opencore,latest,.*RELEASE,https://github.com/n-d-k/OpenCorePkg
