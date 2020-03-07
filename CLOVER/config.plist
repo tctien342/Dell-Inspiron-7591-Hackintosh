@@ -24,16 +24,6 @@
 				</dict>
 				<dict>
 					<key>Comment</key>
-					<string>Rename USTP to One</string>
-					<key>Disabled</key>
-					<false/>
-					<key>Find</key>
-					<data>VVNUUBA=</data>
-					<key>Replace</key>
-					<data>AaOjoxA=</data>
-				</dict>
-				<dict>
-					<key>Comment</key>
 					<string>Rename _WAK to ZWAK</string>
 					<key>Disabled</key>
 					<false/>
@@ -130,10 +120,6 @@
 			<dict>
 				<key>alc-delay</key>
 				<integer>500</integer>
-				<key>alc-device-id</key>
-				<data>cJ0AAA==</data>
-				<key>alc-vendor-id</key>
-				<data>hoAAAA==</data>
 				<key>layout-id</key>
 				<integer>13</integer>
 			</dict>
@@ -213,6 +199,21 @@
 		<false/>
 		<key>DellSMBIOSPatch</key>
 		<true/>
+		<key>KextsToPatch</key>
+		<array>
+			<dict>
+				<key>Disabled</key>
+				<false/>
+				<key>Find</key>
+				<data>cJ0AAA==</data>
+				<key>InfoPlistPatch</key>
+				<false/>
+				<key>Name</key>
+				<string>com.apple.driver.AppleHDAController</string>
+				<key>Replace</key>
+				<data>SKMAAA==</data>
+			</dict>
+		</array>
 	</dict>
 	<key>RtVariables</key>
 	<dict>
@@ -234,7 +235,7 @@
 		<key>BoardManufacturer</key>
 		<string>Apple Inc.</string>
 		<key>BoardSerialNumber</key>
-		<string>C02927102CD00001H</string>
+		<string>C02947300QX0000JC</string>
 		<key>BoardType</key>
 		<integer>10</integer>
 		<key>BoardVersion</key>
@@ -264,9 +265,9 @@
 		<key>ProductName</key>
 		<string>MacBookPro15,3</string>
 		<key>SerialNumber</key>
-		<string>C02Z1EYNLVCG</string>
+		<string>C02ZQDYDLVCG</string>
 		<key>SmUUID</key>
-		<string>CA2F84E7-7489-4774-A16B-EE07F97D38C8</string>
+		<string>6E167E28-A39C-423F-B244-20152956DD0C</string>
 		<key>Version</key>
 		<string>1.0</string>
 	</dict>
