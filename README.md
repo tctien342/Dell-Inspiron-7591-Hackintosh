@@ -1,40 +1,39 @@
+# Dell Inspiron 759x
+
+<p>
+    <img style="border-radius: 8px" src="Assets/background.jpg">
+</p>
+
 ## Configuration
 
-| Model     | MacBookPro15,1               | Version        | 10.15.3 19D76       |
+| Model     | MacBookPro15,3               | Version        | 10.15.2             |
 | :-------- | :--------------------------- | :------------- | :------------------ |
-| Processor | Intel Core i5-8300H/i7-8750H | Graphics       | UHD Graphics 630    |
-| Memory    | Micron 2400MHz DDR4 8GB x2   | Disk           | Samsung PM961 512GB |
-| Audio     | Realtek ALC298               | WiFi/Bluetooth | Dell Wireless 1830  |
-| Display   | Sharp LQ156D1 UHD            | Monitor        | HKC GF40 FHD 144Hz  |
+| Processor | Intel Core i5-9300H/i7-9750H | Graphics       | UHD Graphics 630    |
+| Memory    | 2667MHz DDR4 8GB x2          | Disk           | Samsung 970 EVO     |
+| Audio     | Realtek ALC295               | WiFi/Bluetooth | Dell Wireless 1820a |
 
 ### Not Working
 
-- Bluetooth may not work
-- Thunderbolt
-- SD Card
-- Discrete GPU
-- Fingerprint
+- Intel card not working yet (Bluetooth kext can be found at [IntelBluetoothFirmware](https://github.com/zxystd/IntelBluetoothFirmware))
+- Discrete GPU (Disabled)
+- Fingerprint (Disabled)
 
 ## Installation
 
-**Please download [the latest release](https://github.com/xxxzc/xps15-9570-macos/releases/latest).**
++ Prepair an Mac installer in USB with bootloader you choice ( Use unibeast to create it )
++ Replace EFI folder in USB EFI partition with this shipped EFI folder
++ Boot into USB and select MacOs installer
++ After install success, run PostInstall/install.sh in terminal
++ Then you need to mount EFI partition and replace it with shipped EFI
++ After System EFI replaced by your EFI, Using Opencore Configurator, Clover Configurator or update script to change SMBIOS, generate your serial and MBL
++ Change MAC in NullEthernet with your new created one, see below
 
-You may refer to [[EN] bavariancake/XPS9570-macOS](https://github.com/bavariancake/XPS9570-macOS) and [[CN] LuletterSoul/Dell-XPS-15-9570-macOS-Mojave](https://github.com/LuletterSoul/Dell-XPS-15-9570-macOS-Mojave) for the installation guide and solutions to some common issues.
-
-But note that please create an issue **in this repository** if you encounter any problem when **using this config** (Please don't disturb others). My writing in English is poooooor:(, but I can read :).
-
-### Headphone
-
-~~@qeeqez found layout-id 30 is good to drive headphone without PluginFix([Overall Audio State](https://github.com/daliansky/XiaoMi-Pro/issues/96)), and it also works for me.~~ 
-
-After updating to 10.15, headphone will be distorted after a few minutes in battery mode. 
-
-You have to install [ComboJack](https://github.com/hackintosh-stuff/ComboJack/tree/master/ComboJack_Installer):
-
-1. remove CodecCommander.kext and uninstall ALCPlugFix
-2. put VerbStub.kext in kext folder
-3. set layout-id to 72 
-4. run install.sh
+### Fake ethernet
++ Generate your MAC address in SSDT-RMNE if using NullEthernet
++ You can make an MacAddress in [Mac generator online](https://www.browserling.com/tools/random-mac)
++ Edit SSDT-RMNE.aml with MaciASL and replace MAC with your generated one
++ Save as -> ACPI machine language (replace exited one)
++ Reboot
 
 ### Sleep Wake
 
@@ -50,7 +49,7 @@ sudo pmset -b tcpkeepalive 0 (optional)
 
 Please uncheck all options (except `Prevent computer from sleeping...`, which is optional) in the `Energy Saver` panel.
 
-### SN MLB SmUUID
+### SN MLB SmUUID using update script
 
 Please use your own SN, MLB (use [MacInfoPkg](https://github.com/acidanthera/MacInfoPkg) or Clover Configurator or [Hackintool](https://www.tonymacx86.com/threads/release-hackintool-v2-8-6.254559/)) and SmUUID.
 
@@ -58,8 +57,6 @@ Please use your own SN, MLB (use [MacInfoPkg](https://github.com/acidanthera/Mac
 python update.py --set sn=xxx mlb=yyy smuuid=zzz
 python update.py --gen # generate and use new SN, MLB and SmUUID
 ```
-
-As for SmUUID, **please use your Windows system UUID**: run  `wmic csproduct get UUID` in CMD, because OpenCore will use SystemUUID you set in OC/config.plist to boot Windows.
 
 ### FHD Display
 
@@ -75,18 +72,19 @@ If your laptop display is 1080p, you should set uiscale to :
 python update.py --set uiscale=1
 ```
 
-and change `dpcd-max-link-rate` value `FAAAAA==` to `CgAAAA==` in config.plist.
-
 ### DW1820a
 
 You have to add following config to Device Properties:
 
+> Change
+
+```xml
+<key>#PciRoot(0x0)/Pci(0x1c,0x0)/Pci(0x0,0x0)</key>
+```
+
+> Into
 ```xml
 <key>PciRoot(0x0)/Pci(0x1c,0x0)/Pci(0x0,0x0)</key>
-<dict>
-    <key>pci-aspm-default</key>
-    <integer>0</integer>
-</dict>
 ```
 
 See [THE Solution:Dell DW1820A](https://www.tonymacx86.com/threads/the-solution-dell-dw1820a-broadcom-bcm94350zae-macos-15.288026/)
@@ -101,23 +99,10 @@ python update.py --set theme=xxx # will download if not exist
 
 ### NTFS Writing
 
-Add `UUID=xxx none ntfs rw,auto,nobrowse` to `/etc/fstab`, **xxx** is the UUID of your NTFS partition. 
+Add `UUID=xxx none ntfs rw,auto,nobrowse` to `/etc/fstab`, **xxx** is the UUID of your NTFS partition.
 
-If your NTFS partition has Windows installed, you need to run `powercfg -h off`  in powershell in Windows to disable hibernation.
+If your NTFS partition has Windows installed, you need to run `powercfg -h off` in powershell in Windows to disable hibernation.
 
-### Touchpad and touchscreen
-
-Touchpad can run in two modes:
-
-1. GPIO mode with SSDT-TPDX.aml
-
-   1\~4% kernel_task cpu usage when idle but cause 10\~30% cpu usage when in use
-
-2. Polling mode without SSDT-TPDX.aml
-
-   always 10~15% kernel_task cpu usage
-
-WCOM touchscreen runs in polling mode by default and running in GPIO mode will stop to working after sleep. If you don't need touchscreen, you can use this [SSDT-TPDX.aml.zip](https://github.com/xxxzc/xps15-9570-macos/files/4169746/SSDT-TPDX.aml.zip) to disable touchscreen.
 
 ### Tap Delay
 
@@ -136,3 +121,4 @@ See [is-it-possible-to-get-rid-of-the-delay-between-right-clicking-and-seeing-th
 - [knnspeed](https://www.tonymacx86.com/threads/guide-dell-xps-15-9560-4k-touch-1tb-ssd-32gb-ram-100-adobergb.224486) for providing Combojack, well-explained hot patches and USB-C hotplug solution
 - [bavariancake](https://github.com/bavariancake/XPS9570-macOS) and [LuletterSoul](https://github.com/LuletterSoul/Dell-XPS-15-9570-macOS-Mojave) for providing detailed installation guide and configuration for XPS15-9570
 - And all other authors that mentioned or not mentioned in this repo
+- [xxxza](https://github.com/xxxzc/xps15-9570-macos) this build is porter from his project, big thanks to him
