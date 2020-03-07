@@ -17,7 +17,7 @@ root = Path(__file__).absolute().parent
 GITHUB_URL = 'https://github.com/tctien342/Dell-Inspiron-7591-Hackintosh'
 GITHUB_DESCRIPTION = 'Configuration for Dell Inspiron 759x'
 # Access token (only read permission) of your github account
-GITHUB_ACCESS_TOKEN = 'b19451d5ac3561883a6910854516cbd568c46251'
+GITHUB_ACCESS_TOKEN = '43bdffa31d4a77dc01593099f3c2f3d922b85b9b'
 
 
 # BUILD CONF
