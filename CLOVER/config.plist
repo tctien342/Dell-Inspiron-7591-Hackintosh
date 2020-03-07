@@ -14,31 +14,13 @@
 			<array>
 				<dict>
 					<key>Comment</key>
-					<string>Rename _WAK to ZWAK</string>
-					<key>Disabled</key>
-					<false/>
-					<key>Find</key>
-					<data>
-					FDlfV0FLAQ==
-					</data>
-					<key>Replace</key>
-					<data>
-					FDlaV0FLAQ==
-					</data>
-				</dict>
-				<dict>
-					<key>Comment</key>
 					<string>Rename BRT6 to BRTX</string>
 					<key>Disabled</key>
 					<false/>
 					<key>Find</key>
-					<data>
-					QlJUNgI=
-					</data>
+					<data>QlJUNgI=</data>
 					<key>Replace</key>
-					<data>
-					QlJUWAI=
-					</data>
+					<data>QlJUWAI=</data>
 				</dict>
 				<dict>
 					<key>Comment</key>
@@ -46,13 +28,19 @@
 					<key>Disabled</key>
 					<false/>
 					<key>Find</key>
-					<data>
-					VVNUUBA=
-					</data>
+					<data>VVNUUBA=</data>
 					<key>Replace</key>
-					<data>
-					AaOjoxA=
-					</data>
+					<data>AaOjoxA=</data>
+				</dict>
+				<dict>
+					<key>Comment</key>
+					<string>Rename _WAK to ZWAK</string>
+					<key>Disabled</key>
+					<false/>
+					<key>Find</key>
+					<data>FDlfV0FLAQ==</data>
+					<key>Replace</key>
+					<data>FDlaV0FLAQ==</data>
 				</dict>
 				<dict>
 					<key>Comment</key>
@@ -60,13 +48,9 @@
 					<key>Disabled</key>
 					<false/>
 					<key>Find</key>
-					<data>
-					UlAxN1BYU1gUM19STVY=
-					</data>
+					<data>UlAxN1BYU1gUM19STVY=</data>
 					<key>Replace</key>
-					<data>
-					UlAxN1BYU1gUM1hSTVY=
-					</data>
+					<data>UlAxN1BYU1gUM1hSTVY=</data>
 				</dict>
 			</array>
 		</dict>
@@ -127,85 +111,68 @@
 		</dict>
 		<key>Properties</key>
 		<dict>
+			<key>PciRoot(0x0)/Pci(0x1d,0x6)/Pci(0x0,0x0)</key>
+			<dict>
+				<key>AAPL,slot-name</key>
+				<string>WLAN</string>
+				<key>compatible</key>
+				<string>pci14e4,43a0</string>
+				<key>device_type</key>
+				<string>Airport Extreme</string>
+				<key>model</key>
+				<string>DW1820A (BCM4350) 802.11ac Wireless</string>
+				<key>name</key>
+				<string>Airport</string>
+				<key>pci-aspm-default</key>
+				<integer>0</integer>
+			</dict>
 			<key>PciRoot(0x0)/Pci(0x1f,0x3)</key>
 			<dict>
-				<key>device-id</key>
-				<data>
-				cKEAAA==
-				</data>
+				<key>alc-delay</key>
+				<integer>500</integer>
+				<key>alc-device-id</key>
+				<data>cJ0AAA==</data>
+				<key>alc-vendor-id</key>
+				<data>hoAAAA==</data>
 				<key>layout-id</key>
-				<integer>72</integer>
+				<integer>13</integer>
 			</dict>
 			<key>PciRoot(0x0)/Pci(0x2,0x0)</key>
 			<dict>
 				<key>AAPL,ig-platform-id</key>
-				<data>
-				AACbPg==
-				</data>
+				<data>CQClPg==</data>
 				<key>disable-external-gpu</key>
-				<data>
-				AQAAAA==
-				</data>
+				<data>AQAAAA==</data>
 				<key>dpcd-max-link-rate</key>
-				<data>
-				FAAAAA==
-				</data>
+				<data>FAAAAA==</data>
 				<key>enable-dpcd-max-link-rate-fix</key>
-				<data>
-				AQAAAA==
-				</data>
+				<data>AQAAAA==</data>
 				<key>enable-hdmi-dividers-fix</key>
-				<data>
-				AQAAAA==
-				</data>
+				<data>AQAAAA==</data>
 				<key>enable-hdmi20</key>
-				<data>
-				AQAAAA==
-				</data>
+				<data>AQAAAA==</data>
 				<key>enable-lspcon-support</key>
-				<data>
-				AQAAAA==
-				</data>
+				<data>AQAAAA==</data>
 				<key>framebuffer-con1-alldata</key>
-				<data>
-				AQUJAAAEAACHAQAA
-				</data>
+				<data>AQUJAAAEAACHAQAA</data>
 				<key>framebuffer-con1-enable</key>
-				<data>
-				AQAAAA==
-				</data>
+				<data>AQAAAA==</data>
 				<key>framebuffer-con2-alldata</key>
-				<data>
-				AgYJAAAEAACHAQAA
-				</data>
+				<data>AgYJAAAEAACHAQAA</data>
 				<key>framebuffer-con2-enable</key>
-				<data>
-				AQAAAA==
-				</data>
+				<data>AQAAAA==</data>
 				<key>framebuffer-con3-alldata</key>
-				<data>
-				AwQKAAAIAACHAQAA
-				</data>
+				<data>AwQKAAAIAACHAQAA</data>
 				<key>framebuffer-con3-enable</key>
-				<data>
-				AQAAAA==
-				</data>
+				<data>AQAAAA==</data>
 				<key>framebuffer-con3-has-lspcon</key>
-				<data>
-				AQAAAA==
-				</data>
+				<data>AQAAAA==</data>
 				<key>framebuffer-patch-enable</key>
-				<data>
-				AQAAAA==
-				</data>
+				<data>AQAAAA==</data>
 				<key>framebuffer-portcount</key>
-				<data>
-				BAAAAA==
-				</data>
+				<data>BAAAAA==</data>
 				<key>framebuffer-unifiedmem</key>
-				<data>
-				AAAAgA==
-				</data>
+				<data>AAAAgA==</data>
 			</dict>
 		</dict>
 		<key>USB</key>
@@ -256,14 +223,52 @@
 	</dict>
 	<key>SMBIOS</key>
 	<dict>
+		<key>BiosReleaseDate</key>
+		<string>11/14/2019</string>
+		<key>BiosVendor</key>
+		<string>Apple Inc.</string>
+		<key>BiosVersion</key>
+		<string>MBP153.88Z.F000.B00.1911142110</string>
+		<key>Board-ID</key>
+		<string>Mac-1E7E29AD0135F9BC</string>
+		<key>BoardManufacturer</key>
+		<string>Apple Inc.</string>
 		<key>BoardSerialNumber</key>
-		<string>C028248024NJP4FA8</string>
+		<string>C02927102CD00001H</string>
+		<key>BoardType</key>
+		<integer>10</integer>
+		<key>BoardVersion</key>
+		<string>1.0</string>
+		<key>ChassisAssetTag</key>
+		<string>MacBook-Aluminum</string>
+		<key>ChassisManufacturer</key>
+		<string>Apple Inc.</string>
+		<key>ChassisType</key>
+		<string>0x09</string>
+		<key>EfiVersion</key>
+		<string>1037.60.58.0.0</string>
+		<key>Family</key>
+		<string>MacBook Pro</string>
+		<key>FirmwareFeatures</key>
+		<string>0xFC0FE137</string>
+		<key>FirmwareFeaturesMask</key>
+		<string>0xFF1FFF3F</string>
+		<key>LocationInChassis</key>
+		<string>Part Component</string>
+		<key>Manufacturer</key>
+		<string>Apple Inc.</string>
+		<key>Mobile</key>
+		<true/>
+		<key>PlatformFeature</key>
+		<string>0x02</string>
 		<key>ProductName</key>
-		<string>MacBookPro15,1</string>
+		<string>MacBookPro15,3</string>
 		<key>SerialNumber</key>
-		<string>C02WVDY3KGYG</string>
+		<string>C02Z1EYNLVCG</string>
 		<key>SmUUID</key>
-		<string>C167D3A2-CC13-4041-8CED-553D772C0749</string>
+		<string>CA2F84E7-7489-4774-A16B-EE07F97D38C8</string>
+		<key>Version</key>
+		<string>1.0</string>
 	</dict>
 	<key>SystemParameters</key>
 	<dict>

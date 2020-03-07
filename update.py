@@ -13,16 +13,18 @@ import re
 root = Path(__file__).absolute().parent
 
 # GITHUB CONF
-GITHUB_URL = 'https://github.com/xxxzc/xps15-9570-macos'
-GITHUB_DESCRIPTION = 'Configuration for XPS15-9570'
-GITHUB_ACCESS_TOKEN = 'NWFhNjIyNzc0ZDM2NzU5NjM3NTE2ZDg3MzdhOTUyOThkNThmOTQ2Mw=='
+# Link for your config repo
+GITHUB_URL = 'https://github.com/tctien342/Dell-Inspiron-7591-Hackintosh'
+GITHUB_DESCRIPTION = 'Configuration for Dell Inspiron 759x'
+# Access token (only read permission) of your github account
+GITHUB_ACCESS_TOKEN = 'b19451d5ac3561883a6910854516cbd568c46251'
 
 
 # BUILD CONF
-SMBIOS_PRODUCT = 'MacBookPro15,1'
-DEFAULT_SN = 'C02WVDY3KGYG',
-DEFAULT_MLB = 'C028248024NJP4FA8'
-DEFAULT_SMUUID = 'C167D3A2-CC13-4041-8CED-553D772C0749'
+SMBIOS_PRODUCT = 'MacBookPro15,3'
+DEFAULT_SN = 'C02ZQDYDLVCG'
+DEFAULT_MLB = 'C02947300QX0000JC'
+DEFAULT_SMUUID = '6E167E28-A39C-423F-B244-20152956DD0C'
 DELAY_AFTER_TYPE = 50
 KEXT_PIORITY = {
     'Lilu.kext': 0, 'VirtualSMC.kext': 10, 'AppleALC.kext': 20,
@@ -30,7 +32,7 @@ KEXT_PIORITY = {
     'VoodooI2C.kext': 40, 'VoodooI2CHID.kext': 50,
     'CPUFriend.kext': 21, 'CPUFriendDataProvider.kext': 22,
 }
-BUILD_PREFIX = 'XPS15-9570'
+BUILD_PREFIX = 'INSPIRON-759x'
 
 
 def c(text, color):
@@ -78,7 +80,9 @@ parser.add_argument('--fixsleep', default=False, action='store_true',
 parser.add_argument('--gen', default=False, action='store_true',
                     help='generate SN, MLB and SmUUID')
 parser.add_argument('--self', default=False, action='store_true',
-                    help='update from https://github.com/xxxzc/xps15-9570-macos/archive/master.zip')
+                    help='update from {}/archive/master.zip'.format(GITHUB_URL))
+parser.add_argument('--build', default=False, action='store_true',
+                    help='build source into zip files')
 
 args = parser.parse_args()
 
@@ -250,7 +254,7 @@ class Package:
             if isgithub:
                 req = Request('https://api.github.com/repos/{}/{}/releases/{}'.format(
                     user, repo, 'tags/' + rver if rver != 'latest' else rver),
-                    headers={'Authorization': 'token {}'.format(b64decode(self.GITHUB_TOKEN).decode('utf8'))})
+                    headers={'Authorization': 'token {}'.format(self.GITHUB_TOKEN)})
                 print(req.get_full_url())
             else:
                 req = 'https://api.bitbucket.org/2.0/repositories/{}/{}/downloads'.format(
@@ -569,106 +573,73 @@ def update_oc_info(folder: Path):
     return
 
 
-if __name__ == '__main__':
-    path = Path(args.p).absolute()
+# Env variable
+path = Path(args.p).absolute()
+CLOVER, OC = R('CLOVER'), R('OC')
 
-    CLOVER, OC = R('CLOVER'), R('OC')
-    folders = []
-    if path == root:
-        folders = [folder for folder in (CLOVER, OC) if folder.exists()]
-    elif path == CLOVER or CLOVER in path.parents:
-        folders = [CLOVER]
-    elif path == OC or OC in path.parents:
-        folders = [OC]
+# Args functions
 
-    if args.zip:
-        sh('rm -rf {}/*.aml'.format(R('ACPI')))
-        for folder in folders:
-            set_config(folder / 'config.plist',
-                       'sn={} mlb={} smuuid={} bootarg+-v'.format(DEFAULT_SN, DEFAULT_MLB, DEFAULT_SMUUID).split(' '))
-            sh('cd {} && zip -r {}-{}-$(date +%y%m).zip {} README.md update.py packages.csv'.format(
-                root, BUILD_PREFIX, folder.name, folder.name))
-        Done()
 
-    if args.gen:
-        macserial = R('macserial')
-        if not macserial.exists():
-            update_packages([
-                Package(
-                    name='macserial', folder=root,
-                    description='', version='latest',
-                    pattern='.*-mac', url='https://github.com/acidanthera/MacInfoPkg'
-                )
-            ])
-        sn, s, mlb = shout(
-            '{} -m {} -g -n 1'.format(macserial, SMBIOS_PRODUCT)).split(' ')
-        uuid = shout('uuidgen')
-        for folder in folders:
-            set_config(folder / 'config.plist',
-                       'sn={} mlb={} smuuid={}'.format(sn, mlb, uuid).split(' '))
-        Done()
+def zip_folder(folders):
+    sh('rm -rf {}/*.aml'.format(R('ACPI')))
+    for folder in folders:
+        set_config(folder / 'config.plist',
+                   'sn={} mlb={} smuuid={} bootarg+-v'.format(DEFAULT_SN, DEFAULT_MLB, DEFAULT_SMUUID).split(' '))
+        sh('cd {} && zip -r {}-{}-$(date +%y%m).zip {} README.md update.py packages.csv'.format(
+            root, BUILD_PREFIX, folder.name, folder.name))
 
-    '''
-    update ACPI, packages.csv and update.py from repo
-    '''
-    if args.self:
-        sh('curl -# -LOk {}/archive/master.zip'.format(GITHUB_URL))
-        sh('unzip {} -d {}'.format('master.zip', root))
-        master = R('{}-macos-master'.format(BUILD_PREFIX.lower()))
-        for folder in folders:
-            config = folder / 'config.plist'
-            if config.exists():
-                masterconfig = Plist(master / folder.name / 'config.plist')
-                Plist(config).copy(masterconfig)
-                masterconfig.save()
-            else:
-                sh('rm -rf {}'.format(master / folder.name))
-        sh('cp -pr {}/* {}'.format(master, root))
-        update_acpi(R('ACPI'), folders)
-        if R('OC').exists():
-            update_oc_info(R('OC'))
-        sh('rm -rf {} {}'.format('master.zip', master))
-        Done()
 
-    if args.acpi:
-        acpi = R('ACPI')
-        update_acpi(acpi, (CLOVER, OC))
-        Done()
+def gen(folders):
+    macserial = R('macserial')
+    if not macserial.exists():
+        update_packages([
+            Package(
+                name='macserial', folder=root,
+                description='', version='latest',
+                pattern='.*-mac', url='https://github.com/acidanthera/MacInfoPkg'
+            )
+        ])
+    sn, s, mlb = shout(
+        '{} -m {} -g -n 1'.format(macserial, SMBIOS_PRODUCT)).split(' ')
+    uuid = shout('uuidgen')
+    for folder in folders:
+        set_config(folder / 'config.plist',
+                   'sn={} mlb={} smuuid={}'.format(sn, mlb, uuid).split(' '))
 
-    '''
-    Set config.plist
-    '''
-    if args.set:  # set config
-        if path.name.endswith('.plist'):
-            set_config(path, args.set)
+
+def self_update(folders):
+    sh('curl -# -LOk {}/archive/master.zip'.format(GITHUB_URL))
+    sh('unzip {} -d {}'.format('master.zip', root))
+    master = R('{}-macos-master'.format(BUILD_PREFIX.lower()))
+    for folder in folders:
+        config = folder / 'config.plist'
+        if config.exists():
+            masterconfig = Plist(master / folder.name / 'config.plist')
+            Plist(config).copy(masterconfig)
+            masterconfig.save()
         else:
-            for folder in folders:
-                set_config(folder / 'config.plist', args.set)
-        Done()
+            sh('rm -rf {}'.format(master / folder.name))
+    sh('cp -pr {}/* {}'.format(master, root))
+    update_acpi(R('ACPI'), folders)
+    if R('OC').exists():
+        update_oc_info(R('OC'))
+    sh('rm -rf {} {}'.format('master.zip', master))
 
-    '''
-    Replace current configuration with release
-    '''
-    # if args.release:
-    #     for folder in folders:
-    #         replace_with_release(folder, args.release)
-    #     Done()
 
-    '''
-    Update themes
-    '''
-    if path.name == 'themes':
-        update_themes(path)
-        Done()
-    elif path.parent.name == 'themes':
-        download_theme(path)
-        Done()
-    elif path.name == 'CLOVER' or (path == root and CLOVER.exists()):
-        update_themes(CLOVER / 'themes')
+def acpi():
+    acpi = R('ACPI')
+    update_acpi(acpi, (CLOVER, OC))
 
-    '''
-    Update packages
-    '''
+
+def set_conf_plist(folders):
+    if path.name.endswith('.plist'):
+        set_config(path, args.set)
+    else:
+        for folder in folders:
+            set_config(folder / 'config.plist', args.set)
+
+
+def default(folders):
     keyword = ''
     if path.name in ('Kexts', 'kexts', 'Other'):
         keyword = 'kext'
@@ -715,4 +686,74 @@ if __name__ == '__main__':
     if OC in folders:
         update_oc_info(OC)
 
+
+if __name__ == '__main__':
+    folders = []
+    if path == root:
+        folders = [folder for folder in (CLOVER, OC) if folder.exists()]
+    elif path == CLOVER or CLOVER in path.parents:
+        folders = [CLOVER]
+    elif path == OC or OC in path.parents:
+        folders = [OC]
+
+    if args.zip:
+        zip_folder(folders)
+        Done()
+
+    if args.gen:
+        gen(folders)
+        Done()
+
+    '''
+    update ACPI, packages.csv and update.py from repo
+    '''
+    if args.self:
+        self_update(folders)
+        Done()
+
+    if args.acpi:
+        acpi()
+        Done()
+
+    '''
+    Set config.plist
+    '''
+    if args.set:  # set config
+        set_conf_plist()
+        Done()
+
+    '''
+    Build source into zip file
+    '''
+    if args.build:  # set config
+        acpi()
+        default(folders)
+        zip_folder(folders)
+        Done()
+
+    '''
+    Replace current configuration with release
+    '''
+    # if args.release:
+    #     for folder in folders:
+    #         replace_with_release(folder, args.release)
+    #     Done()
+
+    '''
+    Update themes
+    '''
+    if path.name == 'themes':
+        update_themes(path)
+        Done()
+    elif path.parent.name == 'themes':
+        download_theme(path)
+        Done()
+    elif path.name == 'CLOVER' or (path == root and CLOVER.exists()):
+        update_themes(CLOVER / 'themes')
+        Done()
+
+    '''
+    Update packages
+    '''
+    default()
     Done()
