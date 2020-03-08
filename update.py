@@ -102,7 +102,7 @@ if args.fixsleep:
     fix_sleep()
     Done()
 else:
-    if 'set' not in args:
+    if not args.set:
         # Access token (only read permission) of your github account
         GITHUB_ACCESS_TOKEN = input("Enter your github read access token: ")
 
