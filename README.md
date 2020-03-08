@@ -96,13 +96,18 @@ You have to add following config to Device Properties:
 
 See [THE Solution:Dell DW1820A](https://www.tonymacx86.com/threads/the-solution-dell-dw1820a-broadcom-bcm94350zae-macos-15.288026/)
 
-### CLOVER Theme
+### CLOVER and Opencore Theme
 
 You can set theme to one of these [themes](https://sourceforge.net/p/cloverefiboot/themes/ci/master/tree/themes/).
 
+Opencore now can be using clover theme by convert function in update.py, run below to set and theme you like
++ Right now opencore only have white font color, so select dark theme is best choice
+
 ```sh
-python update.py --set theme=xxx # will download if not exist
+python update.py --set theme=name # will download if not exist
 ```
++ Example `python update.py --set theme=Material`
+
 
 ### NTFS Writing
 
