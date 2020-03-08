@@ -233,6 +233,8 @@
 			<key>Tool</key>
 			<true/>
 		</dict>
+		<key>Theme</key>
+		<string>null</string>
 	</dict>
 	<key>KernelAndKextPatches</key>
 	<dict>

@@ -379,7 +379,7 @@ def set_config(configfile: Path, kvs: list):
     'bootarg--v' to remove -v in bootarg
     'bootarg+darkwake=1' to set darkwake to 1
     '''
-    CLOVER = True if "CLOVER" in str(configfile).split("/") else False
+    isCLOVER = True if "CLOVER" in str(configfile).split("/") else False
 
     if not configfile.exists() or not configfile.name.endswith('.plist'):
         return False
@@ -400,7 +400,7 @@ def set_config(configfile: Path, kvs: list):
                     continue
 
             if k == 'theme':
-                if CLOVER:
+                if isCLOVER:
                     theme = R('CLOVER', 'themes', v)
                     if not theme.exists():
                         download_theme(theme)
@@ -413,10 +413,9 @@ def set_config(configfile: Path, kvs: list):
             if k == 'uiscale':
                 if config.type == 'oc':
                     v = 'Ag==' if v == '2' else 'AQ=='
-
-            if CLOVER:
-                config.set(k, v)
+            if isCLOVER or k != 'theme':
                 print('Set', config.keyword(k), 'to', v)
+                config.set(k, v)
 
     if bootargs:
         boot, key = config.get('bootarg')
