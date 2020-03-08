@@ -114,22 +114,24 @@ mappers = dict(CLOVER={
 }, OC={})
 
 CONVERT_THEME = {
-    "background.png": "Background.png",
-    "os_legacy.icns": "func_resetnvram.icns",
+    "Background.png": "background.png",
+    "func_resetnvram.icns": "os_legacy.icns",
     "os_cata.icns": "os_cata.icns",
-    "os_mx.icns": "os_custom.icns",
+    "os_custom.icns": "os_mx.icns",
     "os_debian.icns": "os_debian.icns",
     "os_fedora.icns": "os_fedora.icns",
     "os_freebsd.icns": "os_freebsd.icns",
     "os_linux.icns": "os_linux.icns",
-    "os_mac.icns": "os_mac.icns",
+    # Attemp to fix opencore bug os_cata.icns => os_mac
+    "os_mac.icns": "os_cata.icns",
     "os_moja.icns": "os_moja.icns",
     "os_recovery.icns": "os_recovery.icns",
     "os_redhat.icns": "os_redhat.icns",
     "os_ubuntu.icns": "os_ubuntu.icns",
     "os_unknown.icns": "os_unknown.icns",
-    "os_win.icns": "os_win.icns",
-    "os_vista.icns": "os_win10.icns",
+    # Attemp to fix opencore bug os_vista.icns => os_win
+    "os_win.icns": "os_vista.icns",
+    "os_win10.icns": "os_vista.icns",
 }
 
 
@@ -141,12 +143,13 @@ def convert_themes_clover_opencore(clover_theme_patch, opencore_theme_patch):
     for file in listdir(WORK_PATCH):
         if file == 'background.png':
             sh('mv {} {}/opencore/{}'.format(WORK_PATCH +
-                                             '/' + file, WORK_PATCH, CONVERT_THEME[file]))
+                                             '/' + file, WORK_PATCH, 'Background.png'))
         if file == 'icons':
-            for icon in listdir(WORK_PATCH + '/' + file):
-                if icon in CONVERT_THEME:
-                    sh('mv {} {}/opencore/{}'.format(WORK_PATCH +
-                                                     '/icons/' + icon, WORK_PATCH, CONVERT_THEME[icon]))
+            icons = listdir(WORK_PATCH + '/' + file)
+            for oIcon, cIcon in CONVERT_THEME.items():
+                if cIcon in icons:
+                    sh('cp -rf {} {}/opencore/{}'.format(WORK_PATCH +
+                                                         '/icons/' + cIcon, WORK_PATCH, oIcon))
     for file in listdir(WORK_PATCH + '/opencore'):
         sh('mv -f {} {}'.format(WORK_PATCH + '/opencore/' + file, opencore_theme_patch))
     sh('rm -rf ./temp')
