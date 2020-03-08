@@ -2,6 +2,7 @@ import argparse
 from pathlib import Path
 import plistlib
 from os.path import join
+from os import listdir
 from os import system as sh
 from datetime import datetime, date
 from base64 import b64decode
@@ -101,8 +102,9 @@ if args.fixsleep:
     fix_sleep()
     Done()
 else:
-    # Access token (only read permission) of your github account
-    GITHUB_ACCESS_TOKEN = input("Enter your github read access token: ")
+    if 'set' not in args:
+        # Access token (only read permission) of your github account
+        GITHUB_ACCESS_TOKEN = input("Enter your github read access token: ")
 
 
 mappers = dict(CLOVER={
@@ -110,6 +112,44 @@ mappers = dict(CLOVER={
     'Kexts': 'kexts/Other',
     'Drivers': 'drivers/UEFI'
 }, OC={})
+
+CONVERT_THEME = {
+    "background.png": "Background.png",
+    "os_legacy.icns": "func_resetnvram.icns",
+    "os_cata.icns": "os_cata.icns",
+    "os_mx.icns": "os_custom.icns",
+    "os_debian.icns": "os_debian.icns",
+    "os_fedora.icns": "os_fedora.icns",
+    "os_freebsd.icns": "os_freebsd.icns",
+    "os_linux.icns": "os_linux.icns",
+    "os_mac.icns": "os_mac.icns",
+    "os_moja.icns": "os_moja.icns",
+    "os_recovery.icns": "os_recovery.icns",
+    "os_redhat.icns": "os_redhat.icns",
+    "os_ubuntu.icns": "os_ubuntu.icns",
+    "os_unknown.icns": "os_unknown.icns",
+    "os_win.icns": "os_win.icns",
+    "os_vista.icns": "os_win10.icns",
+}
+
+
+def convert_themes_clover_opencore(clover_theme_patch, opencore_theme_patch):
+    print("Converting to opencore themes...")
+    WORK_PATCH = './tmp/convert'
+    sh('cp -r {} {}'.format(clover_theme_patch, WORK_PATCH))
+    sh('mkdir -p {}/opencore'.format(WORK_PATCH))
+    for file in listdir(WORK_PATCH):
+        if file == 'background.png':
+            sh('mv {} {}/opencore/{}'.format(WORK_PATCH +
+                                             '/' + file, WORK_PATCH, CONVERT_THEME[file]))
+        if file == 'icons':
+            for icon in listdir(WORK_PATCH + '/' + file):
+                if icon in CONVERT_THEME:
+                    sh('mv {} {}/opencore/{}'.format(WORK_PATCH +
+                                                     '/icons/' + icon, WORK_PATCH, CONVERT_THEME[icon]))
+    for file in listdir(WORK_PATCH + '/opencore'):
+        sh('mv -f {} {}'.format(WORK_PATCH + '/opencore/' + file, opencore_theme_patch))
+    sh('rm -rf ./temp')
 
 
 def Title(*args):
@@ -339,6 +379,8 @@ def set_config(configfile: Path, kvs: list):
     'bootarg--v' to remove -v in bootarg
     'bootarg+darkwake=1' to set darkwake to 1
     '''
+    CLOVER = True if "CLOVER" in str(configfile).split("/") else False
+
     if not configfile.exists() or not configfile.name.endswith('.plist'):
         return False
 
@@ -353,20 +395,28 @@ def set_config(configfile: Path, kvs: list):
         else:
             k, v = kv.split('=', 1)
             if k not in config.keywords:
-                print(k, 'field not found.')
-                continue
+                if k != 'theme':
+                    print(k, 'field not found.')
+                    continue
 
             if k == 'theme':
-                theme = R('CLOVER', 'themes', v)
-                if not theme.exists():
+                if CLOVER:
+                    theme = R('CLOVER', 'themes', v)
+                    if not theme.exists():
+                        download_theme(theme)
+                else:
+                    print('found')
+                    theme = R('tmp', 'themes', v)
                     download_theme(theme)
+                    convert_themes_clover_opencore(theme, R('OC', 'Icons'))
 
             if k == 'uiscale':
                 if config.type == 'oc':
                     v = 'Ag==' if v == '2' else 'AQ=='
 
-            config.set(k, v)
-            print('Set', config.keyword(k), 'to', v)
+            if CLOVER:
+                config.set(k, v)
+                print('Set', config.keyword(k), 'to', v)
 
     if bootargs:
         boot, key = config.get('bootarg')
@@ -586,6 +636,7 @@ def update_oc_info(folder: Path):
 # Env variable
 path = Path(args.p).absolute()
 CLOVER, OC = R('CLOVER'), R('OC')
+TEMP = R('temp')
 
 # Args functions
 
@@ -745,7 +796,7 @@ if __name__ == '__main__':
     Set config.plist
     '''
     if args.set:  # set config
-        set_conf_plist()
+        set_conf_plist(folders)
         Done()
 
     '''
