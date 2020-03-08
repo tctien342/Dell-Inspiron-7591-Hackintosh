@@ -17,7 +17,7 @@ root = Path(__file__).absolute().parent
 GITHUB_URL = 'https://github.com/tctien342/Dell-Inspiron-7591-Hackintosh'
 GITHUB_DESCRIPTION = 'Configuration for Dell Inspiron 759x'
 # Access token (only read permission) of your github account
-GITHUB_ACCESS_TOKEN = '3b57a8f62f7ff1faea3ba908345fb6609b1873e8'
+GITHUB_ACCESS_TOKEN = input("Enter your github read access token:")
 
 
 # BUILD CONF
@@ -27,12 +27,15 @@ DEFAULT_MLB = 'C02947300QX0000JC'
 DEFAULT_SMUUID = '6E167E28-A39C-423F-B244-20152956DD0C'
 DELAY_AFTER_TYPE = 50
 KEXT_PIORITY = {
-    'Lilu.kext': 0, 'VirtualSMC.kext': 10, 'AppleALC.kext': 20,
+    'Lilu.kext': 0, 'VirtualSMC.kext': 10, 'CpuTscSync.kext': 15, 'AppleALC.kext': 20, 'VoodooPS2Controller.kext': 25,
     'VoodooGPIO.kext': 30, 'VoodooI2CServices.kext': 35,
     'VoodooI2C.kext': 40, 'VoodooI2CHID.kext': 50,
     'CPUFriend.kext': 21, 'CPUFriendDataProvider.kext': 22,
 }
 BUILD_PREFIX = 'INSPIRON-759x'
+SHIPPED_FOLDER = [
+    'PostInstall'
+]
 
 
 def c(text, color):
@@ -585,8 +588,11 @@ def zip_folder(folders):
     for folder in folders:
         set_config(folder / 'config.plist',
                    'sn={} mlb={} smuuid={} bootarg+-v'.format(DEFAULT_SN, DEFAULT_MLB, DEFAULT_SMUUID).split(' '))
-        sh('cd {} && zip -r {}-{}-$(date +%y%m).zip {} README.md update.py packages.csv PostInstall'.format(
-            root, BUILD_PREFIX, folder.name, folder.name))
+        sh('cd {} && zip -r {}-{}-$(date +%y%m%d).zip {} README.md update.py packages.csv {}'.format(
+            root, BUILD_PREFIX, folder.name, folder.name, ' '.join(SHIPPED_FOLDER)))
+        # Move to build folder
+    sh('mkdir -p Builds')
+    sh('mv {}* ./Builds'.format(BUILD_PREFIX))
 
 
 def gen(folders):
