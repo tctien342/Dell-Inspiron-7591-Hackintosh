@@ -16,9 +16,7 @@ root = Path(__file__).absolute().parent
 # Link for your config repo
 GITHUB_URL = 'https://github.com/tctien342/Dell-Inspiron-7591-Hackintosh'
 GITHUB_DESCRIPTION = 'Configuration for Dell Inspiron 759x'
-# Access token (only read permission) of your github account
-GITHUB_ACCESS_TOKEN = input("Enter your github read access token: ")
-
+GITHUB_ACCESS_TOKEN = ''
 
 # BUILD CONF
 SMBIOS_PRODUCT = 'MacBookPro15,3'
@@ -86,16 +84,25 @@ parser.add_argument('--self', default=False, action='store_true',
                     help='update from {}/archive/master.zip'.format(GITHUB_URL))
 parser.add_argument('--build', default=False, action='store_true',
                     help='build source into zip files')
+parser.add_argument('--post', default=False, action='store_true',
+                    help='fix sleep and audio then rebuild kext')
 
 args = parser.parse_args()
 
 
-if args.fixsleep:
+def fix_sleep():
     sh('sudo pmset -a hibernatemode 0')
     sh('sudo pmset -a autopoweroff 0')
     sh('sudo pmset -a standby 0')
     sh('sudo pmset -a proximitywake 0')
+
+
+if args.fixsleep:
+    fix_sleep()
     Done()
+else:
+    # Access token (only read permission) of your github account
+    GITHUB_ACCESS_TOKEN = input("Enter your github read access token: ")
 
 
 mappers = dict(CLOVER={
@@ -592,8 +599,13 @@ def zip_folder(folders):
             root, BUILD_PREFIX, folder.name, folder.name, ' '.join(SHIPPED_FOLDER)))
     # Move to build folder
     sh('mkdir -p Builds')
-    sh('rm -r ./Builds/*')
+    sh('rm -rf  ./Builds/*')
     sh('mv {}* ./Builds'.format(BUILD_PREFIX))
+
+
+def post_install():
+    fix_sleep()
+    sh('sudo bash ./PostInstall/CombojackFix/install.sh')
 
 
 def gen(folders):
@@ -720,6 +732,13 @@ if __name__ == '__main__':
 
     if args.acpi:
         acpi()
+        Done()
+
+    '''
+    post after installed mac os, optimize, fix audio
+    '''
+    if args.post:
+        post_install()
         Done()
 
     '''

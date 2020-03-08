@@ -33,11 +33,6 @@ sudo chmod 644 /Library/LaunchDaemons/com.XPS.ComboJack.plist
 sudo chown root:wheel /Library/LaunchDaemons/com.XPS.ComboJack.plist
 sudo launchctl load /Library/LaunchDaemons/com.XPS.ComboJack.plist
 
-echo "<> Installing SleepFix..."
-sudo pmset -a tcpkeepalive 0
-sudo pmset -a powernap 0
-sudo pmset -a proximitywake 0
-
 echo "<> Rebuild kext..."
 sudo spctl --master-disable
 sudo mount -uw /

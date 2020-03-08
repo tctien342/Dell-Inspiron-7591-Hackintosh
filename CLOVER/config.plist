@@ -102,7 +102,7 @@
 		<key>EFILoginHiDPI</key>
 		<integer>1</integer>
 		<key>UIScale</key>
-		<integer>2</integer>
+		<integer>1</integer>
 	</dict>
 	<key>Devices</key>
 	<dict>

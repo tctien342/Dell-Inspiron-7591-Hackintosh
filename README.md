@@ -26,13 +26,20 @@
 + After install success, run PostInstall/install.sh in terminal
 + Then you need to mount EFI partition and replace it with shipped EFI
 + After System EFI replaced by your EFI, Using Opencore Configurator, Clover Configurator or update script to change SMBIOS, generate your serial and MBL
-+ Change MAC in NullEthernet with your new created one, see below
++ Run `python update.py --post` to fix sleep and audio
+    + You can run `bash install.sh` in PostInstall/CombojackFix if cant use above script
+
++ If you're using intel card, please use NullEthernet for fixing iMess and FaceTime
+    + Change MAC in NullEthernet with your new created one, see below
 
 ### Fake ethernet
 + Generate your MAC address in SSDT-RMNE if using NullEthernet
 + You can make an MacAddress in [Mac generator online](https://www.browserling.com/tools/random-mac)
 + Edit SSDT-RMNE.aml with MaciASL and replace MAC with your generated one
 + Save as -> ACPI machine language (replace exited one)
++ Add it to your bootloader:
+    + Kext add in Kexts (Opencore need add to Kernel in config.plist)
+    + AML's file add to ACPI folder (Opencore need add to ACPI)
 + Reboot
 
 ### Sleep Wake
@@ -58,7 +65,7 @@ python update.py --set sn=xxx mlb=yyy smuuid=zzz
 python update.py --gen # generate and use new SN, MLB and SmUUID
 ```
 
-### FHD Display
+### Display
 
 If you are using FHD(1080p) display, you may want to enable font smoothing:
 
@@ -66,10 +73,10 @@ If you are using FHD(1080p) display, you may want to enable font smoothing:
 defaults write -g CGFontRenderingFontSmoothingDisabled -bool NO
 ```
 
-If your laptop display is 1080p, you should set uiscale to :
+If your laptop display is 4K screen, you should set uiscale to :
 
 ```sh
-python update.py --set uiscale=1
+python update.py --set uiscale=2
 ```
 
 ### DW1820a
