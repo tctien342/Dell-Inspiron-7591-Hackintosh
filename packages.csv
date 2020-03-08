@@ -13,11 +13,11 @@ Kexts,SMCBatteryManager.kext,Emulation layer of AppleSmartBattery,latest,.*RELEA
 Kexts,SMCProcessor.kext,Add support for temperature monitoring,latest,.*RELEASE,https://github.com/acidanthera/VirtualSMC
 Kexts,USBPorts.kext,USBPorts for dell Insipron 759x,70320,USBPorts.kext.zip,https://github.com/tctien342/Dell-Inspiron-7591-Hackintosh
 Kexts,VirtualSMC.kext,SMC emulator layer,latest,.*RELEASE,https://github.com/acidanthera/VirtualSMC
-Kexts,VoodooI2C.kext,@lvs1974 VoodooI2C optimized,70320,VoodooI2C.kext.zip,https://github.com/tctien342/Dell-Inspiron-7591-Hackintosh
-Kexts,VoodooI2CHID.kext,@lvs1974 VoodooI2CHID optimized,70320,VoodooI2CHID.kext.zip,https://github.com/tctien342/Dell-Inspiron-7591-Hackintosh
+Kexts,VoodooI2C.kext,Lvs1974 VoodooI2C optimized,70320,VoodooI2C.kext.zip,https://github.com/tctien342/Dell-Inspiron-7591-Hackintosh
+Kexts,VoodooI2CHID.kext,Lvs1974 VoodooI2CHID optimized,70320,VoodooI2CHID.kext.zip,https://github.com/tctien342/Dell-Inspiron-7591-Hackintosh
 Kexts,VoodooPS2Controller.kext,PS/2 controller,latest,.*RELEASE,https://github.com/acidanthera/VoodooPS2
 Kexts,WhateverGreen.kext,Patches for GPUs,latest,.*RELEASE,https://github.com/acidanthera/WhateverGreen
-Kexts,CpuTscSync.kext,@lvs1974 CpuTscSync replacement for voodooi2c,70320,CpuTscSync.kext.zip,https://github.com/tctien342/Dell-Inspiron-7591-Hackintosh
+Kexts,CpuTscSync.kext,Lvs1974 CpuTscSync replacement for VoodooI2C,70320,CpuTscSync.kext.zip,https://github.com/tctien342/Dell-Inspiron-7591-Hackintosh
 Drivers,ApfsDriverLoader.efi,Open source apfs.efi loader,latest,.*RELEASE,https://github.com/acidanthera/AppleSupportPkg
 Drivers,VBoxHfs.efi,HFS+ support with bless extensions,latest,.*RELEASE,https://github.com/acidanthera/AppleSupportPkg
 OC/Drivers,FwRuntimeServices.efi,Normal functioning of UEFI Runtime Services,latest,.*RELEASE,https://github.com/n-d-k/OpenCorePkg
