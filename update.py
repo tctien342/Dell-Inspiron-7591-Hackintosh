@@ -133,6 +133,7 @@ CONVERT_THEME = {
     "os_win.icns": "os_vista.icns",
     "os_win10.icns": "os_vista.icns",
 }
+CONVERT_FALLBACK_DEFAULT_ICON = 'os_mac.icns'
 
 
 def convert_themes_clover_opencore(clover_theme_patch, opencore_theme_patch):
@@ -150,6 +151,9 @@ def convert_themes_clover_opencore(clover_theme_patch, opencore_theme_patch):
                 if cIcon in icons:
                     sh('cp -rf {} {}/opencore/{}'.format(WORK_PATCH +
                                                          '/icons/' + cIcon, WORK_PATCH, oIcon))
+                else:
+                    sh('cp -rf {} {}/opencore/{}'.format(WORK_PATCH +
+                                                         '/icons/' + CONVERT_FALLBACK_DEFAULT_ICON, WORK_PATCH, oIcon))
     for file in listdir(WORK_PATCH + '/opencore'):
         sh('mv -f {} {}'.format(WORK_PATCH + '/opencore/' + file, opencore_theme_patch))
     sh('rm -rf ./temp')
