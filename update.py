@@ -156,7 +156,7 @@ def convert_themes_clover_opencore(clover_theme_patch, opencore_theme_patch):
                                                          '/icons/' + CONVERT_FALLBACK_DEFAULT_ICON, WORK_PATCH, oIcon))
     for file in listdir(WORK_PATCH + '/opencore'):
         sh('mv -f {} {}'.format(WORK_PATCH + '/opencore/' + file, opencore_theme_patch))
-    sh('rm -rf ./temp')
+    sh('rm -rf ./tmp')
 
 
 def Title(*args):

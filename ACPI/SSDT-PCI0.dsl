@@ -15,7 +15,20 @@ DefinitionBlock ("", "SSDT", 2, "hack", "PCI0", 0x00000000)
     External (_SB_.PCI0, DeviceObj)
     External (_SB_.PCI0.LPCB, DeviceObj)
     External (_SB_.PCI0.SBUS.BUS0, DeviceObj)
-
+    External (_SB_.AC__, DeviceObj)    // (from opcode)
+    
+    Scope (\_SB.AC)
+    {
+        If (_OSI ("Darwin"))
+        {
+            Name (_PRW, Package (0x02)  // _PRW: Power Resources for Wake
+            {
+                0x18, 
+                0x03
+            })
+        }
+    }
+    
     Scope (_SB.PCI0)
     {
         Device (MCHC) // MCHC[1]
