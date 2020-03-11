@@ -18,29 +18,39 @@
 - Discrete GPU (Disabled)
 - Fingerprint (Disabled)
 
+## For building
+
+> This will pull all newest kext and build into zip files
+
+- Clone this repo
+- Run follow command: `python3 update.py --build`
+
 ## Installation
 
-+ Prepair an Mac installer in USB with bootloader you choice ( Use unibeast to create it )
-+ Replace EFI folder in USB EFI partition with this shipped EFI folder
-+ Boot into USB and select MacOs installer
-+ After install success, run PostInstall/install.sh in terminal
-+ Then you need to mount EFI partition and replace it with shipped EFI
-+ After System EFI replaced by your EFI, Using Opencore Configurator, Clover Configurator or update script to change SMBIOS, generate your serial and MBL
-+ Run `python3 update.py --post` to fix sleep and audio
-    + You can run `bash install.sh` in PostInstall/CombojackFix if cant use above script
+- Prepair an Mac installer in USB with bootloader you choice ( Use unibeast to create it )
+- Replace EFI/(Booloader) folder in USB EFI partition with this shipped bootloader folder
+  - If you dont have EFI folder, go to bootloader download pages and take them
+- Boot into USB and select MacOs installer
+- After install success, run PostInstall/install.sh in terminal
+- Then you need to mount EFI partition and replace it with USB's EFI
+- After System EFI replaced by your EFI, Using Opencore Configurator, Clover Configurator or update script to change SMBIOS, generate your serial and MBL
+- Run `python3 update.py --post` to fix sleep and audio
 
-+ If you're using intel card, please use NullEthernet for fixing iMess and FaceTime
-    + Change MAC in NullEthernet with your new created one, see below
+  - You can run `bash install.sh` in PostInstall/CombojackFix if cant use above script
+
+- If you're using intel card, please use NullEthernet for fixing iMess and FaceTime
+  - Change MAC in NullEthernet with your new created one, see below
 
 ### Fake ethernet
-+ Generate your MAC address in SSDT-RMNE if using NullEthernet
-+ You can make an MacAddress in [Mac generator online](https://www.browserling.com/tools/random-mac)
-+ Edit SSDT-RMNE.aml with MaciASL and replace MAC with your generated one
-+ Save as -> ACPI machine language (replace exited one)
-+ Add it to your bootloader:
-    + Kext add in Kexts (Opencore need add to Kernel in config.plist)
-    + AML's file add to ACPI folder (Opencore need add to ACPI)
-+ Reboot
+
+- Generate your MAC address in SSDT-RMNE if using NullEthernet
+- You can make an MacAddress in [Mac generator online](https://www.browserling.com/tools/random-mac)
+- Edit SSDT-RMNE.aml with MaciASL and replace MAC with your generated one
+- Save as -> ACPI machine language (replace exited one)
+- Add it to your bootloader:
+  - Kext add in Kexts (Opencore need add to Kernel in config.plist)
+  - AML's file add to ACPI folder (Opencore need add to ACPI)
+- Reboot
 
 ### Sleep Wake
 
@@ -90,6 +100,7 @@ You have to add following config to Device Properties:
 ```
 
 > Into
+
 ```xml
 <key>PciRoot(0x0)/Pci(0x1c,0x0)/Pci(0x0,0x0)</key>
 ```
@@ -101,20 +112,20 @@ See [THE Solution:Dell DW1820A](https://www.tonymacx86.com/threads/the-solution-
 You can set theme to one of these [themes](https://sourceforge.net/p/cloverefiboot/themes/ci/master/tree/themes/).
 
 Opencore now can be using clover theme by convert function in update.py, run below to set and theme you like
-+ Right now opencore only have white font color, so select dark theme is best choice
+
+- Right now opencore only have white font color, so select dark theme is best choice
 
 ```sh
 python update.py --set theme=name # will download if not exist
 ```
-+ Example `python3 update.py --set theme=Material`
 
+- Example `python3 update.py --set theme=Material`
 
 ### NTFS Writing
 
 Add `UUID=xxx none ntfs rw,auto,nobrowse` to `/etc/fstab`, **xxx** is the UUID of your NTFS partition.
 
 If your NTFS partition has Windows installed, you need to run `powercfg -h off` in powershell in Windows to disable hibernation.
-
 
 ### Tap Delay
 

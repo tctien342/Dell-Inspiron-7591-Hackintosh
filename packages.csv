@@ -1,6 +1,6 @@
 Folder,Name,Description,Version,Pattern,Url
 Kexts,AirportBrcmFixup.kext,Broadcom Wi-Fi driver,latest,.*RELEASE,https://github.com/acidanthera/AirportBrcmFixup
-Kexts,AppleALC.kext,Custom appleALC for dell inspiron 759x,70320,AppleALC.kext.zip,https://github.com/tctien342/Dell-Inspiron-7591-Hackintosh
+Kexts,AppleALC.kext,Custom appleALC for dell inspiron 759x,110320,AppleALC.kext.zip,https://github.com/tctien342/Dell-Inspiron-7591-Hackintosh
 Kexts,BrcmBluetoothInjector.kext,Injects the BT hardware data,latest,.*RELEASE,https://github.com/acidanthera/BrcmPatchRAM
 Kexts,BrcmFirmwareData.kext,Most appropriate for bootloader injection,latest,.*RELEASE,https://github.com/acidanthera/BrcmPatchRAM
 Kexts,BrcmPatchRAM3.kext,Apply the firmware update to Bluetooth,latest,.*RELEASE,https://github.com/acidanthera/BrcmPatchRAM
