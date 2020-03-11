@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>BuildMachineOSBuild</key>
-	<string>19D76</string>
+	<string>19C57</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleExecutable</key>
@@ -29,17 +29,17 @@
 	<key>DTCompiler</key>
 	<string>com.apple.compilers.llvm.clang.1_0</string>
 	<key>DTPlatformBuild</key>
-	<string>11C504</string>
+	<string>11B500</string>
 	<key>DTPlatformVersion</key>
 	<string>GM</string>
 	<key>DTSDKBuild</key>
-	<string>19B90</string>
+	<string>19B89</string>
 	<key>DTSDKName</key>
 	<string>macosx10.15</string>
 	<key>DTXcode</key>
-	<string>1130</string>
+	<string>1120</string>
 	<key>DTXcodeBuild</key>
-	<string>11C504</string>
+	<string>11B500</string>
 	<key>IOKitPersonalities</key>
 	<dict>
 		<key>HDA Hardware Config Resource</key>
@@ -5457,19 +5457,14 @@
 					AwAAAA==
 					</data>
 					<key>Codec</key>
-					<string>DalianSky - Realtek ALC295/ALC3254 Dell7570</string>
+					<string>SaintNo - Realtek ALC295/ALC3254 Dell7590/7591</string>
 					<key>CodecID</key>
 					<integer>283902613</integer>
 					<key>ConfigData</key>
 					<data>
-					ASccIAEnHQEBJx6mAScfkAE3HPABNx0AATce
-					AAE3H0ABRxxAAUcdAQFHHhcBRx+QAUcMAgFn
-					HPABZx0AAWceAAFnH0ABdxzwAXcdAAF3HgAB
-					dx9AAYcc8AGHHQABhx4AAYcfQAGXHBABlx0Q
-					AZcegQGXHwIBpxzwAacdAAGnHgABpx9AAbcc
-					8AG3HQABtx4AAbcfQAHXHPAB1x0AAdceAAHX
-					H0AB5xzwAecdAAHnHgAB5x9AAhccMAIXHRAC
-					Fx4hAhcfAgIXDAI=
+					AZccEAGXHREBlx6BAZcfBAEnHPABJx0BASce
+					pgEnH5ACFxwgAhcdEAIXHiECFx8EAhcMAgFH
+					HBABRx0BAUceFwFHH5ABRwwC
 					</data>
 					<key>FuncGroup</key>
 					<integer>1</integer>
@@ -5584,14 +5579,9 @@
 					<integer>283902613</integer>
 					<key>ConfigData</key>
 					<data>
-					ASccMAEnHQEBJx6mAScftwE3HPABNx0AATce
-					AAE3H0ABRxwQAUcdAQFHHhcBRx+QAUcMAgFn
-					HPABZx0AAWceAAFnH0ABdxzwAXcdAAF3HgAB
-					dx9AAYcc8AGHHQABhx4AAYcfQAGXHHABlx0g
-					AZceqwGXHwIBpxzwAacdAAGnHgABpx9AAbcc
-					8AG3GwABtx4AAbcfQAHXHPAB1x0AAdceAAHX
-					H0AB5xzwAecdAAHnHgAB5x9AAhccMAIXHRAC
-					Fx4rAhcfAgIXDAI=
+					AZccEAGXHREBlx6BAZcfBAEnHPABJx0BASce
+					pgEnH5ACFxwgAhcdEAIXHiECFx8EAhcMAgFH
+					HBABRx0BAUceFwFHH5ABRwwC
 					</data>
 					<key>FuncGroup</key>
 					<integer>1</integer>
