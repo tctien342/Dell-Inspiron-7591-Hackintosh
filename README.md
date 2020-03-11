@@ -151,6 +151,8 @@ See [is-it-possible-to-get-rid-of-the-delay-between-right-clicking-and-seeing-th
 | DGPU         | 0x574   | 0x1 or 0x0       | 0x1           |
 | Voltage Lock | 0x78C   | 0x1 or 0x0       | 0x1 (1.6.0)   |
 
+You can follow [this](https://github.com/Azkali/GPD-P2-MAX-Hackintosh/issues/16#issuecomment-565882180) to change those value
+
 > For Bios 1.6.0 `0x78C` need set to 0x0 so VoltageShift can be used
 
 ## Credits
