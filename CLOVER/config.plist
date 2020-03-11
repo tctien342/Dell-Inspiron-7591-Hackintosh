@@ -28,20 +28,6 @@
 				</dict>
 				<dict>
 					<key>Comment</key>
-					<string>Rename _WAK to ZWAK</string>
-					<key>Disabled</key>
-					<false/>
-					<key>Find</key>
-					<data>
-					FDlfV0FLAQ==
-					</data>
-					<key>Replace</key>
-					<data>
-					FDlaV0FLAQ==
-					</data>
-				</dict>
-				<dict>
-					<key>Comment</key>
 					<string>Rename RP17.PXSX._RMV to XRMV</string>
 					<key>Disabled</key>
 					<false/>

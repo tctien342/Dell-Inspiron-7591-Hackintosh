@@ -10,6 +10,12 @@
 				<key>Enabled</key>
 				<true/>
 				<key>Path</key>
+				<string>SSDT-ALS0.aml</string>
+			</dict>
+			<dict>
+				<key>Enabled</key>
+				<true/>
+				<key>Path</key>
 				<string>SSDT-BCKM.aml</string>
 			</dict>
 			<dict>
@@ -17,6 +23,12 @@
 				<true/>
 				<key>Path</key>
 				<string>SSDT-DGPU.aml</string>
+			</dict>
+			<dict>
+				<key>Enabled</key>
+				<true/>
+				<key>Path</key>
+				<string>SSDT-EXT4-WakeScreen.aml</string>
 			</dict>
 			<dict>
 				<key>Enabled</key>
@@ -78,20 +90,6 @@
 				<key>Replace</key>
 				<data>
 				QlJUWAI=
-				</data>
-			</dict>
-			<dict>
-				<key>Comment</key>
-				<string>Rename _WAK to ZWAK</string>
-				<key>Enabled</key>
-				<true/>
-				<key>Find</key>
-				<data>
-				FDlfV0FLAQ==
-				</data>
-				<key>Replace</key>
-				<data>
-				FDlaV0FLAQ==
 				</data>
 			</dict>
 			<dict>
@@ -432,6 +430,16 @@
 				<true/>
 				<key>ExecutablePath</key>
 				<string>Contents/MacOS/SMCBatteryManager</string>
+				<key>PlistPath</key>
+				<string>Contents/Info.plist</string>
+			</dict>
+			<dict>
+				<key>BundlePath</key>
+				<string>SMCLightSensor.kext</string>
+				<key>Enabled</key>
+				<true/>
+				<key>ExecutablePath</key>
+				<string>Contents/MacOS/SMCLightSensor</string>
 				<key>PlistPath</key>
 				<string>Contents/Info.plist</string>
 			</dict>
