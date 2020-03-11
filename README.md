@@ -26,7 +26,7 @@
 + After install success, run PostInstall/install.sh in terminal
 + Then you need to mount EFI partition and replace it with shipped EFI
 + After System EFI replaced by your EFI, Using Opencore Configurator, Clover Configurator or update script to change SMBIOS, generate your serial and MBL
-+ Run `python update.py --post` to fix sleep and audio
++ Run `python3 update.py --post` to fix sleep and audio
     + You can run `bash install.sh` in PostInstall/CombojackFix if cant use above script
 
 + If you're using intel card, please use NullEthernet for fixing iMess and FaceTime
@@ -106,7 +106,7 @@ Opencore now can be using clover theme by convert function in update.py, run bel
 ```sh
 python update.py --set theme=name # will download if not exist
 ```
-+ Example `python update.py --set theme=Material`
++ Example `python3 update.py --set theme=Material`
 
 
 ### NTFS Writing
