@@ -17,6 +17,13 @@
 - Intel card not working yet (Bluetooth kext can be found at [IntelBluetoothFirmware](https://github.com/zxystd/IntelBluetoothFirmware))
 - Discrete GPU (Disabled)
 - Fingerprint (Disabled)
+- Internal Microphone
+
+### HDMI blinking at boot
+
+> This will happen when using plug-in HDMI after bootup. This will be fixed after short sleep (about 1min) and never happen again until reboot
+
+- You can fixed this by turn off **com.apple.driver.AppleHDAController** in `Kernel and Kext Patches` on Clover or `Kernel > Patch` on Opencore but **HDMI Audio** will be disabled
 
 ## For building
 
@@ -133,6 +140,18 @@ If your NTFS partition has Windows installed, you need to run `powercfg -h off` 
 - Turn off `Smart zoom` to avoid two-finger tap delay.
 
 See [is-it-possible-to-get-rid-of-the-delay-between-right-clicking-and-seeing-the-context-menu](https://apple.stackexchange.com/a/218181)
+
+## BIOS value unlock (Advanced User)
+
+> Big thanks for @Leoing, who found all nessesary value
+
+| Name         | Address | Configable value | Default value |
+| :----------- | :------ | :--------------- | :------------ |
+| CFC-Lock     | 0x6F0   | 0x1 or 0x0       | 0x1           |
+| DGPU         | 0x574   | 0x1 or 0x0       | 0x1           |
+| Voltage Lock | 0x78C   | 0x1 or 0x0       | 0x1 (1.6.0)   |
+
+> For Bios 1.6.0 `0x78C` need set to 0x0 so VoltageShift can be used
 
 ## Credits
 
