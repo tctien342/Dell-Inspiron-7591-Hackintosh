@@ -11,6 +11,7 @@ Kexts,NoTouchID.kext,Disable TouchID,latest,.*RELEASE,https://github.com/al3xtja
 Kexts,NVMeFix.kext,improve compatibility with non-Apple SSDs,latest,.*RELEASE,https://github.com/acidanthera/NVMeFix
 Kexts,SMCBatteryManager.kext,Emulation layer of AppleSmartBattery,latest,.*RELEASE,https://github.com/acidanthera/VirtualSMC
 Kexts,SMCProcessor.kext,Add support for temperature monitoring,latest,.*RELEASE,https://github.com/acidanthera/VirtualSMC
+Kexts,SMCLightSensor.kext,Add support for temperature monitoring,latest,.*RELEASE,https://github.com/acidanthera/VirtualSMC
 Kexts,USBPorts.kext,USBPorts for dell Insipron 759x,70320,USBPorts.kext.zip,https://github.com/tctien342/Dell-Inspiron-7591-Hackintosh
 Kexts,VirtualSMC.kext,SMC emulator layer,latest,.*RELEASE,https://github.com/acidanthera/VirtualSMC
 Kexts,VoodooI2C.kext,Lvs1974 VoodooI2C optimized,70320,VoodooI2C.kext.zip,https://github.com/tctien342/Dell-Inspiron-7591-Hackintosh
