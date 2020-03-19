@@ -14,8 +14,8 @@ Kexts,SMCProcessor.kext,Add support for temperature monitoring,latest,.*RELEASE,
 Kexts,SMCLightSensor.kext,Add support for temperature monitoring,latest,.*RELEASE,https://github.com/acidanthera/VirtualSMC
 Kexts,USBPorts.kext,USBPorts for dell Insipron 759x,70320,USBPorts.kext.zip,https://github.com/tctien342/Dell-Inspiron-7591-Hackintosh
 Kexts,VirtualSMC.kext,SMC emulator layer,latest,.*RELEASE,https://github.com/acidanthera/VirtualSMC
-Kexts,VoodooI2C.kext,Lvs1974 VoodooI2C optimized,2.3_mod2,VoodooI2C_2.3_mod.zip,https://github.com/lvs1974/VoodooI2C
-Kexts,VoodooI2CHID.kext,Lvs1974 VoodooI2CHID optimized,2.3_mod2,VoodooI2C_2.3_mod.zip,https://github.com/lvs1974/VoodooI2C
+Kexts,VoodooI2C.kext,Lvs1974 VoodooI2C optimized,2.3_mod4,VoodooI2C_2.3_mod.zip,https://github.com/lvs1974/VoodooI2C
+Kexts,VoodooI2CHID.kext,Lvs1974 VoodooI2CHID optimized,2.3_mod4,VoodooI2C_2.3_mod.zip,https://github.com/lvs1974/VoodooI2C
 Kexts,VerbStub.kext,VerbStub for combojack fix,70320,VerbStub.kext.zip,https://github.com/tctien342/Dell-Inspiron-7591-Hackintosh
 Kexts,VoodooPS2Controller.kext,PS/2 controller,latest,.*RELEASE,https://github.com/acidanthera/VoodooPS2
 Kexts,WhateverGreen.kext,Patches for GPUs,latest,.*RELEASE,https://github.com/acidanthera/WhateverGreen
