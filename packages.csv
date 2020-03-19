@@ -1,11 +1,11 @@
 Folder,Name,Description,Version,Pattern,Url
 Kexts,AirportBrcmFixup.kext,Broadcom Wi-Fi driver,latest,.*RELEASE,https://github.com/acidanthera/AirportBrcmFixup
-Kexts,AppleALC.kext,Custom appleALC for dell inspiron 759x,110320,AppleALC.kext.zip,https://github.com/tctien342/Dell-Inspiron-7591-Hackintosh
+Kexts,AppleALC.kext,Custom appleALC for dell inspiron 759x,kext-110320,AppleALC.kext.zip,https://github.com/tctien342/Dell-Inspiron-7591-Hackintosh
 Kexts,BrcmBluetoothInjector.kext,Injects the BT hardware data,latest,.*RELEASE,https://github.com/acidanthera/BrcmPatchRAM
 Kexts,BrcmFirmwareData.kext,Most appropriate for bootloader injection,latest,.*RELEASE,https://github.com/acidanthera/BrcmPatchRAM
 Kexts,BrcmPatchRAM3.kext,Apply the firmware update to Bluetooth,latest,.*RELEASE,https://github.com/acidanthera/BrcmPatchRAM
 Kexts,CPUFriend.kext,Dynamic CPU power management,latest,.*RELEASE,https://github.com/acidanthera/CPUFriend
-Kexts,CPUFriendDataProvider.kext,Custom frequency data,70320,CPUFriendDataProvider.kext.zip,https://github.com/tctien342/Dell-Inspiron-7591-Hackintosh
+Kexts,CPUFriendDataProvider.kext,Custom frequency data,kext-120320,CPUFriendDataProvider.kext.zip,https://github.com/tctien342/Dell-Inspiron-7591-Hackintosh
 Kexts,Lilu.kext,Arbitrary kext and process patching,latest,.*RELEASE,https://github.com/acidanthera/Lilu
 Kexts,NoTouchID.kext,Disable TouchID,latest,.*RELEASE,https://github.com/al3xtjames/NoTouchID
 Kexts,NVMeFix.kext,improve compatibility with non-Apple SSDs,latest,.*RELEASE,https://github.com/acidanthera/NVMeFix
@@ -14,12 +14,12 @@ Kexts,SMCProcessor.kext,Add support for temperature monitoring,latest,.*RELEASE,
 Kexts,SMCLightSensor.kext,Add support for temperature monitoring,latest,.*RELEASE,https://github.com/acidanthera/VirtualSMC
 Kexts,USBPorts.kext,USBPorts for dell Insipron 759x,70320,USBPorts.kext.zip,https://github.com/tctien342/Dell-Inspiron-7591-Hackintosh
 Kexts,VirtualSMC.kext,SMC emulator layer,latest,.*RELEASE,https://github.com/acidanthera/VirtualSMC
-Kexts,VoodooI2C.kext,Lvs1974 VoodooI2C optimized,70320,VoodooI2C.kext.zip,https://github.com/tctien342/Dell-Inspiron-7591-Hackintosh
-Kexts,VoodooI2CHID.kext,Lvs1974 VoodooI2CHID optimized,70320,VoodooI2CHID.kext.zip,https://github.com/tctien342/Dell-Inspiron-7591-Hackintosh
+Kexts,VoodooI2C.kext,Lvs1974 VoodooI2C optimized,2.3_mod2,VoodooI2C_2.3_mod.zip,https://github.com/lvs1974/VoodooI2C
+Kexts,VoodooI2CHID.kext,Lvs1974 VoodooI2CHID optimized,2.3_mod2,VoodooI2C_2.3_mod.zip,https://github.com/lvs1974/VoodooI2C
 Kexts,VerbStub.kext,VerbStub for combojack fix,70320,VerbStub.kext.zip,https://github.com/tctien342/Dell-Inspiron-7591-Hackintosh
 Kexts,VoodooPS2Controller.kext,PS/2 controller,latest,.*RELEASE,https://github.com/acidanthera/VoodooPS2
 Kexts,WhateverGreen.kext,Patches for GPUs,latest,.*RELEASE,https://github.com/acidanthera/WhateverGreen
-Kexts,CpuTscSync.kext,Lvs1974 CpuTscSync replacement for VoodooI2C,70320,CpuTscSync.kext.zip,https://github.com/tctien342/Dell-Inspiron-7591-Hackintosh
+Kexts,CpuTscSync.kext,Lvs1974 CpuTscSync replacement for VoodooTCSSync,latest,.*RELEASE,https://github.com/lvs1974/CpuTscSync
 Drivers,ApfsDriverLoader.efi,Open source apfs.efi loader,latest,.*RELEASE,https://github.com/acidanthera/AppleSupportPkg
 Drivers,VBoxHfs.efi,HFS+ support with bless extensions,latest,.*RELEASE,https://github.com/acidanthera/AppleSupportPkg
 OC/Drivers,FwRuntimeServices.efi,Normal functioning of UEFI Runtime Services,latest,.*RELEASE,https://github.com/n-d-k/OpenCorePkg
