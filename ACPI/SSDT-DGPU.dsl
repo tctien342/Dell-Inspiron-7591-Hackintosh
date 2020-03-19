@@ -1,23 +1,10 @@
-/*
- * Intel ACPI Component Architecture
- * AML/ASL+ Disassembler version 20180427 (64-bit version)(RM)
- * Copyright (c) 2000 - 2018 Intel Corporation
- * 
- * Disassembling to non-symbolic legacy ASL operators
- *
- * Disassembly of iASLPaFs1J.aml, Wed Mar 11 14:19:04 2020
- *
- * Original Table Header:
- *     Signature        "SSDT"
- *     Length           0x00000105 (261)
- *     Revision         0x02
- *     Checksum         0x34
- *     OEM ID           "hack"
- *     OEM Table ID     "DGPU"
- *     OEM Revision     0x00000000 (0)
- *     Compiler ID      "INTL"
- *     Compiler Version 0x20200110 (538968336)
- */
+// Disable discrete GPU
+// Patch: Rename _WAK to ZWAK
+// Find: FDlfV0FLAQ==
+// Replace: FDlaV0FLAQ==
+// Reference:
+// [1] https://github.com/RehabMan/OS-X-Clover-Laptop-Config/blob/master/hotpatch/SSDT-DDGPU.dsl
+// [2] https://github.com/RehabMan/OS-X-Clover-Laptop-Config/blob/master/hotpatch/SSDT-PTSWAK.dsl
 DefinitionBlock ("", "SSDT", 2, "hack", "DGPU", 0x00000000)
 {
     External (_SB_.PCI0.PEG0.PEGP._OFF, MethodObj)    // 0 Arguments (from opcode)

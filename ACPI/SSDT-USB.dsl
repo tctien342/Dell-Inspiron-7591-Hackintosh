@@ -1,23 +1,11 @@
-/*
- * Intel ACPI Component Architecture
- * AML/ASL+ Disassembler version 20180427 (64-bit version)(RM)
- * Copyright (c) 2000 - 2018 Intel Corporation
- * 
- * Disassembling to non-symbolic legacy ASL operators
- *
- * Disassembly of iASLCNQPFZ.aml, Sat Mar 14 11:13:20 2020
- *
- * Original Table Header:
- *     Signature        "SSDT"
- *     Length           0x000002CB (715)
- *     Revision         0x02
- *     Checksum         0x79
- *     OEM ID           "hack"
- *     OEM Table ID     "TYPC"
- *     OEM Revision     0x00000000 (0)
- *     Compiler ID      "INTL"
- *     Compiler Version 0x20180427 (538444839)
- */
+// Type-C hotplug
+// Patch: Rename RP17.PXSX._RMV to XRMV
+// Find: UlAxN1BYU1gUM19STVY=
+// Replace: UlAxN1BYU1gUM1hSTVY=
+// References:
+// [1] https://www.insanelymac.com/forum/topic/324366-dell-xps-15-9560-4k-touch-1tb-ssd-32gb-ram-100-adobergb%E2%80%8B/
+// [2] https://www.tonymacx86.com/threads/usb-c-hotplug-questions.211313/
+// [3] https://github.com/the-darkvoid/XPS9360-macOS/issues/118
 DefinitionBlock ("", "SSDT", 2, "hack", "USB", 0x00000000)
 {
     External (_SB_.PCI0.LPCB, DeviceObj)
