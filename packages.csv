@@ -22,9 +22,10 @@ Kexts,WhateverGreen.kext,Patches for GPUs,latest,.*RELEASE,https://github.com/ac
 Kexts,CpuTscSync.kext,Lvs1974 CpuTscSync replacement for VoodooTCSSync,latest,.*RELEASE,https://github.com/lvs1974/CpuTscSync
 Drivers,ApfsDriverLoader.efi,Open source apfs.efi loader,latest,.*RELEASE,https://github.com/acidanthera/AppleSupportPkg
 Drivers,VBoxHfs.efi,HFS+ support with bless extensions,latest,.*RELEASE,https://github.com/acidanthera/AppleSupportPkg
-OC/Drivers,FwRuntimeServices.efi,Normal functioning of UEFI Runtime Services,latest,.*RELEASE,https://github.com/n-d-k/OpenCorePkg
 CLOVER/drivers/UEFI,AptioMemoryFix.efi,Correct memory map,latest,.*RELEASE,https://github.com/acidanthera/AptioFixPkg
 CLOVER,CLOVERX64.efi,Bootloader for macOS and other systems,latest,CLOVERX64.efi,https://github.com/CloverHackyColor/CloverBootloader
-OC,OpenCore.efi,Bootloader for macOS and other systems,latest,.*RELEASE,https://github.com/n-d-k/OpenCorePkg
-OC,Icons,Theme for Opencore,latest,.*RELEASE,https://github.com/n-d-k/OpenCorePkg
-OC,Tools,Tools for Opencore,latest,.*RELEASE,https://github.com/n-d-k/OpenCorePkg
+OC/Drivers,FwRuntimeServices.efi,Normal functioning of UEFI Runtime Services,ndk-opencore-0.5.7,.*RELEASE,https://github.com/tctien342/Dell-Inspiron-7591-Hackintosh
+OC/Drivers,OpenRuntime.efi,Normal functioning of UEFI Runtime Services,ndk-opencore-0.5.7,.*RELEASE,https://github.com/tctien342/Dell-Inspiron-7591-Hackintosh
+OC,OpenCore.efi,Bootloader for macOS and other systems,ndk-opencore-0.5.7,.*RELEASE,https://github.com/tctien342/Dell-Inspiron-7591-Hackintosh
+OC,Icons,Dell's theme for Opencore,latest,.*themes,https://github.com/tctien342/opencore-ndk-theme-builder
+OC,Tools,Tools for Opencore,ndk-opencore-0.5.7,.*RELEASE,https://github.com/tctien342/Dell-Inspiron-7591-Hackintosh

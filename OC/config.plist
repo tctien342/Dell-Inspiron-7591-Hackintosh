@@ -743,7 +743,7 @@
 		<key>Drivers</key>
 		<array>
 			<string>ApfsDriverLoader.efi</string>
-			<string>FwRuntimeServices.efi</string>
+			<string>OpenRuntime.efi</string>
 			<string>VBoxHfs.efi</string>
 		</array>
 		<key>Input</key>
