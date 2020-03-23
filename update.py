@@ -10,6 +10,9 @@ from subprocess import check_output
 from urllib.request import urlopen, Request, urlretrieve
 import json
 import re
+import ssl
+
+ssl._create_default_https_context = ssl._create_unverified_context
 
 root = Path(__file__).absolute().parent
 
