@@ -102,6 +102,34 @@
 			</dict>
 			<dict>
 				<key>Comment</key>
+				<string>Rename XHC to XHC2 on TBDU</string>
+				<key>Enabled</key>
+				<true/>
+				<key>Find</key>
+				<data>
+				WEhDXwhfQURSAA==
+				</data>
+				<key>Replace</key>
+				<data>
+				WEhDMghfQURSAA==
+				</data>
+			</dict>
+			<dict>
+				<key>Comment</key>
+				<string>Rename TBDU.XHC to TBDU.XHC2</string>
+				<key>Enabled</key>
+				<true/>
+				<key>Find</key>
+				<data>
+				VEJEVVhIQ18=
+				</data>
+				<key>Replace</key>
+				<data>
+				VEJEVVhIQzI=
+				</data>
+			</dict>
+			<dict>
+				<key>Comment</key>
 				<string>Rename _WAK to ZWAK</string>
 				<key>Enabled</key>
 				<true/>

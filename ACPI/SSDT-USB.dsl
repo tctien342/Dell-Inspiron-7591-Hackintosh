@@ -2,6 +2,12 @@
 // Patch: Rename RP17.PXSX._RMV to XRMV
 // Find: UlAxN1BYU1gUM19STVY=
 // Replace: UlAxN1BYU1gUM1hSTVY=
+// Patch: Rename XHC to XHC2 on TBDU
+// Find: WEhDXwhfQURSAA==
+// Replace: WEhDMghfQURSAA==
+// Patch: Rename TBDU.XHC to TBDU.XHC2
+// Find: VEJEVVhIQ18=
+// Replace: VEJEVVhIQzI=
 // References:
 // [1] https://www.insanelymac.com/forum/topic/324366-dell-xps-15-9560-4k-touch-1tb-ssd-32gb-ram-100-adobergb%E2%80%8B/
 // [2] https://www.tonymacx86.com/threads/usb-c-hotplug-questions.211313/
@@ -97,13 +103,17 @@ DefinitionBlock ("", "SSDT", 2, "hack", "USB", 0x00000000)
 	                })
 	            }
 
-	            Return (Package (0x04)
-	            {
-	                "kUSBSleepPortCurrentLimit", 
-	                0x0BB8, 
-	                "kUSBWakePortCurrentLimit", 
-	                0x0BB8
-	            })
+	            Return (Package (0x08)
+                {
+                    "kUSBSleepPortCurrentLimit", 
+                    0x0834, 
+                    "kUSBSleepPowerSupply", 
+                    0x0A28, 
+                    "kUSBWakePortCurrentLimit", 
+                    0x0834, 
+                    "kUSBWakePowerSupply", 
+                    0x0C80
+                })
 	        }
 	    }
     }
