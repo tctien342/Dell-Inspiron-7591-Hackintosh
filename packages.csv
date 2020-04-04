@@ -4,8 +4,6 @@ Kexts,AppleALC.kext,Custom appleALC for dell inspiron 759x,kext-110320,AppleALC.
 Kexts,BrcmBluetoothInjector.kext,Injects the BT hardware data,latest,.*RELEASE,https://github.com/acidanthera/BrcmPatchRAM
 Kexts,BrcmFirmwareData.kext,Most appropriate for bootloader injection,latest,.*RELEASE,https://github.com/acidanthera/BrcmPatchRAM
 Kexts,BrcmPatchRAM3.kext,Apply the firmware update to Bluetooth,latest,.*RELEASE,https://github.com/acidanthera/BrcmPatchRAM
-Kexts,CPUFriend.kext,Dynamic CPU power management,latest,.*RELEASE,https://github.com/acidanthera/CPUFriend
-Kexts,CPUFriendDataProvider.kext,Custom frequency data,kext-120320,CPUFriendDataProvider.kext.zip,https://github.com/tctien342/Dell-Inspiron-7591-Hackintosh
 Kexts,Lilu.kext,Arbitrary kext and process patching,latest,.*RELEASE,https://github.com/acidanthera/Lilu
 Kexts,NoTouchID.kext,Disable TouchID,latest,.*RELEASE,https://github.com/al3xtjames/NoTouchID
 Kexts,NVMeFix.kext,improve compatibility with non-Apple SSDs,latest,.*RELEASE,https://github.com/acidanthera/NVMeFix

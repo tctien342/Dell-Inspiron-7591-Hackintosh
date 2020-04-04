@@ -4,6 +4,9 @@
 // #(Disabled)Patch: Rename ECDV to EC
 // Find: RUNEVg==	
 // Replace: RUNfXw==
+// Patch: rename HPET to XPET
+// Find: SFBFVA==
+// Replace: WFBFVA==
 // References:
 // [1] https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-SBUS-MCHC.dsl
 // [2] https://www.insanelymac.com/forum/topic/338516-opencore-discussion/?do=findComment&comment=2685513
@@ -15,22 +18,74 @@ DefinitionBlock ("", "SSDT", 2, "hack", "PCI0", 0x00000000)
     External (_SB_.PCI0, DeviceObj)
     External (_SB_.PCI0.LPCB, DeviceObj)
     External (_SB_.PCI0.SBUS.BUS0, DeviceObj)
-    External (_SB_.AC__, DeviceObj)    // (from opcode)
+    External (_SB_.ADP1, DeviceObj)    // (from opcode)
     
-    Scope (\_SB.AC)
+    Device (MEM2)
     {
-        If (_OSI ("Darwin"))
+        Name (_HID, EisaId ("PNP0C01"))
+        Name (_UID, 0x02)
+        Name (CRS, ResourceTemplate ()
         {
-            Name (_PRW, Package (0x02)  // _PRW: Power Resources for Wake
+            Memory32Fixed (ReadWrite,
+                0x20000000,         // Address Base
+                0x00200000,         // Address Length
+                )
+            Memory32Fixed (ReadWrite,
+                0x40000000,         // Address Base
+                0x00200000,         // Address Length
+                )
+        })
+        Method (_CRS, 0, NotSerialized)
+        {
+            Return (CRS)
+        }
+        
+        Method (_STA, 0, NotSerialized)
+        {
+            If (_OSI ("Darwin"))
             {
-                0x18, 
-                0x03
-            })
+                Return (0x0F)
+            }
+            Else
+            {
+                Return (Zero)
+            }
         }
     }
     
+    Scope (\_SB.ADP1)
+    {
+        Name (_PRW, Package (0x02)  // _PRW: Power Resources for Wake
+        {
+            0x18, 
+            0x03
+        })
+    }
+        
     Scope (_SB.PCI0)
     {
+        // Intel 300-series PMC support [4]
+        Device (PMCR)
+        {
+            Name (_ADR, 0x001F0002)  // _ADR: Address
+        }
+        
+        Device (PPMC)
+        {
+            Name (_ADR, 0x001F0002)
+            Method (_STA, 0, NotSerialized)
+            {
+                If (_OSI ("Darwin"))
+                {
+                    Return (0x0F)
+                }
+                Else
+                {
+                    Return (Zero)
+                }
+            }
+        }
+        
         Device (MCHC) // MCHC[1]
         {
             Name (_ADR, Zero)  // _ADR: Address
@@ -45,6 +100,24 @@ DefinitionBlock ("", "SSDT", 2, "hack", "PCI0", 0x00000000)
 
     Scope (_SB.PCI0.LPCB)
     {
+        Device (HPET)
+        {
+            Name (_HID, EisaId ("PNP0103"))  // _HID: Hardware ID
+            Name (_UID, Zero)  // _UID: Unique ID
+            Name (BUF0, ResourceTemplate ()
+            {
+                Memory32Fixed (ReadWrite,
+                    0xFED00000,         // Address Base
+                    0x00000400,         // Address Length
+                    _Y26)
+            })   
+            Name (_STA, 0x0F)
+            Method (_CRS, 0, NotSerialized)
+            {
+                Return (BUF0)
+            }
+        }
+        
         // Add EC device to load AppleBusPowerController[3]
         Device (EC)
         {
@@ -55,25 +128,6 @@ DefinitionBlock ("", "SSDT", 2, "hack", "PCI0", 0x00000000)
                 { Return (0x0F) }
                 Return (Zero)
             }
-        }
-        
-        // Intel 300-series PMC support [4]
-        Device (PMCR)
-        {
-            Name (_HID, EisaId ("APP9876"))  // _HID: Hardware ID
-            Method (_STA, 0, NotSerialized)  // _STA: Status
-            {
-                If (_OSI ("Darwin")) 
-                { Return (0x0F) }
-                Return (Zero)
-            }
-            Name (_CRS, ResourceTemplate ()  // _CRS: Current Resource Settings
-            {
-                Memory32Fixed (ReadWrite,
-                    0xFE000000,         // Address Base
-                    0x00010000,         // Address Length
-                    )
-            })
         }
         
         Device (DMAC)
@@ -128,11 +182,11 @@ DefinitionBlock ("", "SSDT", 2, "hack", "PCI0", 0x00000000)
             Name (_CID, "diagsvault")  // _CID: Compatible ID
             Method (_DSM, 4, NotSerialized)  // _DSM: Device-Specific Method
             {
-                If (!Arg2)
+                If (LNot (Arg2))
                 {
                     Return (Buffer (One)
                     {
-                         0x57                                             // W
+                         0x03                                           
                     })
                 }
 

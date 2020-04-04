@@ -130,6 +130,20 @@
 			</dict>
 			<dict>
 				<key>Comment</key>
+				<string>rename HPET to XPET</string>
+				<key>Enabled</key>
+				<true/>
+				<key>Find</key>
+				<data>
+				SFBFVA==
+				</data>
+				<key>Replace</key>
+				<data>
+				WFBFVA==
+				</data>
+			</dict>
+			<dict>
+				<key>Comment</key>
 				<string>Rename _WAK to ZWAK</string>
 				<key>Enabled</key>
 				<true/>
