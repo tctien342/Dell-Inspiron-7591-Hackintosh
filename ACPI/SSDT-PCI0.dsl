@@ -1,12 +1,18 @@
 // Add various missing devices in PCI0
 // Include EC, PMCR, DMAC, MCHC and SBUS
-// #(Disabled)Rename ECDV to EC to not brake battery statistics for laptop[2]
-// #(Disabled)Patch: Rename ECDV to EC
+// Rename ECDV to EC to not brake battery statistics for laptop[2]
+// Patch: Rename ECDV to EC
 // Find: RUNEVg==	
 // Replace: RUNfXw==
 // Patch: rename HPET to XPET
 // Find: SFBFVA==
 // Replace: WFBFVA==
+// Patch: RTC IRQ 8 Patch
+// Find: IgABeQA=
+// Replace: IgAAeQA=
+// Patch: TIMR IRQ 0 Patch
+// Find: IgEAeQA=
+// Replace: IgAAeQA=
 // References:
 // [1] https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-SBUS-MCHC.dsl
 // [2] https://www.insanelymac.com/forum/topic/338516-opencore-discussion/?do=findComment&comment=2685513
@@ -106,27 +112,16 @@ DefinitionBlock ("", "SSDT", 2, "hack", "PCI0", 0x00000000)
             Name (_UID, Zero)  // _UID: Unique ID
             Name (BUF0, ResourceTemplate ()
             {
-                Memory32Fixed (ReadWrite,
-                    0xFED00000,         // Address Base
-                    0x00000400,         // Address Length
-                    _Y26)
-            })   
+                IRQNoFlags ()
+            {0,8,11}
+        Memory32Fixed (ReadWrite,
+            0xFED00000,         // Address Base
+            0x00000400,         // Address Length
+            )            })   
             Name (_STA, 0x0F)
             Method (_CRS, 0, NotSerialized)
             {
                 Return (BUF0)
-            }
-        }
-        
-        // Add EC device to load AppleBusPowerController[3]
-        Device (EC)
-        {
-            Name (_HID, "ACID0001")  // _HID: Hardware ID
-            Method (_STA, 0, NotSerialized)  // _STA: Status
-            {
-                If (_OSI ("Darwin")) 
-                { Return (0x0F) }
-                Return (Zero)
             }
         }
         
