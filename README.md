@@ -14,7 +14,7 @@
 
 ## About build
 
-### Not Working
+#### Not Working
 
 + Intel wifi card is developing, there are two version of kext:
   + Faked as an ethernet card: you can check [here](https://github.com/zxystd/itlwm)
@@ -25,7 +25,7 @@
   - Fingerprint (Disabled)
   - Internal Microphone
 
-### HDMI blinking at boot
+#### HDMI blinking at boot
 
 > This will happen when using plug-in HDMI after bootup. This will be fixed after short sleep (about 1min) and never happen again until reboot
 
@@ -51,7 +51,7 @@
 - If you're using intel card, please use NullEthernet for fixing iMess and FaceTime
 	- Change MAC in NullEthernet with your new created one, see below
 
-### Fake ethernet
+#### Fake ethernet
 
 - Generate your MAC address in SSDT-RMNE if using NullEthernet
 - You can make an MacAddress in [Mac generator online](https://www.browserling.com/tools/random-mac)
@@ -64,7 +64,7 @@
   - AML's file add to ACPI folder (Opencore need add to ACPI after copy SSDT file to ACPI, use OpencoreConfigurator)
 - Reboot
 
-### Sleep Wake
+#### Sleep Wake
 
 ```shell
 sudo pmset -a hibernatemode 0
@@ -78,7 +78,7 @@ sudo pmset -b tcpkeepalive 0 (optional)
 
 Please uncheck all options (except `Prevent computer from sleeping...`, which is optional) in the `Energy Saver` panel.
 
-### Display
+#### Display
 
 If you are using FHD(1080p) display, you may want to enable font smoothing:
 
@@ -92,7 +92,7 @@ If your laptop display is 4K screen, you should set uiscale to :
 python update.py --set uiscale=2
 ```
 
-### Using DW1820a as wifi card
+#### Using DW1820a as wifi card
 
 You have to do following changes to Device Properties:
 
@@ -113,13 +113,13 @@ You have to do following changes to Device Properties:
 
 
 
-### NTFS Writing
+#### NTFS Writing
 
 Add `UUID=xxx none ntfs rw,auto,nobrowse` to `/etc/fstab`, **xxx** is the UUID of your NTFS partition.
 
 If your NTFS partition has Windows installed, you need to run `powercfg -h off` in powershell in Windows to disable hibernation.
 
-### Tap Delay
+#### Tap Delay
 
 - Turn off `Smart zoom` to avoid two-finger tap delay.
 

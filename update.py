@@ -29,7 +29,7 @@ DEFAULT_MLB = 'C02947300QX0000JC'
 DEFAULT_SMUUID = '6E167E28-A39C-423F-B244-20152956DD0C'
 DELAY_AFTER_TYPE = 50
 KEXT_PIORITY = {
-	'Lilu.kext': 0, 'VirtualSMC.kext': 10, 'CpuTscSync.kext': 15, 'AppleALC.kext': 20, 'VoodooPS2Controller.kext': 25, 'VoodooPS2Keyboard.kext': 26,
+	'Lilu.kext': 0, 'VirtualSMC.kext': 10, 'CpuTscSync.kext': 15, 'AppleALC.kext': 20, 'VoodooPS2Controller.kext': 25,
 	'VoodooGPIO.kext': 30, 'VoodooI2CServices.kext': 35, 'VoodooInput.kext': 36,
 	'VoodooI2C.kext': 40, 'VoodooI2CHID.kext': 50,
 	'CPUFriend.kext': 21, 'CPUFriendDataProvider.kext': 22,
@@ -492,7 +492,7 @@ def patching(kexts: Path):
 	info.set('IOKitPersonalities>VoodooI2CHIDDevice Precision Touchpad HID Event Driver>QuietTimeAfterTyping', DELAY_AFTER_TYPE)
 	info.save()
 	Title('Delete VoodooPS2Mouse.kext and VoodooPS2Trackpad.kext')
-	for kext in ('VoodooPS2Mouse.kext', 'VoodooPS2Trackpad.kext'):
+	for kext in ('VoodooPS2Mouse.kext', 'VoodooPS2Trackpad.kext', 'VoodooInput.kext'):
 		sh('rm -rf {}'.format(kexts / 'VoodooPS2Controller.kext' /
 			'Contents' / 'PlugIns' / kext))
 
