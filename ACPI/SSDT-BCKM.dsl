@@ -50,9 +50,8 @@ DefinitionBlock ("", "SSDT", 2, "hack", "BCKM", 0x00000000)
     {
         If (_OSI ("Darwin"))
         {
-            // simulate Windows 10
-            \_SB.ACOS = 1
-            \_SB.ACSE = 3
+            \_SB.ACOS = 0x80
+            \_SB.ACSE = 0
             
         }
     }
