@@ -12,18 +12,21 @@ Kexts,SMCProcessor.kext,Add support for temperature monitoring,latest,.*RELEASE,
 Kexts,SMCLightSensor.kext,Add support for temperature monitoring,latest,.*RELEASE,https://github.com/acidanthera/VirtualSMC
 Kexts,USBPorts.kext,USBPorts for dell Insipron 759x,70320,USBPorts.kext.zip,https://github.com/tctien342/Dell-Inspiron-7591-Hackintosh
 Kexts,VirtualSMC.kext,SMC emulator layer,latest,.*RELEASE,https://github.com/acidanthera/VirtualSMC
-Kexts,VoodooI2C.kext,Lvs1974 VoodooI2C optimized,2.3_mod4,VoodooI2C_2.3_mod.zip,https://github.com/lvs1974/VoodooI2C
-Kexts,VoodooI2CHID.kext,Lvs1974 VoodooI2CHID optimized,2.3_mod4,VoodooI2C_2.3_mod.zip,https://github.com/lvs1974/VoodooI2C
+Kexts,VoodooI2C.kext,Stock VoodooI2C,latest,VoodooI2C-*,https://github.com/alexandred/VoodooI2C
+Kexts,VoodooI2CHID.kext,Stock VoodooI2C,latest,VoodooI2C-*,https://github.com/alexandred/VoodooI2C
 Kexts,VerbStub.kext,VerbStub for combojack fix,70320,VerbStub.kext.zip,https://github.com/tctien342/Dell-Inspiron-7591-Hackintosh
 Kexts,VoodooPS2Controller.kext,PS/2 controller,latest,.*RELEASE,https://github.com/acidanthera/VoodooPS2
 Kexts,WhateverGreen.kext,Patches for GPUs,latest,.*RELEASE,https://github.com/acidanthera/WhateverGreen
 Kexts,CpuTscSync.kext,Lvs1974 CpuTscSync replacement for VoodooTCSSync,latest,.*RELEASE,https://github.com/lvs1974/CpuTscSync
 Drivers,ApfsDriverLoader.efi,Open source apfs.efi loader,latest,.*RELEASE,https://github.com/acidanthera/AppleSupportPkg
 Drivers,VBoxHfs.efi,HFS+ support with bless extensions,latest,.*RELEASE,https://github.com/acidanthera/AppleSupportPkg
-CLOVER/drivers/UEFI,AptioMemoryFix.efi,Correct memory map,latest,.*RELEASE,https://github.com/acidanthera/AptioFixPkg
-CLOVER,CLOVERX64.efi,Bootloader for macOS and other systems,latest,CLOVERX64.efi,https://github.com/CloverHackyColor/CloverBootloader
-OC/Drivers,FwRuntimeServices.efi,Normal functioning of UEFI Runtime Services,ndk-opencore-0.5.7,.*RELEASE,https://github.com/tctien342/Dell-Inspiron-7591-Hackintosh
-OC/Drivers,OpenRuntime.efi,Normal functioning of UEFI Runtime Services,ndk-opencore-0.5.7,.*RELEASE,https://github.com/tctien342/Dell-Inspiron-7591-Hackintosh
-OC,OpenCore.efi,Bootloader for macOS and other systems,ndk-opencore-0.5.7,.*RELEASE,https://github.com/tctien342/Dell-Inspiron-7591-Hackintosh
-OC,Icons,Dell's theme for Opencore,latest,.*themes,https://github.com/tctien342/opencore-ndk-theme-builder
-OC,Tools,Tools for Opencore,ndk-opencore-0.5.7,.*RELEASE,https://github.com/tctien342/Dell-Inspiron-7591-Hackintosh
+CLOVER/drivers/UEFI,OcQuirks.efi,Correct memory map,latest,OcQuirks.zip,https://github.com/ReddestDream/OcQuirks
+CLOVER/drivers/UEFI,OpenRuntime.efi,Correct memory map,latest,OcQuirks.zip,https://github.com/ReddestDream/OcQuirks
+CLOVER/drivers/UEFI,OcQuirks.plist,Correct memory map,latest,OcQuirks.zip,https://github.com/ReddestDream/OcQuirks
+CLOVER,CLOVERX64.efi,Bootloader for macOS and other systems,latest,CloverV2-*,https://github.com/CloverHackyColor/CloverBootloader
+OC/Drivers,OpenRuntime.efi,Normal functioning of UEFI Runtime Services,latest,.*RELEASE,https://github.com/n-d-k/OpenCorePkg
+OC,OpenCore.efi,Bootloader for macOS and other systems,latest,.*RELEASE,https://github.com/n-d-k/OpenCorePkg
+OC,Icons,Dell's theme for Opencore,dell-v2,.*themes,https://github.com/tctien342/opencore-ndk-theme-builder
+OC,Tools,Tools for Opencore,latest,.*RELEASE,https://github.com/n-d-k/OpenCorePkg
+../BOOT/CLOVER,BOOTX64.efi,Bootloader for macOS and other systems,latest,CloverV2-*,https://github.com/CloverHackyColor/CloverBootloader
+../BOOT/OC,BOOTx64.efi,Bootloader for macOS and other systems,latest,.*RELEASE,https://github.com/n-d-k/OpenCorePkg

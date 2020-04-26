@@ -14,9 +14,11 @@ macserial
 CLOVER/*
 !CLOVER/config.plist
 OC/*
+BOOT/*
 !OC/config.plist
 *.kext
 !Kexts/*
+!PostInstall/*/*.kext
 Clover_Install_Log.txt
 test.py
 tmp

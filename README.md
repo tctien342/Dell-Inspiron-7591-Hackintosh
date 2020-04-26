@@ -1,23 +1,29 @@
 # Dell Inspiron 759x
 
 <p>
-    <img style="border-radius: 8px" src="Assets/background.jpg">
+	<img style="border-radius: 8px" src="Assets/background.jpg">
 </p>
 
-## Configuration
+## System configuration
 
-| Model     | MacBookPro15,3               | Version        | 10.15.2             |
+| Model | MacBookPro15,3 | Version | 10.15.2 |
 | :-------- | :--------------------------- | :------------- | :------------------ |
-| Processor | Intel Core i5-9300H/i7-9750H | Graphics       | UHD Graphics 630    |
-| Memory    | 2667MHz DDR4 8GB x2          | Disk           | Samsung 970 EVO     |
-| Audio     | Realtek ALC295               | WiFi/Bluetooth | Dell Wireless 1820a |
+| Processor | Intel Core i5-9300H/i7-9750H | Graphics | UHD Graphics 630 |
+| Memory | 2667MHz DDR4 8GB| OS Disk | Samsung 970Evo Plus |
+| Audio | Realtek ALC295 | WiFi/Bluetooth | Intel Wifi 9560/AX200 |
+
+## About build
 
 ### Not Working
 
-- Intel card not working yet (Bluetooth kext can be found at [IntelBluetoothFirmware](https://github.com/zxystd/IntelBluetoothFirmware))
-- Discrete GPU (Disabled)
-- Fingerprint (Disabled)
-- Internal Microphone
++ Intel wifi card is developing, there are two version of kext:
+  + Faked as an ethernet card: you can check [here](https://github.com/zxystd/itlwm)
+  + Using like an wifi card: you can check the status [here](https://github.com/AppleIntelWifi/adapter)
+  + Bluetooth kext can be found here: [IntelBluetoothFirmware](https://github.com/zxystd/IntelBluetoothFirmware)
++ Thing may never work:
+  - Discrete GPU (Disabled)
+  - Fingerprint (Disabled)
+  - Internal Microphone
 
 ### HDMI blinking at boot
 
@@ -31,22 +37,18 @@
 
 - Clone this repo
 - Run follow command: `python3 update.py --build`
+- Get your build at Builds folder
 
 ## Installation
 
 - Prepair an Mac installer in USB with bootloader you choice ( Use unibeast to create it )
-- Replace EFI/(Booloader) folder in USB EFI partition with this shipped bootloader folder
-  - If you dont have EFI folder, go to bootloader download pages and take them
+- Replace EFI folder in USB EFI partition with this shipped EFI folder ( find the folder with name is `EFI` from zip file)
 - Boot into USB and select MacOs installer
 - After install success, run PostInstall/install.sh in terminal
 - Then you need to mount EFI partition and replace it with USB's EFI
 - After System EFI replaced by your EFI, Using Opencore Configurator, Clover Configurator or update script to change SMBIOS, generate your serial and MBL
-- Run `python3 update.py --post` to fix sleep and audio
-
-  - You can run `bash install.sh` in PostInstall/CombojackFix if cant use above script
-
 - If you're using intel card, please use NullEthernet for fixing iMess and FaceTime
-  - Change MAC in NullEthernet with your new created one, see below
+	- Change MAC in NullEthernet with your new created one, see below
 
 ### Fake ethernet
 
@@ -55,8 +57,10 @@
 - Edit SSDT-RMNE.aml with MaciASL and replace MAC with your generated one
 - Save as -> ACPI machine language (replace exited one)
 - Add it to your bootloader:
-  - Kext add in Kexts (Opencore need add to Kernel in config.plist)
-  - AML's file add to ACPI folder (Opencore need add to ACPI)
+  - Kext add in Kexts:
+    + Copy kext to kexts/other if using clovere
+    + Copy kext to Kexts and it into Kernel in config.plist (Use OpencoreConfigurator)
+  - AML's file add to ACPI folder (Opencore need add to ACPI after copy SSDT file to ACPI, use OpencoreConfigurator)
 - Reboot
 
 ### Sleep Wake
@@ -73,15 +77,6 @@ sudo pmset -b tcpkeepalive 0 (optional)
 
 Please uncheck all options (except `Prevent computer from sleeping...`, which is optional) in the `Energy Saver` panel.
 
-### SN MLB SmUUID using update script
-
-Please use your own SN, MLB (use [MacInfoPkg](https://github.com/acidanthera/MacInfoPkg) or Clover Configurator or [Hackintool](https://www.tonymacx86.com/threads/release-hackintool-v2-8-6.254559/)) and SmUUID.
-
-```sh
-python update.py --set sn=xxx mlb=yyy smuuid=zzz
-python update.py --gen # generate and use new SN, MLB and SmUUID
-```
-
 ### Display
 
 If you are using FHD(1080p) display, you may want to enable font smoothing:
@@ -96,9 +91,9 @@ If your laptop display is 4K screen, you should set uiscale to :
 python update.py --set uiscale=2
 ```
 
-### DW1820a
+### Using DW1820a as wifi card
 
-You have to add following config to Device Properties:
+You have to do following changes to Device Properties:
 
 > Change
 
@@ -112,21 +107,10 @@ You have to add following config to Device Properties:
 <key>PciRoot(0x0)/Pci(0x1c,0x0)/Pci(0x0,0x0)</key>
 ```
 
-See [THE Solution:Dell DW1820A](https://www.tonymacx86.com/threads/the-solution-dell-dw1820a-broadcom-bcm94350zae-macos-15.288026/)
++ See [THE Solution:Dell DW1820A](https://www.tonymacx86.com/threads/the-solution-dell-dw1820a-broadcom-bcm94350zae-macos-15.288026/)
++ Other card you may need google for it
 
-### CLOVER and Opencore Theme
 
-You can set theme to one of these [themes](https://sourceforge.net/p/cloverefiboot/themes/ci/master/tree/themes/).
-
-Opencore now can be using clover theme by convert function in update.py, run below to set and theme you like
-
-- Right now opencore only have white font color, so select dark theme is best choice
-
-```sh
-python update.py --set theme=name # will download if not exist
-```
-
-- Example `python3 update.py --set theme=Material`
 
 ### NTFS Writing
 
@@ -136,24 +120,28 @@ If your NTFS partition has Windows installed, you need to run `powercfg -h off` 
 
 ### Tap Delay
 
-- Turn off `Enable dragging` or use `three finger drag` to avoid one-finger tap delay.
 - Turn off `Smart zoom` to avoid two-finger tap delay.
 
-See [is-it-possible-to-get-rid-of-the-delay-between-right-clicking-and-seeing-the-context-menu](https://apple.stackexchange.com/a/218181)
+> See [is-it-possible-to-get-rid-of-the-delay-between-right-clicking-and-seeing-the-context-menu](https://apple.stackexchange.com/a/218181)
 
 ## BIOS value unlock (Advanced User)
 
 > Big thanks for @Leoing, who found all nessesary value
 
-| Name         | Address | Configable value | Default value |
+| Name | Address | Configable value | Default value |
 | :----------- | :------ | :--------------- | :------------ |
-| CFC-Lock     | 0x6F0   | 0x1 or 0x0       | 0x1           |
-| DGPU         | 0x574   | 0x1 or 0x0       | 0x1           |
-| Voltage Lock | 0x78C   | 0x1 or 0x0       | 0x1 (1.6.0)   |
+| CFC-Lock | 0x6F0 | 0x1 or 0x0 | 0x1 |
+| DGPU | 0x574 | 0x1 or 0x0 | 0x1 |
+| Voltage Lock | 0x78C | 0x1 or 0x0 | 0x1 (1.6.0) |
 
 You can follow [this](https://github.com/Azkali/GPD-P2-MAX-Hackintosh/issues/16#issuecomment-565882180) to change those value
 
 > For Bios 1.6.0 `0x78C` need set to 0x0 so VoltageShift can be used
+
+> You can use mine SmartCPU Script base on VoltageShift for controlling cpu power's usage: [SmartCPU](https://github.com/tctien342/smart-cpu)
+<p>
+	<img style="border-radius: 8px" src="https://github.com/tctien342/smart-cpu/raw/master/menu.png">
+</p>
 
 ## Credits
 
