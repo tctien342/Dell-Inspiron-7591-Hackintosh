@@ -8,9 +8,9 @@
 
 | Model | MacBookPro15,3 | Version | 10.15.2 |
 | :-------- | :--------------------------- | :------------- | :------------------ |
-| Processor | Intel Core i5-9300H/i7-9750H | Graphics | UHD Graphics 630 |
-| Memory | 2667MHz DDR4 8GB| OS Disk | Samsung 970Evo Plus |
-| Audio | Realtek ALC295 | WiFi/Bluetooth | Intel Wifi 9560/AX200 |
+| Processor | Intel Core i5-9300H | Graphics | UHD Graphics 630 |
+| Memory | 2667MHz DDR4 2x8GB| OS Disk | Samsung 970Evo Plus |
+| Audio | Realtek ALC295 | WiFi/Bluetooth | DW1820A |
 
 ## About build
 
@@ -42,6 +42,7 @@
 ## Installation
 
 - Prepair an Mac installer in USB with bootloader you choice ( Use unibeast to create it )
+- Go to `release` and download lastest version of your choice ( Clover or Opencore )
 - Replace EFI folder in USB EFI partition with this shipped EFI folder ( find the folder with name is `EFI` from zip file)
 - Boot into USB and select MacOs installer
 - After install success, run PostInstall/install.sh in terminal
@@ -58,8 +59,8 @@
 - Save as -> ACPI machine language (replace exited one)
 - Add it to your bootloader:
   - Kext add in Kexts:
-    + Copy kext to kexts/other if using clovere
-    + Copy kext to Kexts and it into Kernel in config.plist (Use OpencoreConfigurator)
+    + Copy kext to kexts/other if using Clover
+    + Copy kext to Kexts and add it into Kernel in config.plist (Use OpencoreConfigurator)
   - AML's file add to ACPI folder (Opencore need add to ACPI after copy SSDT file to ACPI, use OpencoreConfigurator)
 - Reboot
 
