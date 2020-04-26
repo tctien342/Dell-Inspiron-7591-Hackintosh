@@ -15,6 +15,7 @@ Kexts,VirtualSMC.kext,SMC emulator layer,latest,.*RELEASE,https://github.com/aci
 Kexts,VoodooI2C.kext,Stock VoodooI2C,latest,VoodooI2C-*,https://github.com/alexandred/VoodooI2C
 Kexts,VoodooI2CHID.kext,Stock VoodooI2C,latest,VoodooI2C-*,https://github.com/alexandred/VoodooI2C
 Kexts,VerbStub.kext,VerbStub for combojack fix,70320,VerbStub.kext.zip,https://github.com/tctien342/Dell-Inspiron-7591-Hackintosh
+Kexts,SATA-unsupported.kext,Sata kext for SAT0,kext-260420,SATA-unsupported.kext.zip,https://github.com/tctien342/Dell-Inspiron-7591-Hackintosh
 Kexts,VoodooPS2Controller.kext,PS/2 controller,latest,.*RELEASE,https://github.com/acidanthera/VoodooPS2
 Kexts,WhateverGreen.kext,Patches for GPUs,latest,.*RELEASE,https://github.com/acidanthera/WhateverGreen
 Kexts,CpuTscSync.kext,Lvs1974 CpuTscSync replacement for VoodooTCSSync,latest,.*RELEASE,https://github.com/lvs1974/CpuTscSync
