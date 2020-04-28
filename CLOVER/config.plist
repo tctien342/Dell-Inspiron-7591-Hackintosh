@@ -28,6 +28,20 @@
 				</dict>
 				<dict>
 					<key>Comment</key>
+					<string>Rename USTP to One</string>
+					<key>Disabled</key>
+					<false/>
+					<key>Find</key>
+					<data>
+					VVNUUBA=
+					</data>
+					<key>Replace</key>
+					<data>
+					AaOjoxA=
+					</data>
+				</dict>
+				<dict>
+					<key>Comment</key>
 					<string>Rename RP17.PXSX._RMV to XRMV</string>
 					<key>Disabled</key>
 					<false/>
@@ -70,6 +84,20 @@
 				</dict>
 				<dict>
 					<key>Comment</key>
+					<string>Rename DSM to XDSM in XHC</string>
+					<key>Disabled</key>
+					<false/>
+					<key>Find</key>
+					<data>
+					RDNIRQEUKl9EU00M
+					</data>
+					<key>Replace</key>
+					<data>
+					RDNIRQEUKlhEU00M
+					</data>
+				</dict>
+				<dict>
+					<key>Comment</key>
 					<string>Rename ECDV to EC</string>
 					<key>Disabled</key>
 					<false/>
@@ -80,48 +108,6 @@
 					<key>Replace</key>
 					<data>
 					RUNfXw==
-					</data>
-				</dict>
-				<dict>
-					<key>Comment</key>
-					<string>rename HPET to XPET</string>
-					<key>Disabled</key>
-					<false/>
-					<key>Find</key>
-					<data>
-					SFBFVA==
-					</data>
-					<key>Replace</key>
-					<data>
-					WFBFVA==
-					</data>
-				</dict>
-				<dict>
-					<key>Comment</key>
-					<string>RTC IRQ 8 Patch</string>
-					<key>Disabled</key>
-					<false/>
-					<key>Find</key>
-					<data>
-					IgABeQA=
-					</data>
-					<key>Replace</key>
-					<data>
-					IgAAeQA=
-					</data>
-				</dict>
-				<dict>
-					<key>Comment</key>
-					<string>TIMR IRQ 0 Patch</string>
-					<key>Disabled</key>
-					<false/>
-					<key>Find</key>
-					<data>
-					IgEAeQA=
-					</data>
-					<key>Replace</key>
-					<data>
-					IgAAeQA=
 					</data>
 				</dict>
 				<dict>
@@ -181,7 +167,7 @@
 	<key>Boot</key>
 	<dict>
 		<key>Arguments</key>
-		<string>agdpmod=vit9696 darkwake=1 gfx rst=1 -v</string>
+		<string>agdpmod=vit9696 darkwake=1 gfxrst=1 igfxfw=2 igfxpavp=1 -v</string>
 		<key>Debug</key>
 		<false/>
 		<key>DefaultVolume</key>

@@ -46,6 +46,12 @@
 				<key>Enabled</key>
 				<true/>
 				<key>Path</key>
+				<string>SSDT-TPDX.aml</string>
+			</dict>
+			<dict>
+				<key>Enabled</key>
+				<true/>
+				<key>Path</key>
 				<string>SSDT-USB.aml</string>
 			</dict>
 		</array>
@@ -84,6 +90,20 @@
 				<key>Replace</key>
 				<data>
 				QlJUWAI=
+				</data>
+			</dict>
+			<dict>
+				<key>Comment</key>
+				<string>Rename USTP to One</string>
+				<key>Enabled</key>
+				<true/>
+				<key>Find</key>
+				<data>
+				VVNUUBA=
+				</data>
+				<key>Replace</key>
+				<data>
+				AaOjoxA=
 				</data>
 			</dict>
 			<dict>
@@ -130,6 +150,20 @@
 			</dict>
 			<dict>
 				<key>Comment</key>
+				<string>Rename DSM to XDSM in XHC</string>
+				<key>Enabled</key>
+				<true/>
+				<key>Find</key>
+				<data>
+				RDNIRQEUKl9EU00M
+				</data>
+				<key>Replace</key>
+				<data>
+				RDNIRQEUKlhEU00M
+				</data>
+			</dict>
+			<dict>
+				<key>Comment</key>
 				<string>Rename ECDV to EC</string>
 				<key>Enabled</key>
 				<true/>
@@ -140,48 +174,6 @@
 				<key>Replace</key>
 				<data>
 				RUNfXw==
-				</data>
-			</dict>
-			<dict>
-				<key>Comment</key>
-				<string>rename HPET to XPET</string>
-				<key>Enabled</key>
-				<true/>
-				<key>Find</key>
-				<data>
-				SFBFVA==
-				</data>
-				<key>Replace</key>
-				<data>
-				WFBFVA==
-				</data>
-			</dict>
-			<dict>
-				<key>Comment</key>
-				<string>RTC IRQ 8 Patch</string>
-				<key>Enabled</key>
-				<true/>
-				<key>Find</key>
-				<data>
-				IgABeQA=
-				</data>
-				<key>Replace</key>
-				<data>
-				IgAAeQA=
-				</data>
-			</dict>
-			<dict>
-				<key>Comment</key>
-				<string>TIMR IRQ 0 Patch</string>
-				<key>Enabled</key>
-				<true/>
-				<key>Find</key>
-				<data>
-				IgEAeQA=
-				</data>
-				<key>Replace</key>
-				<data>
-				IgAAeQA=
 				</data>
 			</dict>
 			<dict>
@@ -627,6 +619,16 @@
 			</dict>
 			<dict>
 				<key>BundlePath</key>
+				<string>VoodooI2C.kext/Contents/PlugIns/VoodooInput.kext</string>
+				<key>Enabled</key>
+				<true/>
+				<key>ExecutablePath</key>
+				<string>Contents/MacOS/VoodooInput</string>
+				<key>PlistPath</key>
+				<string>Contents/Info.plist</string>
+			</dict>
+			<dict>
+				<key>BundlePath</key>
 				<string>VoodooI2C.kext/Contents/PlugIns/VoodooGPIO.kext</string>
 				<key>Enabled</key>
 				<true/>
@@ -642,16 +644,6 @@
 				<true/>
 				<key>ExecutablePath</key>
 				<string>Contents/MacOS/VoodooI2CServices</string>
-				<key>PlistPath</key>
-				<string>Contents/Info.plist</string>
-			</dict>
-			<dict>
-				<key>BundlePath</key>
-				<string>VoodooI2C.kext/Contents/PlugIns/VoodooInput.kext</string>
-				<key>Enabled</key>
-				<true/>
-				<key>ExecutablePath</key>
-				<string>Contents/MacOS/VoodooInput</string>
 				<key>PlistPath</key>
 				<string>Contents/Info.plist</string>
 			</dict>
@@ -970,7 +962,7 @@
 			<key>7C436110-AB2A-4BBB-A880-FE41995C9F82</key>
 			<dict>
 				<key>boot-args</key>
-				<string>agdpmod=vit9696 darkwake=1 gfxrst=1 -v</string>
+				<string>agdpmod=vit9696 darkwake=1 gfxrst=1 igfxfw=2 igfxpavp=1 -v</string>
 				<key>bootercfg</key>
 				<string>log=0 debug=0 level=0</string>
 				<key>csr-active-config</key>
