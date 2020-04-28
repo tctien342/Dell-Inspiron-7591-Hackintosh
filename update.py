@@ -30,7 +30,7 @@ DEFAULT_SMUUID = '6E167E28-A39C-423F-B244-20152956DD0C'
 DELAY_AFTER_TYPE = 50
 KEXT_PIORITY = {
 	'Lilu.kext': 0, 'VirtualSMC.kext': 10, 'CpuTscSync.kext': 15, 'AppleALC.kext': 20, 'VoodooPS2Controller.kext': 25,
-	'VoodooGPIO.kext': 30, 'VoodooI2CServices.kext': 35, 'VoodooInput.kext': 36,
+	'VoodooGPIO.kext': 30, 'VoodooI2CServices.kext': 35, 'VoodooInput.kext': 26,
 	'VoodooI2C.kext': 40, 'VoodooI2CHID.kext': 50,
 	'CPUFriend.kext': 21, 'CPUFriendDataProvider.kext': 22,
 }
