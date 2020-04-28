@@ -4,15 +4,6 @@
 // Patch: Rename ECDV to EC
 // Find: RUNEVg==	
 // Replace: RUNfXw==
-// Patch: rename HPET to XPET
-// Find: SFBFVA==
-// Replace: WFBFVA==
-// Patch: RTC IRQ 8 Patch
-// Find: IgABeQA=
-// Replace: IgAAeQA=
-// Patch: TIMR IRQ 0 Patch
-// Find: IgEAeQA=
-// Replace: IgAAeQA=
 // References:
 // [1] https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-SBUS-MCHC.dsl
 // [2] https://www.insanelymac.com/forum/topic/338516-opencore-discussion/?do=findComment&comment=2685513
@@ -24,7 +15,7 @@ DefinitionBlock ("", "SSDT", 2, "hack", "PCI0", 0x00000000)
     External (_SB_.PCI0, DeviceObj)
     External (_SB_.PCI0.LPCB, DeviceObj)
     External (_SB_.PCI0.SBUS.BUS0, DeviceObj)
-    External (_SB_.ADP1, DeviceObj)    // (from opcode)
+    External (_SB_.AC, DeviceObj)    // (from opcode)
     
     Device (MEM2)
     {
@@ -59,7 +50,7 @@ DefinitionBlock ("", "SSDT", 2, "hack", "PCI0", 0x00000000)
         }
     }
     
-    Scope (\_SB.ADP1)
+    Scope (\_SB.AC)
     {
         Name (_PRW, Package (0x02)  // _PRW: Power Resources for Wake
         {
@@ -105,26 +96,7 @@ DefinitionBlock ("", "SSDT", 2, "hack", "PCI0", 0x00000000)
     }
 
     Scope (_SB.PCI0.LPCB)
-    {
-        Device (HPET)
-        {
-            Name (_HID, EisaId ("PNP0103"))  // _HID: Hardware ID
-            Name (_UID, Zero)  // _UID: Unique ID
-            Name (BUF0, ResourceTemplate ()
-            {
-                IRQNoFlags ()
-            {0,8,11}
-        Memory32Fixed (ReadWrite,
-            0xFED00000,         // Address Base
-            0x00000400,         // Address Length
-            )            })   
-            Name (_STA, 0x0F)
-            Method (_CRS, 0, NotSerialized)
-            {
-                Return (BUF0)
-            }
-        }
-        
+    {        
         Device (DMAC)
         {
             Name (_HID, EisaId ("PNP0200") /* PC-class DMA Controller */)  // _HID: Hardware ID
