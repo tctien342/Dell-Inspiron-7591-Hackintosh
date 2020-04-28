@@ -1,7 +1,7 @@
 // Add various missing devices in PCI0
 // Include EC, PMCR, DMAC, MCHC and SBUS
-// #(Disabled)Rename ECDV to EC to not brake battery statistics for laptop[2]
-// #(Disabled)Patch: Rename ECDV to EC
+// Rename ECDV to EC to not brake battery statistics for laptop[2]
+// Patch: Rename ECDV to EC
 // Find: RUNEVg==	
 // Replace: RUNfXw==
 // References:
@@ -15,7 +15,40 @@ DefinitionBlock ("", "SSDT", 2, "hack", "PCI0", 0x00000000)
     External (_SB_.PCI0, DeviceObj)
     External (_SB_.PCI0.LPCB, DeviceObj)
     External (_SB_.PCI0.SBUS.BUS0, DeviceObj)
-    External (_SB_.AC__, DeviceObj)    // (from opcode)
+    External (_SB_.AC, DeviceObj)    // (from opcode)
+    
+    Device (MEM2)
+    {
+        Name (_HID, EisaId ("PNP0C01"))
+        Name (_UID, 0x02)
+        Name (CRS, ResourceTemplate ()
+        {
+            Memory32Fixed (ReadWrite,
+                0x20000000,         // Address Base
+                0x00200000,         // Address Length
+                )
+            Memory32Fixed (ReadWrite,
+                0x40000000,         // Address Base
+                0x00200000,         // Address Length
+                )
+        })
+        Method (_CRS, 0, NotSerialized)
+        {
+            Return (CRS)
+        }
+        
+        Method (_STA, 0, NotSerialized)
+        {
+            If (_OSI ("Darwin"))
+            {
+                Return (0x0F)
+            }
+            Else
+            {
+                Return (Zero)
+            }
+        }
+    }
     
     Scope (\_SB.AC)
     {
@@ -28,9 +61,42 @@ DefinitionBlock ("", "SSDT", 2, "hack", "PCI0", 0x00000000)
             })
         }
     }
-    
+        
     Scope (_SB.PCI0)
     {
+        // Intel 300-series PMC support [4]
+        Device (PMCR)
+        {
+            Name (_ADR, 0x001F0002)  // _ADR: Address
+            Method (_STA, 0, NotSerialized)
+            {
+                If (_OSI ("Darwin"))
+                {
+                    Return (0x0F)
+                }
+                Else
+                {
+                    Return (Zero)
+                }
+            }
+        }
+        
+        Device (PPMC)
+        {
+            Name (_ADR, 0x001F0002)
+            Method (_STA, 0, NotSerialized)
+            {
+                If (_OSI ("Darwin"))
+                {
+                    Return (0x0F)
+                }
+                Else
+                {
+                    Return (Zero)
+                }
+            }
+        }
+        
         Device (MCHC) // MCHC[1]
         {
             Name (_ADR, Zero)  // _ADR: Address
@@ -44,38 +110,7 @@ DefinitionBlock ("", "SSDT", 2, "hack", "PCI0", 0x00000000)
     }
 
     Scope (_SB.PCI0.LPCB)
-    {
-        // Add EC device to load AppleBusPowerController[3]
-        Device (EC)
-        {
-            Name (_HID, "ACID0001")  // _HID: Hardware ID
-            Method (_STA, 0, NotSerialized)  // _STA: Status
-            {
-                If (_OSI ("Darwin")) 
-                { Return (0x0F) }
-                Return (Zero)
-            }
-        }
-        
-        // Intel 300-series PMC support [4]
-        Device (PMCR)
-        {
-            Name (_HID, EisaId ("APP9876"))  // _HID: Hardware ID
-            Method (_STA, 0, NotSerialized)  // _STA: Status
-            {
-                If (_OSI ("Darwin")) 
-                { Return (0x0F) }
-                Return (Zero)
-            }
-            Name (_CRS, ResourceTemplate ()  // _CRS: Current Resource Settings
-            {
-                Memory32Fixed (ReadWrite,
-                    0xFE000000,         // Address Base
-                    0x00010000,         // Address Length
-                    )
-            })
-        }
-        
+    {        
         Device (DMAC)
         {
             Name (_HID, EisaId ("PNP0200") /* PC-class DMA Controller */)  // _HID: Hardware ID
@@ -128,11 +163,11 @@ DefinitionBlock ("", "SSDT", 2, "hack", "PCI0", 0x00000000)
             Name (_CID, "diagsvault")  // _CID: Compatible ID
             Method (_DSM, 4, NotSerialized)  // _DSM: Device-Specific Method
             {
-                If (!Arg2)
+                If (LNot (Arg2))
                 {
                     Return (Buffer (One)
                     {
-                         0x57                                             // W
+                         0x03                                           
                     })
                 }
 
