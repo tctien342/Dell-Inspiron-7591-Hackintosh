@@ -25,18 +25,25 @@ DefinitionBlock ("", "SSDT", 2, "hack", "BCKM", 0x00000000)
         Device (PNLF)
         {
             Name(_ADR, Zero)
-        Name(_HID, EisaId("APP0002"))
-        Name(_CID, "backlight")
-        // _UID is set depending on PWMMax to match profiles in AppleBacklightFixup.kext Info.plist
-        // 14: Sandy/Ivy 0x710
-        // 15: Haswell/Broadwell 0xad9
-        // 16: Skylake/KabyLake 0x56c (and some Haswell, example 0xa2e0008)
-        // 17: custom LMAX=0x7a1
-        // 18: custom LMAX=0x1499
-        // 19: CoffeeLake 0xffff
-        // 99: Other (requires custom AppleBacklightInjector.kext/AppleBackightFixup.kext)
-        Name(_UID, 19)
-        Name(_STA, 0x0B)
+            Name(_HID, EisaId("APP0002"))
+            Name(_CID, "backlight")
+            // _UID is set depending on PWMMax to match profiles in AppleBacklightFixup.kext Info.plist
+            // 14: Sandy/Ivy 0x710
+            // 15: Haswell/Broadwell 0xad9
+            // 16: Skylake/KabyLake 0x56c (and some Haswell, example 0xa2e0008)
+            // 17: custom LMAX=0x7a1
+            // 18: custom LMAX=0x1499
+            // 19: CoffeeLake 0xffff
+            // 99: Other (requires custom AppleBacklightInjector.kext/AppleBackightFixup.kext)
+            Name(_UID, 19)
+            Method (_STA, 0, NotSerialized)  // _STA: Status
+            {
+                If (_OSI ("Darwin"))
+                {
+                    Return (0x0B)
+                }
+                Return (Zero)
+            }
         }
     }
     
@@ -64,20 +71,19 @@ DefinitionBlock ("", "SSDT", 2, "hack", "BCKM", 0x00000000)
             If (_OSI ("Darwin"))
             {
                 If (LEqual (Arg0, One))
-            {
-                Notify (^LCD, 0x86)    //native code
-                Notify (^^LPCB.PS2K, 0x10)    //ELAN code
-                Notify (^^LPCB.PS2K, 0x0206) // PS2 code
-                Notify (^^LPCB.PS2K, 0x0286) // PS2 code
-            }
-
-            If (And (Arg0, 0x02))
-            {
-                Notify (^LCD, 0x87)    //native code
-                Notify (^^LPCB.PS2K, 0x20)    //ELAN code
-                Notify (^^LPCB.PS2K, 0x0205) // PS2 code
-                Notify (^^LPCB.PS2K, 0x0285) // PS2 code
-            }
+                {
+                    Notify (^LCD, 0x86)    //native code
+                    Notify (^^LPCB.PS2K, 0x10)    //ELAN code
+                    Notify (^^LPCB.PS2K, 0x0206) // PS2 code
+                    Notify (^^LPCB.PS2K, 0x0286) // PS2 code
+                }
+                If (And (Arg0, 0x02))
+                {
+                    Notify (^LCD, 0x87)    //native code
+                    Notify (^^LPCB.PS2K, 0x20)    //ELAN code
+                    Notify (^^LPCB.PS2K, 0x0205) // PS2 code
+                    Notify (^^LPCB.PS2K, 0x0285) // PS2 code
+                }
             }
             Else
             {

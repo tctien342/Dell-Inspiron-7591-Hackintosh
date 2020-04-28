@@ -25,7 +25,7 @@ DefinitionBlock ("", "SSDT", 2, "hack", "DGPU", 0x00000000)
         }
         If (CondRefOf (\_SB_.PCI0.PGOF))
         {
-            \_SB_.PCI0.PGOF ()
+            \_SB.PCI0.PGOF ()
         }
     }
 

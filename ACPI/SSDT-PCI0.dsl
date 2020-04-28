@@ -52,11 +52,14 @@ DefinitionBlock ("", "SSDT", 2, "hack", "PCI0", 0x00000000)
     
     Scope (\_SB.AC)
     {
-        Name (_PRW, Package (0x02)  // _PRW: Power Resources for Wake
+        If (_OSI ("Darwin"))
         {
-            0x18, 
-            0x03
-        })
+            Name (_PRW, Package (0x02)  // _PRW: Power Resources for Wake
+            {
+                0x18, 
+                0x03
+            })
+        }
     }
         
     Scope (_SB.PCI0)
@@ -65,6 +68,17 @@ DefinitionBlock ("", "SSDT", 2, "hack", "PCI0", 0x00000000)
         Device (PMCR)
         {
             Name (_ADR, 0x001F0002)  // _ADR: Address
+            Method (_STA, 0, NotSerialized)
+            {
+                If (_OSI ("Darwin"))
+                {
+                    Return (0x0F)
+                }
+                Else
+                {
+                    Return (Zero)
+                }
+            }
         }
         
         Device (PPMC)

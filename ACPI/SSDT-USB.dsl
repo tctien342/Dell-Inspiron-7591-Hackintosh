@@ -8,6 +8,9 @@
 // Patch: Rename TBDU.XHC to TBDU.XHC2
 // Find: VEJEVVhIQ18=
 // Replace: VEJEVVhIQzI=
+// Patch: Rename DSM to XDSM in XHC
+// Find: RDNIRQEUKl9EU00M
+// Replace: RDNIRQEUKlhEU00M
 // References:
 // [1] https://www.insanelymac.com/forum/topic/324366-dell-xps-15-9560-4k-touch-1tb-ssd-32gb-ram-100-adobergb%E2%80%8B/
 // [2] https://www.tonymacx86.com/threads/usb-c-hotplug-questions.211313/
