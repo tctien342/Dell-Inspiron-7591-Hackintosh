@@ -6,13 +6,17 @@
 
 ## System configuration
 
-| Model | MacBookPro15,3 | Version | 10.15.2 |
+| Model | MacBookPro15,3 | Version | 10.15.4 |
 | :-------- | :--------------------------- | :------------- | :------------------ |
 | Processor | Intel Core i5-9300H | Graphics | UHD Graphics 630 |
 | Memory | 2667MHz DDR4 2x8GB| OS Disk | Samsung 970Evo Plus |
 | Audio | Realtek ALC295 | WiFi/Bluetooth | DW1820A |
 
 ## About build
+
+#### Performance
+  + [Geekbench 5](https://browser.geekbench.com/v5/cpu/1927376): 1052 SingleCore, 3935 MultiCore
+  + Battery: 57wh with 87% health and 60% brightness (2 NVME and 1 SSD SATA), I got 3h20 screen time when suffering web and light code
 
 #### Not Working
 
@@ -24,6 +28,9 @@
   - Discrete GPU (Disabled)
   - Fingerprint (Disabled)
   - Internal Microphone
++ Some streaming video like http://mixer.com/ in `safari` will make iGPU alway highest freq until sleep or reboot the machine
+  + This due to loading Apple GuC firmware into UHD630 for better performance
+  + You can turn it back to normal by remove `igfxfw=2` in boot-flags
 
 #### HDMI blinking at boot
 
@@ -80,17 +87,15 @@ Please uncheck all options (except `Prevent computer from sleeping...`, which is
 
 #### Display
 
-If you are using FHD(1080p) display, you may want to enable font smoothing:
+If you are using FHD(1080p) display, you may want to enable font smoothing, run this command from terminal:
 
 ```
 defaults write -g CGFontRenderingFontSmoothingDisabled -bool NO
 ```
 
-If your laptop display is 4K screen, you should set uiscale to :
-
-```sh
-python update.py --set uiscale=2
-```
+If your laptop display is 4K screen, you should set uiscale to 2:
+  + Opencore: NVRAM -> Add -> 4D1EDE05-38C7-4A6A-9CC6-4BCCA8B38C14 -> UIScale -> 2
+  + Clover: BootGraphics -> UIScale -> 2
 
 #### Using DW1820a as wifi card
 
