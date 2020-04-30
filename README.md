@@ -98,8 +98,7 @@ If your laptop display is 4K screen, you should set uiscale to 2:
   + Clover: BootGraphics -> UIScale -> 2
 
 #### Using DW1820a as wifi card
-
-You have to do following changes to Device Properties:
+You have to do following changes to Device Properties or it `cant boot into macos`:
 
 > Change
 
