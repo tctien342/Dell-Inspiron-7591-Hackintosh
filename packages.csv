@@ -12,8 +12,8 @@ Kexts,SMCProcessor.kext,Add support for temperature monitoring,latest,.*RELEASE,
 Kexts,SMCLightSensor.kext,Add support for temperature monitoring,latest,.*RELEASE,https://github.com/acidanthera/VirtualSMC
 Kexts,USBPorts.kext,USBPorts for dell Insipron 759x,70320,USBPorts.kext.zip,https://github.com/tctien342/Dell-Inspiron-7591-Hackintosh
 Kexts,VirtualSMC.kext,SMC emulator layer,latest,.*RELEASE,https://github.com/acidanthera/VirtualSMC
-Kexts,VoodooI2C.kext,Stock VoodooI2C,latest,VoodooI2C-2*,https://github.com/alexandred/VoodooI2C
-Kexts,VoodooI2CHID.kext,Stock VoodooI2C,latest,VoodooI2C-2*,https://github.com/alexandred/VoodooI2C
+Kexts,VoodooI2C.kext,Stock VoodooI2C,kext-260420,VoodooI2C-2.4.2_FIX.zip,https://github.com/tctien342/Dell-Inspiron-7591-Hackintosh
+Kexts,VoodooI2CHID.kext,Stock VoodooI2C,kext-260420,VoodooI2C-2.4.2_FIX.zip,https://github.com/tctien342/Dell-Inspiron-7591-Hackintosh
 Kexts,VerbStub.kext,VerbStub for combojack fix,70320,VerbStub.kext.zip,https://github.com/tctien342/Dell-Inspiron-7591-Hackintosh
 Kexts,SATA-unsupported.kext,Sata kext for SAT0,kext-260420,SATA-unsupported.kext.zip,https://github.com/tctien342/Dell-Inspiron-7591-Hackintosh
 Kexts,VoodooPS2Controller.kext,PS/2 controller,latest,.*RELEASE,https://github.com/acidanthera/VoodooPS2
