@@ -14,6 +14,20 @@
 			<array>
 				<dict>
 					<key>Comment</key>
+					<string>Rename RP17.PXSX._RMV to XRMV</string>
+					<key>Disabled</key>
+					<false/>
+					<key>Find</key>
+					<data>
+					UlAxN1BYU1gUM19STVY=
+					</data>
+					<key>Replace</key>
+					<data>
+					UlAxN1BYU1gUM1hSTVY=
+					</data>
+				</dict>
+				<dict>
+					<key>Comment</key>
 					<string>Rename BRT6 to BRTX</string>
 					<key>Disabled</key>
 					<false/>
@@ -38,76 +52,6 @@
 					<key>Replace</key>
 					<data>
 					AaOjoxA=
-					</data>
-				</dict>
-				<dict>
-					<key>Comment</key>
-					<string>Rename RP17.PXSX._RMV to XRMV</string>
-					<key>Disabled</key>
-					<false/>
-					<key>Find</key>
-					<data>
-					UlAxN1BYU1gUM19STVY=
-					</data>
-					<key>Replace</key>
-					<data>
-					UlAxN1BYU1gUM1hSTVY=
-					</data>
-				</dict>
-				<dict>
-					<key>Comment</key>
-					<string>Rename XHC to XHC2 on TBDU</string>
-					<key>Disabled</key>
-					<false/>
-					<key>Find</key>
-					<data>
-					WEhDXwhfQURSAA==
-					</data>
-					<key>Replace</key>
-					<data>
-					WEhDMghfQURSAA==
-					</data>
-				</dict>
-				<dict>
-					<key>Comment</key>
-					<string>Rename TBDU.XHC to TBDU.XHC2</string>
-					<key>Disabled</key>
-					<false/>
-					<key>Find</key>
-					<data>
-					VEJEVVhIQ18=
-					</data>
-					<key>Replace</key>
-					<data>
-					VEJEVVhIQzI=
-					</data>
-				</dict>
-				<dict>
-					<key>Comment</key>
-					<string>Rename DSM to XDSM in XHC</string>
-					<key>Disabled</key>
-					<false/>
-					<key>Find</key>
-					<data>
-					RDNIRQEUKl9EU00M
-					</data>
-					<key>Replace</key>
-					<data>
-					RDNIRQEUKlhEU00M
-					</data>
-				</dict>
-				<dict>
-					<key>Comment</key>
-					<string>Rename ECDV to EC</string>
-					<key>Disabled</key>
-					<false/>
-					<key>Find</key>
-					<data>
-					RUNEVg==
-					</data>
-					<key>Replace</key>
-					<data>
-					RUNfXw==
 					</data>
 				</dict>
 				<dict>
@@ -167,7 +111,7 @@
 	<key>Boot</key>
 	<dict>
 		<key>Arguments</key>
-		<string>agdpmod=vit9696 darkwake=1 gfxrst=1 igfxfw=2 igfxpavp=1 -v</string>
+		<string>agdpmod=vit9696 darkwake=1 gfxrst=1 igfxfw=2 -v</string>
 		<key>Debug</key>
 		<false/>
 		<key>DefaultVolume</key>
@@ -197,6 +141,21 @@
 		</dict>
 		<key>Properties</key>
 		<dict>
+			<key>#PciRoot(0x0)/Pci(0x1d,0x6)/Pci(0x0,0x0)</key>
+			<dict>
+				<key>AAPL,slot-name</key>
+				<string>WLAN</string>
+				<key>compatible</key>
+				<string>pci14e4,43a3</string>
+				<key>device_type</key>
+				<string>Airport Extreme</string>
+				<key>model</key>
+				<string>DW1820A (BCM4350) 802.11ac Wireless</string>
+				<key>name</key>
+				<string>Airport</string>
+				<key>pci-aspm-default</key>
+				<integer>0</integer>
+			</dict>
 			<key>PciRoot(0x0)/Pci(0x0,0x0)</key>
 			<dict>
 				<key>AAPL,slot-name</key>
@@ -382,21 +341,6 @@
 				<key>model</key>
 				<string>Cannon Lake PCH SPI Controller</string>
 			</dict>
-			<key>PciRoot(0x0)/Pci(0x1d,0x6)/Pci(0x0,0x0)</key>
-			<dict>
-				<key>AAPL,slot-name</key>
-				<string>WLAN</string>
-				<key>compatible</key>
-				<string>pci14e4,43a3</string>
-				<key>device_type</key>
-				<string>Airport Extreme</string>
-				<key>model</key>
-				<string>DW1820A (BCM4350) 802.11ac Wireless</string>
-				<key>name</key>
-				<string>Airport</string>
-				<key>pci-aspm-default</key>
-				<integer>0</integer>
-			</dict>
 			<key>PciRoot(0x0)/Pci(0x1f,0x3)</key>
 			<dict>
 				<key>alc-delay</key>
@@ -408,7 +352,7 @@
 			<dict>
 				<key>AAPL,ig-platform-id</key>
 				<data>
-				AACbPg==
+				CQClPg==
 				</data>
 				<key>disable-external-gpu</key>
 				<data>
@@ -416,7 +360,7 @@
 				</data>
 				<key>dpcd-max-link-rate</key>
 				<data>
-				CgAAAA==
+				FAAAAA==
 				</data>
 				<key>enable-dpcd-max-link-rate-fix</key>
 				<data>
