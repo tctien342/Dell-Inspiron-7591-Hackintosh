@@ -52,7 +52,13 @@
 				<key>Enabled</key>
 				<true/>
 				<key>Path</key>
-				<string>SSDT-USB.aml</string>
+				<string>SSDT-TYPEC.aml</string>
+			</dict>
+			<dict>
+				<key>Enabled</key>
+				<true/>
+				<key>Path</key>
+				<string>SSDT-USBX.aml</string>
 			</dict>
 		</array>
 		<key>Block</key>
@@ -80,6 +86,20 @@
 		<array>
 			<dict>
 				<key>Comment</key>
+				<string>Rename RP17.PXSX._RMV to XRMV</string>
+				<key>Enabled</key>
+				<true/>
+				<key>Find</key>
+				<data>
+				UlAxN1BYU1gUM19STVY=
+				</data>
+				<key>Replace</key>
+				<data>
+				UlAxN1BYU1gUM1hSTVY=
+				</data>
+			</dict>
+			<dict>
+				<key>Comment</key>
 				<string>Rename BRT6 to BRTX</string>
 				<key>Enabled</key>
 				<true/>
@@ -104,76 +124,6 @@
 				<key>Replace</key>
 				<data>
 				AaOjoxA=
-				</data>
-			</dict>
-			<dict>
-				<key>Comment</key>
-				<string>Rename RP17.PXSX._RMV to XRMV</string>
-				<key>Enabled</key>
-				<true/>
-				<key>Find</key>
-				<data>
-				UlAxN1BYU1gUM19STVY=
-				</data>
-				<key>Replace</key>
-				<data>
-				UlAxN1BYU1gUM1hSTVY=
-				</data>
-			</dict>
-			<dict>
-				<key>Comment</key>
-				<string>Rename XHC to XHC2 on TBDU</string>
-				<key>Enabled</key>
-				<true/>
-				<key>Find</key>
-				<data>
-				WEhDXwhfQURSAA==
-				</data>
-				<key>Replace</key>
-				<data>
-				WEhDMghfQURSAA==
-				</data>
-			</dict>
-			<dict>
-				<key>Comment</key>
-				<string>Rename TBDU.XHC to TBDU.XHC2</string>
-				<key>Enabled</key>
-				<true/>
-				<key>Find</key>
-				<data>
-				VEJEVVhIQ18=
-				</data>
-				<key>Replace</key>
-				<data>
-				VEJEVVhIQzI=
-				</data>
-			</dict>
-			<dict>
-				<key>Comment</key>
-				<string>Rename DSM to XDSM in XHC</string>
-				<key>Enabled</key>
-				<true/>
-				<key>Find</key>
-				<data>
-				RDNIRQEUKl9EU00M
-				</data>
-				<key>Replace</key>
-				<data>
-				RDNIRQEUKlhEU00M
-				</data>
-			</dict>
-			<dict>
-				<key>Comment</key>
-				<string>Rename ECDV to EC</string>
-				<key>Enabled</key>
-				<true/>
-				<key>Find</key>
-				<data>
-				RUNEVg==
-				</data>
-				<key>Replace</key>
-				<data>
-				RUNfXw==
 				</data>
 			</dict>
 			<dict>
@@ -474,7 +424,7 @@
 			<dict>
 				<key>AAPL,ig-platform-id</key>
 				<data>
-				AACbPg==
+				CQClPg==
 				</data>
 				<key>disable-external-gpu</key>
 				<data>
@@ -482,7 +432,7 @@
 				</data>
 				<key>dpcd-max-link-rate</key>
 				<data>
-				CgAAAA==
+				FAAAAA==
 				</data>
 				<key>enable-dpcd-max-link-rate-fix</key>
 				<data>
@@ -604,6 +554,24 @@
 				<true/>
 				<key>ExecutablePath</key>
 				<string>Contents/MacOS/AppleALC</string>
+				<key>PlistPath</key>
+				<string>Contents/Info.plist</string>
+			</dict>
+			<dict>
+				<key>BundlePath</key>
+				<string>CPUFriend.kext</string>
+				<key>Enabled</key>
+				<true/>
+				<key>ExecutablePath</key>
+				<string>Contents/MacOS/CPUFriend</string>
+				<key>PlistPath</key>
+				<string>Contents/Info.plist</string>
+			</dict>
+			<dict>
+				<key>BundlePath</key>
+				<string>CPUFriendDataProvider.kext</string>
+				<key>Enabled</key>
+				<true/>
 				<key>PlistPath</key>
 				<string>Contents/Info.plist</string>
 			</dict>
@@ -864,6 +832,8 @@
 			<true/>
 			<key>DisableIoMapper</key>
 			<true/>
+			<key>DisableRtcChecksum</key>
+			<false/>
 			<key>DummyPowerManagement</key>
 			<false/>
 			<key>ExternalDiskIcons</key>
@@ -911,12 +881,12 @@
 			<key>TakeoffDelay</key>
 			<integer>0</integer>
 			<key>Timeout</key>
-			<integer>0</integer>
+			<integer>5</integer>
 		</dict>
 		<key>Debug</key>
 		<dict>
 			<key>AppleDebug</key>
-			<false/>
+			<true/>
 			<key>DisableWatchDog</key>
 			<false/>
 			<key>DisplayDelay</key>
@@ -936,6 +906,8 @@
 			<true/>
 			<key>AuthRestart</key>
 			<false/>
+			<key>BootProtect</key>
+			<string>None</string>
 			<key>ExposeSensitiveData</key>
 			<integer>6</integer>
 			<key>HaltLevel</key>
@@ -962,7 +934,7 @@
 			<key>7C436110-AB2A-4BBB-A880-FE41995C9F82</key>
 			<dict>
 				<key>boot-args</key>
-				<string>agdpmod=vit9696 darkwake=1 gfxrst=1 igfxfw=2 igfxpavp=1 -v</string>
+				<string>agdpmod=vit9696 darkwake=1 gfxrst=1 igfxfw=2 -v</string>
 				<key>bootercfg</key>
 				<string>log=0 debug=0 level=0</string>
 				<key>csr-active-config</key>
@@ -1000,6 +972,8 @@
 		<dict>
 			<key>MLB</key>
 			<string>C02947300QX0000JC</string>
+			<key>SpoofVendor</key>
+			<true/>
 			<key>SystemProductName</key>
 			<string>MacBookPro15,3</string>
 			<key>SystemSerialNumber</key>
@@ -1018,6 +992,19 @@
 	</dict>
 	<key>UEFI</key>
 	<dict>
+		<key>APFS</key>
+		<dict>
+			<key>EnableJumpstart</key>
+			<true/>
+			<key>HideVerbose</key>
+			<true/>
+			<key>JumpstartHotPlug</key>
+			<false/>
+			<key>MinDate</key>
+			<integer>0</integer>
+			<key>MinVersion</key>
+			<integer>0</integer>
+		</dict>
 		<key>Audio</key>
 		<dict>
 			<key>AudioCodec</key>
@@ -1039,7 +1026,6 @@
 		<true/>
 		<key>Drivers</key>
 		<array>
-			<string>ApfsDriverLoader.efi</string>
 			<string>OpenRuntime.efi</string>
 			<string>VBoxHfs.efi</string>
 		</array>
@@ -1089,7 +1075,7 @@
 			<key>TextRenderer</key>
 			<string>BuiltinGraphics</string>
 		</dict>
-		<key>Protocols</key>
+		<key>ProtocolOverrides</key>
 		<dict>
 			<key>AppleAudio</key>
 			<false/>
@@ -1102,6 +1088,8 @@
 			<key>AppleImageConversion</key>
 			<false/>
 			<key>AppleKeyMap</key>
+			<false/>
+			<key>AppleRtcRam</key>
 			<false/>
 			<key>AppleSmcIo</key>
 			<false/>
@@ -1135,6 +1123,8 @@
 			<key>UnblockFsConnect</key>
 			<false/>
 		</dict>
+		<key>ReservedMemory</key>
+		<array/>
 	</dict>
 </dict>
 </plist>
