@@ -1,7 +1,7 @@
 // Add various missing devices in PCI0
 // Include EC, PMCR, DMAC, MCHC and SBUS
 // Rename ECDV to EC to not brake battery statistics for laptop[2]
-// Patch: Rename ECDV to EC
+// #(Disabled)Patch: Rename ECDV to EC
 // Find: RUNEVg==	
 // Replace: RUNfXw==
 // References:
@@ -64,6 +64,17 @@ DefinitionBlock ("", "SSDT", 2, "hack", "PCI0", 0x00000000)
         
     Scope (_SB.PCI0)
     {
+        // Add EC device to load AppleBusPowerController[3]
+        Device (EC)
+        {
+            Name (_HID, "ACID0001")  // _HID: Hardware ID
+            Method (_STA, 0, NotSerialized)  // _STA: Status
+            {
+                If (_OSI ("Darwin")) 
+                { Return (0x0F) }
+                Return (Zero)
+            }
+        }
         // Intel 300-series PMC support [4]
         Device (PMCR)
         {

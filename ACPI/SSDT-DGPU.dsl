@@ -12,6 +12,7 @@ DefinitionBlock ("", "SSDT", 2, "hack", "DGPU", 0x00000000)
 {
     External (_SB_.PCI0.PEG0.PEGP._OFF, MethodObj)    // 0 Arguments (from opcode)
     External (_SB_.PCI0.PEG0.PEGP._ON_, MethodObj)
+    External (_SB_.PCI0.PEG0.PG00._OFF, MethodObj)    // 0 Arguments (from opcode)
     External (_SB_.PCI0.PGOF, MethodObj)
     External (EXT4, MethodObj)    // 1 Arguments (from opcode)
     External (ZWAK, MethodObj)    // 1 Arguments (from opcode)
@@ -22,6 +23,10 @@ DefinitionBlock ("", "SSDT", 2, "hack", "DGPU", 0x00000000)
         If (CondRefOf (\_SB.PCI0.PEG0.PEGP._OFF))
         {
             \_SB.PCI0.PEG0.PEGP._OFF ()
+        }
+        If (CondRefOf (\_SB.PCI0.PEG0.PG00._OFF))
+        {
+            \_SB.PCI0.PEG0.PG00._OFF ()
         }
         If (CondRefOf (\_SB_.PCI0.PGOF))
         {

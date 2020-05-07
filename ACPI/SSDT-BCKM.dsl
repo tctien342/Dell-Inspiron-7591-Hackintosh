@@ -58,7 +58,7 @@ DefinitionBlock ("", "SSDT", 2, "hack", "BCKM", 0x00000000)
         If (_OSI ("Darwin"))
         {
             \_SB.ACOS = 0x80
-            \_SB.ACSE = 0
+            \_SB.ACSE = Zero
             
         }
     }
