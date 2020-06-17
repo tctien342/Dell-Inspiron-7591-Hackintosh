@@ -6,31 +6,32 @@
 
 ## System configuration
 
-| Model | MacBookPro15,3 | Version | 10.15.4 |
-| :-------- | :--------------------------- | :------------- | :------------------ |
-| Processor | Intel Core i5-9300H | Graphics | UHD Graphics 630 |
-| Memory | 2667MHz DDR4 2x8GB| OS Disk | Samsung 970Evo Plus |
-| Audio | Realtek ALC295 | WiFi/Bluetooth | DW1820A |
+| Model     | MacBookPro15,3      | Version        | 10.15.4             |
+| :-------- | :------------------ | :------------- | :------------------ |
+| Processor | Intel Core i5-9300H | Graphics       | UHD Graphics 630    |
+| Memory    | 2667MHz DDR4 2x8GB  | OS Disk        | Samsung 970Evo Plus |
+| Audio     | Realtek ALC295      | WiFi/Bluetooth | DW1820A             |
 
 ## About build
 
 #### Performance
-  + [Geekbench 5](https://browser.geekbench.com/v5/cpu/1927376): 1052 SingleCore, 3935 MultiCore
-  + Battery: 57wh with 87% health and 60% brightness (2 NVME and 1 SSD SATA), I got 3h20 screen time when suffering web and light code
+
+- [Geekbench 5](https://browser.geekbench.com/v5/cpu/1927376): 1052 SingleCore, 3935 MultiCore
+- Battery: 57wh with 87% health and 60% brightness (2 NVME and 1 SSD SATA), I got 3h20 screen time when suffering web and light code
 
 #### Not Working
 
-+ Intel wifi card is developing, there are two version of kext:
-  + Faked as an ethernet card: you can check [here](https://github.com/zxystd/itlwm)
-  + Using like an wifi card: you can check the status [here](https://github.com/AppleIntelWifi/adapter)
-  + Bluetooth kext can be found here: [IntelBluetoothFirmware](https://github.com/zxystd/IntelBluetoothFirmware)
-+ Thing may never work:
+- Intel wifi card is developing, there are two version of kext:
+  - Faked as an ethernet card: you can check [here](https://github.com/zxystd/itlwm)
+  - Using like an wifi card: you can check the status [here](https://github.com/AppleIntelWifi/adapter)
+  - Bluetooth kext can be found here: [IntelBluetoothFirmware](https://github.com/zxystd/IntelBluetoothFirmware)
+- Thing may never work:
   - Discrete GPU (Disabled)
   - Fingerprint (Disabled)
   - Internal Microphone
-+ Some streaming video like http://mixer.com/ in `safari` will make iGPU alway highest freq until sleep or reboot the machine
-  + This due to loading Apple GuC firmware into UHD630 for better performance
-  + You can turn it back to normal by remove `igfxfw=2` in boot-flags
+- Some streaming video like http://mixer.com/ in `safari` will make iGPU alway highest freq until sleep or reboot the machine
+  - This due to loading Apple GuC firmware into UHD630 for better performance
+  - You can turn it back to normal by remove `igfxfw=2` in boot-flags
 
 #### HDMI blinking at boot
 
@@ -48,6 +49,14 @@
 
 ## Installation
 
+### BIOS
+
+- Disk in `AHCI` mode
+- Fastboot: `Thorough`
+- Power on lid: `Disabled` - Fix black screen after wake
+
+### STEP
+
 - Prepair an Mac installer in USB with bootloader you choice ( Use unibeast to create it )
 - Go to `release` and download lastest version of your choice ( Clover or Opencore )
 - Replace EFI folder in USB EFI partition with this shipped EFI folder ( find the folder with name is `EFI` from zip file)
@@ -55,8 +64,7 @@
 - After install success, run PostInstall/install.sh in terminal
 - Then you need to mount EFI partition and replace it with USB's EFI
 - After System EFI replaced by your EFI, Using Opencore Configurator, Clover Configurator or update script to change SMBIOS, generate your serial and MBL
-- If you're using intel card, please use NullEthernet for fixing iMess and FaceTime
-	- Change MAC in NullEthernet with your new created one, see below
+- If you're using intel card, please use NullEthernet for fixing iMess and FaceTime - Change MAC in NullEthernet with your new created one, see below
 
 #### Fake ethernet
 
@@ -66,8 +74,8 @@
 - Save as -> ACPI machine language (replace exited one)
 - Add it to your bootloader:
   - Kext add in Kexts:
-    + Copy kext to kexts/other if using Clover
-    + Copy kext to Kexts and add it into Kernel in config.plist (Use OpencoreConfigurator)
+    - Copy kext to kexts/other if using Clover
+    - Copy kext to Kexts and add it into Kernel in config.plist (Use OpencoreConfigurator)
   - AML's file add to ACPI folder (Opencore need add to ACPI after copy SSDT file to ACPI, use OpencoreConfigurator)
 - Reboot
 
@@ -94,10 +102,12 @@ defaults write -g CGFontRenderingFontSmoothingDisabled -bool NO
 ```
 
 If your laptop display is 4K screen, you should set uiscale to 2:
-  + Opencore: NVRAM -> Add -> 4D1EDE05-38C7-4A6A-9CC6-4BCCA8B38C14 -> UIScale -> 2
-  + Clover: BootGraphics -> UIScale -> 2
+
+- Opencore: NVRAM -> Add -> 4D1EDE05-38C7-4A6A-9CC6-4BCCA8B38C14 -> UIScale -> 2
+- Clover: BootGraphics -> UIScale -> 2
 
 #### Using DW1820a as wifi card
+
 You have to do following changes to Device Properties or it `cant boot into macos`:
 
 > Change
@@ -112,10 +122,8 @@ You have to do following changes to Device Properties or it `cant boot into maco
 <key>PciRoot(0x0)/Pci(0x1c,0x0)/Pci(0x0,0x0)</key>
 ```
 
-+ See [THE Solution:Dell DW1820A](https://www.tonymacx86.com/threads/the-solution-dell-dw1820a-broadcom-bcm94350zae-macos-15.288026/)
-+ Other card you may need google for it
-
-
+- See [THE Solution:Dell DW1820A](https://www.tonymacx86.com/threads/the-solution-dell-dw1820a-broadcom-bcm94350zae-macos-15.288026/)
+- Other card you may need google for it
 
 #### NTFS Writing
 
@@ -133,17 +141,18 @@ If your NTFS partition has Windows installed, you need to run `powercfg -h off` 
 
 > Big thanks for @Leoing, who found all nessesary value
 
-| Name | Address | Configable value | Default value |
+| Name         | Address | Configable value | Default value |
 | :----------- | :------ | :--------------- | :------------ |
-| CFC-Lock | 0x6F0 | 0x1 or 0x0 | 0x1 |
-| DGPU | 0x574 | 0x1 or 0x0 | 0x1 |
-| Voltage Lock | 0x78C | 0x1 or 0x0 | 0x1 (1.6.0) |
+| CFC-Lock     | 0x6F0   | 0x1 or 0x0       | 0x1           |
+| DGPU         | 0x574   | 0x1 or 0x0       | 0x1           |
+| Voltage Lock | 0x78C   | 0x1 or 0x0       | 0x1 (1.6.0)   |
 
 You can follow [this](https://github.com/Azkali/GPD-P2-MAX-Hackintosh/issues/16#issuecomment-565882180) to change those value
 
 > For Bios 1.6.0 `0x78C` need set to 0x0 so VoltageShift can be used
 
 > You can use mine SmartCPU Script base on VoltageShift for controlling cpu power's usage: [SmartCPU](https://github.com/tctien342/smart-cpu)
+
 <p>
 	<img style="border-radius: 8px" src="https://github.com/tctien342/smart-cpu/raw/master/menu.png">
 </p>
