@@ -29,9 +29,10 @@
   - Discrete GPU (Disabled)
   - Fingerprint (Disabled)
   - Internal Microphone
-- Some streaming video like http://mixer.com/ in `safari` will make iGPU alway highest freq until sleep or reboot the machine
-  - This due to loading Apple GuC firmware into UHD630 for better performance
-  - You can turn it back to normal by remove `igfxfw=2` in boot-flags
+- <del>Some streaming video like http://mixer.com/ in `safari` will make iGPU alway highest freq until sleep or reboot the machine</del>
+  - <del>This due to loading Apple GuC firmware into UHD630 for better performance</del>
+  - <del>You can turn it back to normal by remove `igfxfw=2` in boot-flags</del>
+  - Now using default WEG init
 
 #### HDMI blinking at boot
 
