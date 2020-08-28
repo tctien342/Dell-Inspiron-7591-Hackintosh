@@ -32,6 +32,6 @@ pipeline {
 
   }
   environment {
-    GITHUB_TOKEN = '21ce29cf9db5fd2cd56230af7f239cca27ebea5b'
+    GITHUB_TOKEN = 'df33d24122b6b318da55e7a72e4e1a9c2b6bca77'
   }
 }
