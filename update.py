@@ -182,7 +182,7 @@ def shout(cmd):
 
 def get_timestamp(p, f='B'):
     # 'B' - birth time, 'm' - modified time
-    return int(shout('stat -f%{} {}'.format(f, p)))
+    return int(shout('stat -c {} {}'.format(f, p)))
 
 
 class Plist:
@@ -288,7 +288,7 @@ class Package:
         lurl, lver, ldat = self.lurl, 'NotInstalled', None
         if lurl.exists():
             ldat = datetime.fromtimestamp(
-                get_timestamp(lurl, 'B'))  # B -- birthdate
+                get_timestamp(lurl, 'Y'))  # B -- birthdate
             lver = ldat.strftime('%y%m%d')
             if lurl.name.endswith('.kext'):
                 lver += '(' + shout("grep -A1 -m 2 'CFBundleShortVersionString' " + str(Path(
@@ -540,7 +540,7 @@ def update_acpi(ACPI: Path, folders):
         ssdts = []
         for dsl in folder.rglob('SSDT-*.dsl'):
             aml = Path(dsl.parent, dsl.name.replace('.dsl', '.aml'))
-            if not aml.exists() or get_timestamp(dsl, 'm') > get_timestamp(aml, 'm'):
+            if not aml.exists() or get_timestamp(dsl, 'W') > get_timestamp(aml, 'W'):
                 ssdts.append((dsl, aml))
         iasl = folder / 'iasl'
         if not iasl.exists():
