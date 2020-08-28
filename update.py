@@ -164,7 +164,8 @@ def Title(*args):
 def Prompt(msg: str):
     if args.force:
         return ''
-    return input(ARROW + ' ' + msg)
+    print(ARROW + ' ' + msg)
+    return 'Y'
 
 
 def Confirm(msg: str) -> bool:
@@ -540,7 +541,7 @@ def update_acpi(ACPI: Path, folders):
         iasl = folder / 'iasl'
         if not iasl.exists():
             Title('Downloading iasl...')
-            sh('curl -# -R -LOk https://bitbucket.org/RehabMan/acpica/downloads/iasl.zip')
+            sh('curl -# -R -LOk http://amdosx.kellynet.nl/iasl.zip')
             sh('unzip iasl.zip iasl -d {} && rm iasl.zip'.format(iasl.parent))
             sh('chmod a+x {}'.format(iasl))
         for (dsl, aml) in ssdts:
