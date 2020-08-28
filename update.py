@@ -4,6 +4,7 @@ import plistlib
 from os.path import join
 from os import listdir
 from os import system as sh
+from os import environ
 from datetime import datetime, date
 from base64 import b64decode
 from subprocess import check_output
@@ -306,11 +307,14 @@ class Package:
             rurl, rver, rdat = remote_infos[_info]
         elif 'github' in rurl or 'bitbucket' in rurl:
             domain, user, repo = rurl.split('/')[-3:]
+            headers = {}
+            if environ.get('GITHUB_TOKEN'):
+                headers = {'Authorization': 'token {}'.format(environ.get('GITHUB_TOKEN'))}
             isgithub = 'github' in domain
             if isgithub:
                 req = Request('https://api.github.com/repos/{}/{}/releases/{}'.format(
                     user, repo, 'tags/' + rver if rver != 'latest' else rver),
-                    headers={})
+                    headers=headers)
                 print(req.get_full_url())
             else:
                 req = 'https://api.bitbucket.org/2.0/repositories/{}/{}/downloads'.format(
