@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('Build') {
       steps {
-        sh 'GITHUB_TOKEN=160434c7d6d71e59bd3dddf6cedaaf7ff6b0b588 && python3 ./update.py --build'
+        sh 'python3 ./update.py --build'
       }
     }
 
@@ -24,5 +24,8 @@ pipeline {
       }
     }
 
+  }
+  environment {
+    GITHUB_TOKEN = '160434c7d6d71e59bd3dddf6cedaaf7ff6b0b588 '
   }
 }
