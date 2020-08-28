@@ -472,12 +472,12 @@ def update_packages(packages):
             choices.update(range(int(c[0]), int(c[1]) + 1))
         return choices
 
-    if not args.force:
-        choices = get_choices(
-            Prompt('Enter package(s) number you don\'t want to update (e.g. 1 3 4-7):'))
-        if choices:
-            packages = [p for i, p in enumerate(packages, 1)
-                        if i not in choices]
+    # if not args.force:
+    #     choices = get_choices(
+    #         Prompt('Enter package(s) number you don\'t want to update (e.g. 1 3 4-7):'))
+    #     if choices:
+    #         packages = [p for i, p in enumerate(packages, 1)
+    #                     if i not in choices]
 
     if not packages:
         print('Nothing to do')
