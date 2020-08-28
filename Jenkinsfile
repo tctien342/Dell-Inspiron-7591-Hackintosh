@@ -24,11 +24,14 @@ pipeline {
       }
     }
 
-    stage('') {
+    stage('Done') {
       steps {
         echo 'Build done'
       }
     }
 
+  }
+  environment {
+    GITHUB_TOKEN = '08806b1e6449744d489d02919838e52ce42b5559'
   }
 }
