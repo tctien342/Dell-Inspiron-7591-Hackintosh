@@ -31,7 +31,4 @@ pipeline {
     }
 
   }
-  environment {
-    GITHUB_TOKEN = 'df33d24122b6b318da55e7a72e4e1a9c2b6bca77'
-  }
 }
