@@ -27,6 +27,4 @@ pipeline {
     }
 
   }
-  environment {
-  }
 }
