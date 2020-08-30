@@ -11,7 +11,7 @@ pipeline {
       parallel {
         stage('StoreBuild') {
           steps {
-            archiveArtifacts 'build/*.zip'
+            archiveArtifacts(artifacts: 'Build/*.zip', caseSensitive: true)
           }
         }
 
