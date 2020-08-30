@@ -3,7 +3,9 @@ pipeline {
   stages {
     stage('Build') {
       steps {
-        sh 'python3 ./update.py --build'
+        withCredentials([string(credentialsId: 'github_token', variable: 'SECRET')]) {
+          sh "GITHUB_TOKEN=${SECRET} && 'python3 ./update.py --build'"
+        }
       }
     }
 
@@ -21,6 +23,5 @@ pipeline {
 
   }
   environment {
-    GITHUB_TOKEN = credentials('github_token')
   }
 }
