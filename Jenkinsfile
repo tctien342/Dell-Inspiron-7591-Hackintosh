@@ -1,12 +1,16 @@
 pipeline {
   agent any
   stages {
+    stage('prepare env') {
+      steps {
+        withCredentials([string(credentialsId: 'github_token', variable: 'SECRET')]) {
+          sh "export GITHUB_TOKEN=${SECRET}"
+        }
+      }
+    }
     stage('Build') {
       steps {
-        withCredentials(bindings: [string(credentialsId: 'github_token', variable: 'SECRET')]) {
-          sh "GITHUB_TOKEN=${SECRET} && python3 ./update.py --build"
-        }
-
+        sh 'python3 ./update.py --build'
       }
     }
 
@@ -22,5 +26,7 @@ pipeline {
       }
     }
 
+  }
+  environment {
   }
 }
