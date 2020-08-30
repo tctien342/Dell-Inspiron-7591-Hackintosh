@@ -8,19 +8,8 @@ pipeline {
     }
 
     stage('StoreBuild') {
-      parallel {
-        stage('StoreBuild') {
-          steps {
-            archiveArtifacts 'Builds/*.zip'
-          }
-        }
-
-        stage('error') {
-          steps {
-            catchError(catchInterruptions: true, message: 'Build failed', buildResult: 'Failed')
-          }
-        }
-
+      steps {
+        archiveArtifacts 'Builds/*.zip'
       }
     }
 
