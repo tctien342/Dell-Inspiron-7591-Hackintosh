@@ -3,9 +3,10 @@ pipeline {
   stages {
     stage('Build') {
       steps {
-        withCredentials([string(credentialsId: 'github_token', variable: 'SECRET')]) {
-          sh "GITHUB_TOKEN=${SECRET} && 'python3 ./update.py --build'"
+        withCredentials(bindings: [string(credentialsId: 'github_token', variable: 'SECRET')]) {
+          sh "GITHUB_TOKEN=${SECRET} && python3 ./update.py --build"
         }
+
       }
     }
 
