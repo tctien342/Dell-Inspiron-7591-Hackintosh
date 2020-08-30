@@ -180,9 +180,14 @@ def shout(cmd):
     return check_output(cmd, shell=True, encoding='utf-8').strip()
 
 
-def get_timestamp(p, f='B'):
+def get_timestamp(p, f='Y'):
     # 'B' - birth time, 'm' - modified time
-    return int(shout('stat -c {} {}'.format(f, p)))
+    a = 0
+    try:
+        a = int(shout('stat -c {} {}'.format(f, p)))
+    except ValueError:
+        a = 0  # or whatever
+    return a
 
 
 class Plist:
