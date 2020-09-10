@@ -496,6 +496,10 @@ def patching(kexts: Path):
     for kext in ('VoodooPS2Mouse.kext', 'VoodooPS2Trackpad.kext', 'VoodooInput.kext'):
         sh('rm -rf {}'.format(kexts / 'VoodooPS2Controller.kext' /
                               'Contents' / 'PlugIns' / kext))
+    Title('Delete AirPortBrcm4360_Injector')
+    for kext in ('AirPortBrcm4360_Injector.kext'):
+        sh('rm -rf {}'.format(kexts / 'AirportBrcmFixup.kext' /
+                              'Contents' / 'PlugIns' / kext))
 
 
 def replace_with_release(folder: Path, version='latest'):

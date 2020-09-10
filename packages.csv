@@ -1,6 +1,6 @@
 Folder,Name,Description,Version,Pattern,Url
 Kexts,AirportBrcmFixup.kext,Broadcom Wi-Fi driver,latest,.*RELEASE,https://github.com/acidanthera/AirportBrcmFixup
-Kexts,AppleALC.kext,Custom appleALC for dell inspiron 759x,kext-110320,AppleALC.kext.zip,https://github.com/tctien342/Dell-Inspiron-7591-Hackintosh
+Kexts,AppleALC.kext,Custom appleALC for dell inspiron 759x,kext-100920,AppleALC.kext.zip,https://github.com/tctien342/Dell-Inspiron-7591-Hackintosh
 Kexts,BrcmBluetoothInjector.kext,Injects the BT hardware data,latest,.*RELEASE,https://github.com/acidanthera/BrcmPatchRAM
 Kexts,BrcmFirmwareData.kext,Most appropriate for bootloader injection,latest,.*RELEASE,https://github.com/acidanthera/BrcmPatchRAM
 Kexts,BrcmPatchRAM3.kext,Apply the firmware update to Bluetooth,latest,.*RELEASE,https://github.com/acidanthera/BrcmPatchRAM
@@ -10,14 +10,14 @@ Kexts,Lilu.kext,Arbitrary kext and process patching,latest,.*RELEASE,https://git
 Kexts,NoTouchID.kext,Disable TouchID,latest,.*RELEASE,https://github.com/al3xtjames/NoTouchID
 Kexts,NVMeFix.kext,improve compatibility with non-Apple SSDs,latest,.*RELEASE,https://github.com/acidanthera/NVMeFix
 Kexts,SMCBatteryManager.kext,Emulation layer of AppleSmartBattery,latest,.*RELEASE,https://github.com/acidanthera/VirtualSMC
-Kexts,SMCProcessor.kext,Add support for temperature monitoring,latest,.*RELEASE,https://github.com/acidanthera/VirtualSMC
-Kexts,SMCLightSensor.kext,Add support for temperature monitoring,latest,.*RELEASE,https://github.com/acidanthera/VirtualSMC
-Kexts,USBPorts.kext,USBPorts for dell Insipron 759x,70320,USBPorts.kext.zip,https://github.com/tctien342/Dell-Inspiron-7591-Hackintosh
+Kexts,SMCProcessor.kext,Add support for CPU monitoring,latest,.*RELEASE,https://github.com/acidanthera/VirtualSMC
+Kexts,SMCLightSensor.kext,Add support for emulator of light sensor,latest,.*RELEASE,https://github.com/acidanthera/VirtualSMC
+Kexts,SMCDellSensors.kext,Add support for dell sensor monitoring,latest,.*RELEASE,https://github.com/acidanthera/VirtualSMC
+Kexts,USBPorts.kext,USBPorts for dell Insipron 759x,kext-100920,USBPorts.kext.zip,https://github.com/tctien342/Dell-Inspiron-7591-Hackintosh
 Kexts,VirtualSMC.kext,SMC emulator layer,latest,.*RELEASE,https://github.com/acidanthera/VirtualSMC
 Kexts,VoodooI2C.kext,Stock VoodooI2C,latest,VoodooI2C-2.*,https://github.com/VoodooI2C/VoodooI2C
 Kexts,VoodooI2CHID.kext,Stock VoodooI2C,latest,VoodooI2C-2.*,https://github.com/VoodooI2C/VoodooI2C
 Kexts,VerbStub.kext,VerbStub for combojack fix,70320,VerbStub.kext.zip,https://github.com/tctien342/Dell-Inspiron-7591-Hackintosh
-Kexts,SATA-unsupported.kext,Sata kext for SAT0,kext-260420,SATA-unsupported.kext.zip,https://github.com/tctien342/Dell-Inspiron-7591-Hackintosh
 Kexts,VoodooPS2Controller.kext,PS/2 controller,latest,.*RELEASE,https://github.com/acidanthera/VoodooPS2
 Kexts,WhateverGreen.kext,Patches for GPUs,latest,.*RELEASE,https://github.com/acidanthera/WhateverGreen
 Kexts,CpuTscSync.kext,Lvs1974 CpuTscSync replacement for VoodooTCSSync,latest,.*RELEASE,https://github.com/lvs1974/CpuTscSync
@@ -33,6 +33,5 @@ OC/Drivers,OpenCanopy.efi, Drives for Opencore,latest,.*RELEASE,https://github.c
 OC,OpenCore.efi,Bootloader for macOS and other systems,latest,.*RELEASE,https://github.com/acidanthera/OpenCorePkg
 OC,Tools,Tools for Opencore,latest,.*RELEASE,https://github.com/acidanthera/OpenCorePkg
 OC,Bootstrap,Bootstrap for Opencore,latest,.*RELEASE,https://github.com/acidanthera/OpenCorePkg
-OC,Resources,Resources for Opencore,kext-170620,Resources.zip,https://github.com/tctien342/Dell-Inspiron-7591-Hackintosh
 ../BOOT/CLOVER,BOOTX64.efi,Bootloader for macOS and other systems,latest,CloverV2-*,https://github.com/CloverHackyColor/CloverBootloader
 ../BOOT/OC,BOOTx64.efi,Bootloader for macOS and other systems,latest,.*RELEASE,https://github.com/acidanthera/OpenCorePkg

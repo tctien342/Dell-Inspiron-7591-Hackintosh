@@ -12,15 +12,15 @@
 
 DefinitionBlock ("", "SSDT", 2, "hack", "PCI0", 0x00000000)
 {
-    External (_SB_.PCI0, DeviceObj)
-    External (_SB_.PCI0.LPCB, DeviceObj)
-    External (_SB_.PCI0.SBUS.BUS0, DeviceObj)
-    External (_SB_.AC, DeviceObj)    // (from opcode)
-    
+    External (_SB_.AC__, DeviceObj)    // (from opcode)
+    External (_SB_.PCI0, DeviceObj)    // (from opcode)
+    External (_SB_.PCI0.LPCB, DeviceObj)    // (from opcode)
+    External (_SB_.PCI0.SBUS.BUS0, DeviceObj)    // (from opcode)
+
     Device (MEM2)
     {
-        Name (_HID, EisaId ("PNP0C01"))
-        Name (_UID, 0x02)
+        Name (_HID, EisaId ("PNP0C01"))  // _HID: Hardware ID
+        Name (_UID, 0x02)  // _UID: Unique ID
         Name (CRS, ResourceTemplate ()
         {
             Memory32Fixed (ReadWrite,
@@ -32,12 +32,12 @@ DefinitionBlock ("", "SSDT", 2, "hack", "PCI0", 0x00000000)
                 0x00200000,         // Address Length
                 )
         })
-        Method (_CRS, 0, NotSerialized)
+        Method (_CRS, 0, NotSerialized)  // _CRS: Current Resource Settings
         {
             Return (CRS)
         }
-        
-        Method (_STA, 0, NotSerialized)
+
+        Method (_STA, 0, NotSerialized)  // _STA: Status
         {
             If (_OSI ("Darwin"))
             {
@@ -49,7 +49,7 @@ DefinitionBlock ("", "SSDT", 2, "hack", "PCI0", 0x00000000)
             }
         }
     }
-    
+
     Scope (\_SB.AC)
     {
         If (_OSI ("Darwin"))
@@ -61,41 +61,27 @@ DefinitionBlock ("", "SSDT", 2, "hack", "PCI0", 0x00000000)
             })
         }
     }
-        
+
     Scope (_SB.PCI0)
     {
-        // Add EC device to load AppleBusPowerController[3]
         Device (EC)
         {
             Name (_HID, "ACID0001")  // _HID: Hardware ID
             Method (_STA, 0, NotSerialized)  // _STA: Status
             {
-                If (_OSI ("Darwin")) 
-                { Return (0x0F) }
+                If (_OSI ("Darwin"))
+                {
+                    Return (0x0F)
+                }
+
                 Return (Zero)
             }
         }
-        // Intel 300-series PMC support [4]
-        Device (PMCR)
-        {
-            Name (_ADR, 0x001F0002)  // _ADR: Address
-            Method (_STA, 0, NotSerialized)
-            {
-                If (_OSI ("Darwin"))
-                {
-                    Return (0x0F)
-                }
-                Else
-                {
-                    Return (Zero)
-                }
-            }
-        }
-        
+
         Device (PPMC)
         {
-            Name (_ADR, 0x001F0002)
-            Method (_STA, 0, NotSerialized)
+            Name (_ADR, 0x001F0002)  // _ADR: Address
+            Method (_STA, 0, NotSerialized)  // _STA: Status
             {
                 If (_OSI ("Darwin"))
                 {
@@ -107,24 +93,51 @@ DefinitionBlock ("", "SSDT", 2, "hack", "PCI0", 0x00000000)
                 }
             }
         }
-        
-        Device (MCHC) // MCHC[1]
+
+        Device (MCHC)
         {
             Name (_ADR, Zero)  // _ADR: Address
             Method (_STA, 0, NotSerialized)  // _STA: Status
             {
-                If (_OSI ("Darwin")) 
-                { Return (0x0F) }
+                If (_OSI ("Darwin"))
+                {
+                    Return (0x0F)
+                }
+
                 Return (Zero)
             }
         }
     }
 
     Scope (_SB.PCI0.LPCB)
-    {        
+    {
+        Device (PMCR)
+        {
+            Name (_HID, EisaId ("APP9876"))  // _HID: Hardware ID
+            Method (_STA, 0, NotSerialized)  // _STA: Status
+            {
+                If (_OSI ("Darwin"))
+                {
+                    Return (0x0B)
+                }
+                Else
+                {
+                    Return (Zero)
+                }
+            }
+
+            Name (_CRS, ResourceTemplate ()  // _CRS: Current Resource Settings
+            {
+                Memory32Fixed (ReadWrite,
+                    0xFE000000,         // Address Base
+                    0x00010000,         // Address Length
+                    )
+            })
+        }
+
         Device (DMAC)
         {
-            Name (_HID, EisaId ("PNP0200") /* PC-class DMA Controller */)  // _HID: Hardware ID
+            Name (_HID, EisaId ("PNP0200"))  // _HID: Hardware ID
             Name (_CRS, ResourceTemplate ()  // _CRS: Current Resource Settings
             {
                 IO (Decode16,
@@ -154,17 +167,19 @@ DefinitionBlock ("", "SSDT", 2, "hack", "PCI0", 0x00000000)
                 DMA (Compatibility, NotBusMaster, Transfer8_16, )
                     {4}
             })
-            
             Method (_STA, 0, NotSerialized)  // _STA: Status
             {
-                If (_OSI ("Darwin")) 
-                { Return (0x0F) }
+                If (_OSI ("Darwin"))
+                {
+                    Return (0x0F)
+                }
+
                 Return (Zero)
             }
         }
     }
 
-    Device (_SB.PCI0.SBUS.BUS0) // SBUS[1]
+    Device (_SB.PCI0.SBUS.BUS0)
     {
         Name (_CID, "smbus")  // _CID: Compatible ID
         Name (_ADR, Zero)  // _ADR: Address
@@ -189,11 +204,14 @@ DefinitionBlock ("", "SSDT", 2, "hack", "PCI0", 0x00000000)
                 })
             }
         }
-        
+
         Method (_STA, 0, NotSerialized)  // _STA: Status
         {
-            If (_OSI ("Darwin")) 
-            { Return (0x0F) }
+            If (_OSI ("Darwin"))
+            {
+                Return (0x0F)
+            }
+
             Return (Zero)
         }
     }

@@ -1,18 +1,22 @@
 # Dell Inspiron 759x
 
 <p>
-	<img style="border-radius: 8px" src="Assets/background.jpg">
+	<img style="border-radius: 8px" src="Assets/background.png">
 </p>
 
 ## System configuration
 
-| Model     | MacBookPro15,3      | Version        | 10.15.4             |
+| Model     | MacBookPro16,1      | Version        | BigSur 11 Beta      |
 | :-------- | :------------------ | :------------- | :------------------ |
 | Processor | Intel Core i5-9300H | Graphics       | UHD Graphics 630    |
 | Memory    | 2667MHz DDR4 2x8GB  | OS Disk        | Samsung 970Evo Plus |
 | Audio     | Realtek ALC295      | WiFi/Bluetooth | DW1820A             |
 
 ## About build
+
+- <strong> You need at least Macos 10.15.5 to boot with SMBIOS 16,1 </strong>
+- Intel wifi card is finally worked:
+  - Follow this: https://openintelwireless.github.io
 
 #### Performance
 
@@ -21,24 +25,18 @@
 
 #### Not Working
 
-- Intel wifi card is developing, there are two version of kext:
-  - Faked as an ethernet card: you can check [here](https://github.com/zxystd/itlwm)
-  - Using like an wifi card: you can check the status [here](https://github.com/AppleIntelWifi/adapter)
-  - Bluetooth kext can be found here: [IntelBluetoothFirmware](https://github.com/zxystd/IntelBluetoothFirmware)
 - Thing may never work:
   - Discrete GPU (Disabled)
   - Fingerprint (Disabled)
   - Internal Microphone
-- <del>Some streaming video like http://mixer.com/ in `safari` will make iGPU alway highest freq until sleep or reboot the machine</del>
-  - <del>This due to loading Apple GuC firmware into UHD630 for better performance</del>
-  - <del>You can turn it back to normal by remove `igfxfw=2` in boot-flags</del>
-  - Now using default WEG init
 
 #### HDMI blinking at boot
 
 > This will happen when using plug-in HDMI after bootup. This will be fixed after short sleep (about 1min) and never happen again until reboot
 
 - You can fixed this by turn off **com.apple.driver.AppleHDAController** in `Kernel and Kext Patches` on Clover or `Kernel > Patch` on Opencore but **HDMI Audio** will be disabled
+
+> From 10.15.6, event 11, HDMI audio is `dead`, still finding solution
 
 ## For building
 
@@ -55,8 +53,13 @@
 - Disk in `AHCI` mode
 - Fastboot: `Thorough`
 - Power on lid: `Disabled` - Fix black screen after wake
+- Disabled thunderbolt `auto switch` and select it to `BIOS assist` for better battery management in Catalina and BigSur
 
 ### STEP
+
+> You can follow [Dortania's guide](https://dortania.github.io/OpenCore-Install-Guide/) as it very detail and easy to understand.
+
+#### Short once
 
 - Prepair an Mac installer in USB with bootloader you choice ( Use unibeast to create it )
 - Go to `release` and download lastest version of your choice ( Clover or Opencore )
@@ -66,6 +69,7 @@
 - Then you need to mount EFI partition and replace it with USB's EFI
 - After System EFI replaced by your EFI, Using Opencore Configurator, Clover Configurator or update script to change SMBIOS, generate your serial and MBL
 - If you're using intel card, please use NullEthernet for fixing iMess and FaceTime - Change MAC in NullEthernet with your new created one, see below
+- For intel wifi card's user, follow [Intel's guide](https://openintelwireless.github.io) for init your wifi
 
 #### Fake ethernet
 
@@ -109,7 +113,8 @@ If your laptop display is 4K screen, you should set uiscale to 2:
 
 #### Using DW1820a as wifi card
 
-You have to do following changes to Device Properties or it `cant boot into macos`:
+- <del> You have to do following changes to Device Properties or it `cant boot into macos`:
+- DW1820a now have been supported by `AirportBrcmFixup`, if u facing with connection issues then follow bellow
 
 > Change
 
